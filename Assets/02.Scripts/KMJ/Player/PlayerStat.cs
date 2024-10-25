@@ -15,6 +15,5 @@ public class PlayerStat : MonoBehaviour
         moveSpeed = playerStatSO.moveSpeed;
         jumpSpeed = playerStatSO.jumpSpeed;
         interactionTime = playerStatSO.interactionTime;
-        moveDir = playerStatSO.moveDir;
     }
 }

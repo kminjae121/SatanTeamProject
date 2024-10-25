@@ -9,7 +9,7 @@ public class PlayerInterface : MonoBehaviour
 
 interface IMove
 {
-    public void Move(Vector3 input);
+    public void SetMove(Vector3 input);
 }
 
 interface IInteraction

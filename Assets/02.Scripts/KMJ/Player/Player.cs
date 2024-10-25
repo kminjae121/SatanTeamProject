@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,7 @@ public enum PlayerState
     Jump,
     Interaction
 }
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IMove
 {
     [field :SerializeField] public InputReader _inputReader { get;  set; }
     [field : SerializeField] public PlayerStat _playerStat { get; set; }
@@ -21,8 +22,11 @@ public class Player : MonoBehaviour
 
     public StateMachine<PlayerState> stateMachine { get; private set; }
 
+    public bool isMove { get; set; }
+
     private void Awake()
     {
+        isMove = false;
         stateMachine = new StateMachine<PlayerState>();
 
         stateMachine.AddState(PlayerState.Walk, new MoveState(this, stateMachine));
@@ -35,21 +39,23 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        SetMove(_inputReader.InputVec);
         stateMachine.currentState.Update();
-        Move(_inputReader.InputVec);
     }
+
     private void FixedUpdate()
     {
         stateMachine.currentState.PhysicsUpdate();
     }
     private void LateUpdate()
     {
-        stateMachine.currentState.LateUpdate();
+        stateMachine.currentState.LateUpdate(); 
     }
 
-    public void Move(Vector3 input)
+    public void SetMove(Vector3 input)
     {
         _playerStat.moveDir.x = input.x;
+        _playerStat.moveDir.y = input.y;
         _playerStat.moveDir.z = input.z;
     }
 
