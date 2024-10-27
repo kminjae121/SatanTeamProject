@@ -13,5 +13,5 @@ interface IMove
 
 interface IInteraction
 {
-    
+    public void Interaction();   
 }
