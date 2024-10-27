@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveState : State<PlayerState>
+public class MoveState : State<PlayerState>, IMove
 {
     private Rigidbody _rigid;
 
@@ -12,27 +12,22 @@ public class MoveState : State<PlayerState>
     }
 
     public override void Enter()
-    {
+    { 
         _player.isMove = true;
         _rigid = _player.GetComponent<Rigidbody>();
         Debug.Log("¿òÁ÷ÀÓ");
     }
     public override void Update()
-    {
+    { 
         if (_player._playerStat.moveDir.x == 0 && _player._playerStat.moveDir.z == 0)
             _stateMachine.ChangeState(PlayerState.Idle);
+        if (_player._inputReader._isJump &&_player.GetComponentInChildren<GroundChecker>()._isGround == true)
+            _stateMachine.ChangeState(PlayerState.Jump);
     }
 
     public override void PhysicsUpdate()
     {
-        Movement();
-    }
-
-    public void Movement()
-    {
-        _rigid.velocity = new Vector3(_player.transform.TransformDirection(_player._playerStat.moveDir).x * _player._playerStat.moveSpeed, 
-            _rigid.velocity.y,
-            _player.transform.TransformDirection(_player._playerStat.moveDir).z * _player._playerStat.moveSpeed);
+        Move();
     }
 
     public override void Exit()
@@ -40,4 +35,10 @@ public class MoveState : State<PlayerState>
         _player.isMove = false;
     }
 
+    public void Move()
+    {
+        _rigid.velocity = new Vector3(_player.transform.TransformDirection(_player._playerStat.moveDir).x * _player._playerStat.moveSpeed,
+            _rigid.velocity.y,
+            _player.transform.TransformDirection(_player._playerStat.moveDir).z * _player._playerStat.moveSpeed);
+    }
 }

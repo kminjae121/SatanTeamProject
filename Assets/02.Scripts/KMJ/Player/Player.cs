@@ -10,11 +10,14 @@ public enum PlayerState
     Jump,
     Interaction
 }
-public class Player : MonoBehaviour, IMove
+public class Player : MonoBehaviour
 {
     [field :SerializeField] public InputReader _inputReader { get;  set; }
     [field : SerializeField] public PlayerStat _playerStat { get; set; }
 
+    [SerializeField] private MovingCam _moveCam;
+
+    public Action OnJump;
 
     public PlayerState playerState { get; private set; }
 
@@ -39,6 +42,10 @@ public class Player : MonoBehaviour, IMove
 
     private void Update()
     {
+        if (isMove)
+            _moveCam.enabled = true;
+        else
+            _moveCam.enabled = false;
         SetMove(_inputReader.InputVec);
         stateMachine.currentState.Update();
     }
@@ -55,7 +62,6 @@ public class Player : MonoBehaviour, IMove
     public void SetMove(Vector3 input)
     {
         _playerStat.moveDir.x = input.x;
-        _playerStat.moveDir.y = input.y;
         _playerStat.moveDir.z = input.z;
     }
 
@@ -63,4 +69,5 @@ public class Player : MonoBehaviour, IMove
     {
        
     }
+
 }

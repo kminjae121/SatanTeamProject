@@ -12,7 +12,9 @@ public class InputReader : ScriptableObject, IPlayerActions
 
     public Vector3 InputVec { get; private set; }
 
+    public bool _isJump { get; set; }
     private Controll _controll;
+    
 
     private void OnEnable()
     {
@@ -32,7 +34,12 @@ public class InputReader : ScriptableObject, IPlayerActions
     public void OnJump(InputAction.CallbackContext context)
     {
         if (context.performed)
+        {
+            _isJump = true;
             OnJumpHandle?.Invoke();
+        }
+        else
+            _isJump = false;
     }
 
     public void OnMove(InputAction.CallbackContext context)
