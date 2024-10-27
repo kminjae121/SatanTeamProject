@@ -7,9 +7,10 @@ using Cinemachine;
 public class LookAtObg_Jumpscare : TriggerJumpscare
 {
     [Header("Setting")]
-    [SerializeField] private Transform targerObject;
+    [SerializeField] private Transform lookingObject;
     [SerializeField] private float duration;
     [SerializeField] private float waitTime;
+    [SerializeField] private float delayTime = 0;
     [SerializeField] private bool backToOriginCamPosAfterEnd = false;
     [SerializeField] private new AudioClip audio = null;
 
@@ -51,33 +52,33 @@ public class LookAtObg_Jumpscare : TriggerJumpscare
             originCamRot = playerCam.rotation;
         }
 
-        Vector3 direction = (targerObject.position - playerCam.position).normalized;
+        Vector3 direction = (lookingObject.position - playerCam.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
 
         if (audio) audioSource.Play();
         playerMovement.enabled = false;
         playerAnimator.enabled = false;
-        playerCam.DORotateQuaternion(lookRotation, duration);
+        playerCam.DORotateQuaternion(lookRotation, duration).SetDelay(delayTime);
 
         StartCoroutine(ActivePlayerMovement());
     }
 
     private IEnumerator ActivePlayerMovement()
     {
-        yield return new WaitForSecondsRealtime(waitTime);
+        yield return new WaitForSecondsRealtime(duration + waitTime);
         playerMovement.enabled = true;
         playerAnimator.enabled = true;
         if (backToOriginCamPosAfterEnd)
         {
-            playerCam.DORotateQuaternion(originCamRot, duration * 1.5f);
+            playerCam.DORotateQuaternion(originCamRot, duration * 2.5f);
         }
     }
 
     public override void CheckActiveable()
     {
-        if (waitTime < duration)
+        if (lookingObject == null)
         {
-            Debug.LogError("The value of WaitTime must be greater than the value of Duration!");
+            Debug.LogError("Looking Object must be assignmented!");
         }
     }
 

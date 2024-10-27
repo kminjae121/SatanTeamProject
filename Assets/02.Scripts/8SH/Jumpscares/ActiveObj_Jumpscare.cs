@@ -14,6 +14,10 @@ public class ActiveObj_Jumpscare : TriggerJumpscare
     [SerializeField] private TrueFalse setActive = TrueFalse.True;
     [SerializeField] private new AudioClip audio;
 
+    [Header("Extra Setting")]
+    [SerializeField] private bool backToOriginStateAfterEnd = false;
+    [SerializeField] private float waitTime = 0;
+    
     private AudioSource audioSource = null;
     private bool enable = true;
 
@@ -46,6 +50,23 @@ public class ActiveObj_Jumpscare : TriggerJumpscare
         }else
         {
             targetObject.SetActive(false);
+        }
+        if (backToOriginStateAfterEnd)
+        {
+            StartCoroutine(BackToOrigin());
+        }
+    }
+
+    private IEnumerator BackToOrigin()
+    {
+        yield return new WaitForSecondsRealtime(waitTime);
+        if (setActive == TrueFalse.True)
+        {
+            targetObject.SetActive(false);
+        }
+        else
+        {
+            targetObject.SetActive(true);
         }
     }
 
