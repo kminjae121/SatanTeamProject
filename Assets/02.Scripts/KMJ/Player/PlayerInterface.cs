@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class PlayerInterface : MonoBehaviour
 {
-    
 }
 
 interface IMove
 {
-    public void SetMove(Vector3 input);
+    public void Move();
 }
 
 interface IInteraction

@@ -1,20 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using DG.Tweening;
 
 public class MovingCam : MonoBehaviour
 {
-    Rigidbody _rigid;
-    private void Update()
+    public Sequence _movesequence;
+
+    [SerializeField] private Player _player;
+
+    private void OnEnable()
     {
-        
+        _movesequence = DOTween.Sequence()
+            
+            .SetLoops(-1)
+            .SetAutoKill(false);
+
+        Debug.Log("¿Í¿ì");
     }
 
-    public void MoveCame()
+
+    private void Update()
     {
-        _rigid.MoveRotation(Quaternion.Euler(0, -3, 0)); 
+        if (_player.isMove)
+            _movesequence.Play();
+        else
+            _movesequence.Pause();
     }
 }

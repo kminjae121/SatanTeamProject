@@ -14,13 +14,14 @@ public class JumpState : State<PlayerState>
         _rigid = _player.GetComponent<Rigidbody>();
 
         Debug.Log("나 들어감 ㅋ");
+
         Jump();
-        _player.stateMachine.ChangeState(PlayerState.Idle);
     }
 
     public override void Update()
     {
-        
+        if(!_player._inputReader._isJump && _player.GetComponentInChildren<GroundChecker>()._isGround == true)
+            _player.stateMachine.ChangeState(PlayerState.Idle);
     }
 
     public override void Exit()
