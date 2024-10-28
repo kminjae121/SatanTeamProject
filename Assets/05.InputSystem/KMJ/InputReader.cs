@@ -8,7 +8,7 @@ using static Controll;
 [CreateAssetMenu (menuName = "PlayerInput")]
 public class InputReader : ScriptableObject, IPlayerActions
 {
-    public Action OnJumpHandle, OnInteractionHandle;
+    public Action OnJumpHandle, OnInteractionHandle, OnEseHandle;
 
     public Vector3 InputVec { get; private set; }
 
@@ -45,5 +45,21 @@ public class InputReader : ScriptableObject, IPlayerActions
     public void OnMove(InputAction.CallbackContext context)
     {
         InputVec = context.ReadValue<Vector3>();
+    }
+
+
+
+
+
+
+
+    
+
+
+
+    public void OnEsc(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+            OnEseHandle?.Invoke();
     }
 }
