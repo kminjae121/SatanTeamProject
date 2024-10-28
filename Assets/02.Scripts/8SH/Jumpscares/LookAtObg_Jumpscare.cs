@@ -14,7 +14,7 @@ public class LookAtObg_Jumpscare : TriggerJumpscare
     [SerializeField] private bool backToOriginCamPosAfterEnd = false;
     [SerializeField] private new AudioClip audio = null;
 
-    private PlayerMovement playerMovement;
+    private PlayerCam playerCamCompo;
     private Transform playerCam;
     private Animator playerAnimator;
     private AudioSource audioSource = null;
@@ -25,9 +25,9 @@ public class LookAtObg_Jumpscare : TriggerJumpscare
     {
         CheckActiveable();
 
-        playerMovement = FindObjectWithComponent<PlayerMovement>();
+        playerCamCompo = FindObjectWithComponent<PlayerCam>();
         playerCam = FindObjectWithComponent<CinemachineVirtualCamera>().transform;
-        playerAnimator = playerMovement.transform.GetComponent<Animator>();
+        playerAnimator = playerCamCompo.transform.GetComponent<Animator>();
 
         if (audio)
         {
@@ -56,7 +56,7 @@ public class LookAtObg_Jumpscare : TriggerJumpscare
         Quaternion lookRotation = Quaternion.LookRotation(direction);
 
         if (audio) audioSource.Play();
-        playerMovement.enabled = false;
+        playerCamCompo.enabled = false;
         playerAnimator.enabled = false;
         playerCam.DORotateQuaternion(lookRotation, duration).SetDelay(delayTime);
 
@@ -66,7 +66,7 @@ public class LookAtObg_Jumpscare : TriggerJumpscare
     private IEnumerator ActivePlayerMovement()
     {
         yield return new WaitForSecondsRealtime(duration + waitTime);
-        playerMovement.enabled = true;
+        playerCamCompo.enabled = true;
         playerAnimator.enabled = true;
         if (backToOriginCamPosAfterEnd)
         {

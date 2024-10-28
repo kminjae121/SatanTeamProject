@@ -15,7 +15,6 @@ public class Player : MonoBehaviour
     [field :SerializeField] public InputReader _inputReader { get;  set; }
     [field : SerializeField] public PlayerStat _playerStat { get; set; }
 
-
     public Action OnJump;
 
     public PlayerState playerState { get; private set; }
@@ -24,11 +23,11 @@ public class Player : MonoBehaviour
 
     public StateMachine<PlayerState> stateMachine { get; private set; }
 
-    public bool isMove { get; set; }
+    [field:SerializeField] public bool isMoving { get; set; }
 
     private void Awake()
     {
-        isMove = false;
+        isMoving = false;
         stateMachine = new StateMachine<PlayerState>();
 
         stateMachine.AddState(PlayerState.Walk, new MoveState(this, stateMachine));

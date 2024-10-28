@@ -5,17 +5,17 @@ using UnityEngine;
 public class PlayerAnimator : MonoBehaviour
 {
     private Animator animator;
-    private PlayerMovement playerMovement;
+    private Player player;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        playerMovement = GetComponent<PlayerMovement>();
+        player = GetComponent<Player>();
     }
 
     private void Update()
     {
-        animator.SetBool("Moving", playerMovement.isMoving);
+        animator.SetBool("Moving", player.isMoving);
 
     }
 }
