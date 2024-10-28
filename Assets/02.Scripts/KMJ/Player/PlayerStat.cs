@@ -8,6 +8,7 @@ public class PlayerStat : MonoBehaviour
     public int moveSpeed { get; set; }
     public int jumpSpeed { get; set; }
     public float interactionTime { get; set; }
+
     public Vector3 moveDir;
 
     private void Awake()
