@@ -2,13 +2,11 @@ using UnityEngine;
 
 public class PlayerCam : MonoBehaviour
 {
-    [SerializeField] private float _sensX;
-    [SerializeField] private float _sensY;
+    public GameObject playerCamera;
 
-    public Transform orientation;
-
-    private float _xRotation;
-    private float _yRotation;
+    public float lookSpeed = 2f;
+    public float lookXLimit = 45f;
+    private float rotationX = 0;
 
     private void Start()
     {
@@ -22,16 +20,9 @@ public class PlayerCam : MonoBehaviour
 
     private void CamSetting()
     {
-        float MouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * _sensX;
-        float MouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * _sensY;
-
-        _yRotation += MouseX;
-        _xRotation -= MouseY;
-
-        _xRotation = Mathf.Clamp(_xRotation, -90f, 90f);
-
-        transform.rotation = Quaternion.Euler(_xRotation, _yRotation, 0);
-        orientation.rotation = Quaternion.Euler(0, _yRotation, 0);
-
+        rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
+        rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
+        playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
+        transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
     }
 }

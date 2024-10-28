@@ -22,7 +22,7 @@ public class MovingCam : MonoBehaviour
 
     private void Update()
     {
-        if (_player.isMove)
+        if (_player.isMoving)
             _movesequence.Play();
         else
             _movesequence.Pause();
