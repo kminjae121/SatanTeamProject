@@ -537,7 +537,6 @@ MonoBehaviour:
   <_inputReader>k__BackingField: {fileID: 11400000, guid: 433ac22f63837fa4eb00b3d076152786,
     type: 2}
   <_playerStat>k__BackingField: {fileID: 539934122}
-  _moveCam: {fileID: 1116344461}
 --- !u!114 &539934122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -817,7 +816,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b95fb9d454929048b37ffd482e4d89d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 539934121}
 --- !u!1 &1329092291
 GameObject:
   m_ObjectHideFlags: 0
