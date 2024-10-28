@@ -15,7 +15,6 @@ public class Player : MonoBehaviour
     [field :SerializeField] public InputReader _inputReader { get;  set; }
     [field : SerializeField] public PlayerStat _playerStat { get; set; }
 
-    [SerializeField] private MovingCam _moveCam;
 
     public Action OnJump;
 
@@ -42,10 +41,6 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (isMove)
-            _moveCam.enabled = true;
-        else
-            _moveCam.enabled = false;
         SetMove(_inputReader.InputVec);
         stateMachine.currentState.Update();
     }
