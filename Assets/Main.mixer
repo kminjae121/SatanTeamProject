@@ -6,7 +6,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: VFX
+  m_Name: SFX
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 96607af2c366c1a4e9935358eea2d5fb
   m_Children: []
@@ -19,6 +19,20 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!244 &-7046596315060034087
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 6043ef5511004d64fbd2b65e9d3bbc4d
+  m_EffectName: Receive
+  m_MixLevel: fddc7a6b4ee029c429ec876033c7459e
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!244 &-4628428894450926379
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -48,7 +62,13 @@ AudioMixerController:
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
-  m_ExposedParameters: []
+  m_ExposedParameters:
+  - guid: 12a5d102920ca384f8e2108f870f0b1c
+    name: BackGround
+  - guid: 6e48866348f875a44bb29be9042240fa
+    name: Master
+  - guid: a724ea1997de0184a985a4d74349869a
+    name: SFX
   m_AudioMixerGroupViews:
   - guids:
     - a8d088efc361ec847a878d4a7864fa2d
@@ -101,7 +121,10 @@ AudioMixerSnapshotController:
   m_Name: Snapshot
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 6b7a639f2fd7f534e91e5dfa46e180ab
-  m_FloatValues: {}
+  m_FloatValues:
+    12a5d102920ca384f8e2108f870f0b1c: -80
+    6e48866348f875a44bb29be9042240fa: -80
+    a724ea1997de0184a985a4d74349869a: -80
   m_TransitionOverrides: {}
 --- !u!243 &2826507941598409740
 AudioMixerGroupController:

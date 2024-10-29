@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
     [field :SerializeField] public InputReader _inputReader { get;  set; }
     [field : SerializeField] public PlayerStat _playerStat { get; set; }
 
+    [field : SerializeField] public Transform _playerCam { get; set; }
+
     public Action OnJump;
 
     public PlayerState playerState { get; private set; }
