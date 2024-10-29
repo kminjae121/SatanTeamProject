@@ -5,31 +5,34 @@ using UnityEngine.Audio;
 
 public class SoundSlider : MonoBehaviour
 {
-    public float minVolume = -40;
-    [SerializeField] private AudioMixer _audioMixer;
-    
+    public float minVolume = -80;
+    public AudioMixer _audioMixer;
+    [SerializeField] private PlayerCam _playercam;
+
+
+    private void Awake()
+    {
+        MainSlider(-30);
+        SFXSlider(-30);
+        BackGroundSlider(-30);
+    }
     public void MainSlider(float value)
     {
-        _audioMixer.SetFloat("Master", value * minVolume);
+        _audioMixer.SetFloat("Master", value);
     }
 
     public void SFXSlider(float value)
     {
-        _audioMixer.SetFloat("VFX", value * minVolume);
+        _audioMixer.SetFloat("SFX",value);
     }
 
     public void BackGroundSlider(float value)
     {
-        _audioMixer.SetFloat("BackGround", value * minVolume);
+        _audioMixer.SetFloat("BackGround", value);
     }
 
-    public void XSensitivity()
+    public void XSensitivity(float value)
     {
-
-    }
-
-    public void YSensitivity()
-    {
-
+        _playercam.lookSpeed = value;
     }
 }
