@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
 
 
     public Action OnJump;
+    public CheckInteraction Interaction { get; private set; }
 
     public PlayerState playerState { get; private set; }
 
@@ -37,10 +38,16 @@ public class Player : MonoBehaviour
         stateMachine.AddState(PlayerState.Interaction, new InteractionState(this, stateMachine));
 
         stateMachine.InitIntialize(PlayerState.Idle, this);
+        Interaction = GetComponent<CheckInteraction>();
+        if (Interaction == null)
+            print("ㅈ됨");
+
+        _inputReader.OnInteractionHandle += Interaction.OnInteraction;
     }
 
     private void Update()
     {
+        print("나 업데이트");
         SetMove(_inputReader.InputVec);
         stateMachine.currentState.Update();
     }
@@ -58,6 +65,7 @@ public class Player : MonoBehaviour
     {
         _playerStat.moveDir.x = input.x;
         _playerStat.moveDir.z = input.z;
+        print("나 인풋받음");
     }
 
     private void OnDisable()

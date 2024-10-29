@@ -8,7 +8,8 @@ using static Controll;
 [CreateAssetMenu (menuName = "PlayerInput")]
 public class InputReader : ScriptableObject, IPlayerActions
 {
-    public Action OnJumpHandle, OnInteractionHandle;
+    public Action OnJumpHandle;
+    public Action OnInteractionHandle;
 
     public Vector3 InputVec { get; private set; }
 
@@ -27,8 +28,12 @@ public class InputReader : ScriptableObject, IPlayerActions
     }
     public void OnInteraction(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        Debug.Log("밖");
+        if (context.phase == InputActionPhase.Started)
+        {
             OnInteractionHandle?.Invoke();
+            Debug.Log("인보크");
+        }
     }
 
     public void OnJump(InputAction.CallbackContext context)
