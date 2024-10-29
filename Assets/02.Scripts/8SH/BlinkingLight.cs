@@ -7,6 +7,7 @@ public class BlinkingLight : MonoBehaviour
     [SerializeField] private Light lightObj;
     [SerializeField] private float randomMiniumum = 0;
     [SerializeField] private float randomMaximum = 1;
+
     public bool active = true;
 
     private void Start()
