@@ -7,9 +7,9 @@ using Cinemachine;
 public class LookAtObg_Jumpscare : TriggerJumpscare
 {
     [Header("Setting")]
-    [SerializeField] private Transform lookingObject;
-    [SerializeField] private float duration;
-    [SerializeField] private float waitTime;
+    public Transform lookingObject;
+    public float duration;
+    public float waitTime;
     [SerializeField] private float delayTime = 0;
     [SerializeField] private bool backToOriginCamPosAfterEnd = false;
     [SerializeField] private new AudioClip audio = null;
