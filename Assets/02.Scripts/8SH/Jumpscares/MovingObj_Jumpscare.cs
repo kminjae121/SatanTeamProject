@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEditor.SceneManagement;
+using UnityEngine.Audio;
 
 public class MovingObj_Jumpscare : TriggerJumpscare
 {
@@ -11,6 +12,7 @@ public class MovingObj_Jumpscare : TriggerJumpscare
     [SerializeField] private Transform[] endTransform;
     [SerializeField] private float[] duration;
     [SerializeField] private new AudioClip audio = null;
+    [SerializeField] private AudioMixerGroup audioMixer;
 
     [Header("Interval Setting")]
     [SerializeField] private bool useInterval = false;
@@ -28,6 +30,7 @@ public class MovingObj_Jumpscare : TriggerJumpscare
         if (audio)
         {
             audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.outputAudioMixerGroup = audioMixer;
             audioSource.clip = audio;
         }
 
