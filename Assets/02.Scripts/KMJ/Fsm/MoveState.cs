@@ -13,7 +13,7 @@ public class MoveState : State<PlayerState>, IMove
 
     public override void Enter()
     { 
-        _player.isMove = true;
+        _player.isMoving = true;
         _rigid = _player.GetComponent<Rigidbody>();
         Debug.Log("¿òÁ÷ÀÓ");
     }
@@ -32,7 +32,7 @@ public class MoveState : State<PlayerState>, IMove
 
     public override void Exit()
     {
-        _player.isMove = false;
+        _player.isMoving = false;
     }
 
     public void Move()
