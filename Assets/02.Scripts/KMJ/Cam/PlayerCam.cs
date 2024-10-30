@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class PlayerCam : MonoBehaviour
 {
+    [SerializeField] private LayerMask whatIsObject;
+    public bool ishit { get; set; }
+
     public GameObject playerCamera;
 
     public float lookSpeed = 2f;
@@ -16,6 +19,9 @@ public class PlayerCam : MonoBehaviour
     private void Update()
     {
         CamSetting();
+        ShootRay();
+
+        Debug.Log(ishit);
     }
 
     private void CamSetting()
@@ -24,5 +30,17 @@ public class PlayerCam : MonoBehaviour
         rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
         playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
         transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
+    }
+
+    public void ShootRay()
+    {
+        ishit = Physics.Raycast(transform.position, transform.forward, 100, whatIsObject);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawRay(transform.position, Vector3.forward);
+        Gizmos.color = Color.white;
     }
 }

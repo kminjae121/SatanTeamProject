@@ -26,7 +26,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 7d397e6200691d14dbc10f0efc48165a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 36.86552
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7d397e6200691d14dbc10f0efc48165a,
         type: 3}
@@ -102,6 +102,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 8370631082341555750}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7d397e6200691d14dbc10f0efc48165a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5370823613784927818}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7d397e6200691d14dbc10f0efc48165a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8595460752987947450}
   m_SourcePrefab: {fileID: 100100000, guid: 7d397e6200691d14dbc10f0efc48165a, type: 3}
 --- !u!1 &3435816793018196562 stripped
 GameObject:
@@ -122,7 +130,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 278610026340ccb4e91000f244ad421f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -130,3 +138,39 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5370823613784927818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3435816793018196562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8e7d6758d61e5c4a9faccf869af4e52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player:
+    serializedVersion: 2
+    m_Bits: 256
+--- !u!65 &8595460752987947450
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3435816793018196562}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.10511339, y: 0.098508894, z: 0.73233634}
+  m_Center: {x: 0.0038533807, y: 0.03773746, z: -0.13383183}
