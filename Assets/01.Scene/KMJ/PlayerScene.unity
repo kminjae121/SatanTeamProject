@@ -229,6 +229,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &141335176 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3435816793018196562, guid: 02cb2222e23ee9e429bc597f65a89beb,
+    type: 3}
+  m_PrefabInstance: {fileID: 145224913}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &141335180 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2658717556606220520, guid: 02cb2222e23ee9e429bc597f65a89beb,
+    type: 3}
+  m_PrefabInstance: {fileID: 145224913}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &141335181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 141335176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4772d8dbc687359499ca08ec1f3f7610, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lookingObject: {fileID: 141335180}
+  duration: 0.8
+  waitTime: 0
+  isTrap: 1
+  delayTime: 0
+  backToOriginCamPosAfterEnd: 0
+  audio: {fileID: 0}
 --- !u!1001 &145224913
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -302,6 +333,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 5370823613784927818, guid: 02cb2222e23ee9e429bc597f65a89beb,
+        type: 3}
+      propertyPath: lookat
+      value: 
+      objectReference: {fileID: 141335181}
     - target: {fileID: 6164753911446551752, guid: 02cb2222e23ee9e429bc597f65a89beb,
         type: 3}
       propertyPath: m_Layer
@@ -325,7 +361,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3435816793018196562, guid: 02cb2222e23ee9e429bc597f65a89beb,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 141335181}
   m_SourcePrefab: {fileID: 100100000, guid: 02cb2222e23ee9e429bc597f65a89beb, type: 3}
 --- !u!1 &153077727
 GameObject:
@@ -3840,6 +3880,11 @@ PrefabInstance:
       propertyPath: whatIsObject.m_Bits
       value: 64
       objectReference: {fileID: 0}
+    - target: {fileID: 6614957796055717900, guid: 2321cd3da561dcb4ebfb2fddac323342,
+        type: 3}
+      propertyPath: <_playerCam>k__BackingField
+      value: 
+      objectReference: {fileID: 1814395128}
     - target: {fileID: 6614957796055717900, guid: 2321cd3da561dcb4ebfb2fddac323342,
         type: 3}
       propertyPath: <_playerRay>k__BackingField

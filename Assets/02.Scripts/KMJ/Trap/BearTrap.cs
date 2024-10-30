@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class BearTrap : MonoBehaviour
 {
+    [SerializeField] private LookAtObg_Jumpscare lookat;
     [SerializeField] private LayerMask _player;
     private Player _playerCompo;
     private bool _isTrap;
     private bool _isOpen;
     private Animator _animator;
     public float Gage;
+    
 
     private void Awake()
     {
@@ -24,6 +26,7 @@ public class BearTrap : MonoBehaviour
 
         if (_isOpen)
         {
+            _playerCompo._playerCam.enabled = true;
             _playerCompo._playerStat.moveSpeed = 3;
             _playerCompo._playerStat.jumpSpeed = 3;
             _animator.SetBool("Open", true);
@@ -33,7 +36,7 @@ public class BearTrap : MonoBehaviour
 
     private void OpenTrap()
     {
-        if (Input.GetKey(KeyCode.K) && _isTrap == false && _playerCompo._playerRay.ishit)
+        if (Input.GetKey(KeyCode.K) && _isTrap == false)
             Gage += Time.deltaTime;
 
         if (Gage >= 5)

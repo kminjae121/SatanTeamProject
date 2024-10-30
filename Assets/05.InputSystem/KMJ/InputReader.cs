@@ -51,4 +51,9 @@ public class InputReader : ScriptableObject, IPlayerActions
     {
         InputVec = context.ReadValue<Vector3>();
     }
+
+    public void OnEsc(InputAction.CallbackContext context)
+    {
+        
+    }
 }

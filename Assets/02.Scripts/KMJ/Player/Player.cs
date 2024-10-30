@@ -12,11 +12,10 @@ public enum PlayerState
 }
 public class Player : MonoBehaviour
 {
-    [field : SerializeField] public PlayerRay _playerRay { get;  set; }
     [field :SerializeField] public InputReader _inputReader { get;  set; }
     [field : SerializeField] public PlayerStat _playerStat { get; set; }
 
-    [field : SerializeField] public Transform _playerCam { get; set; }
+    [field : SerializeField] public PlayerCam _playerCam { get; set; }
 
     public Action OnJump;
     public CheckInteraction Interaction { get; private set; }
@@ -40,11 +39,12 @@ public class Player : MonoBehaviour
         stateMachine.AddState(PlayerState.Interaction, new InteractionState(this, stateMachine));
 
         stateMachine.InitIntialize(PlayerState.Idle, this);
+
         Interaction = GetComponent<CheckInteraction>();
         if (Interaction == null)
             print("¤¸µÊ");
 
-        _inputReader.OnInteractionHandle += Interaction.OnInteraction;
+        //_inputReader.OnInteractionHandle += Interaction.OnInteraction;
     }
 
     private void Update()

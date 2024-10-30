@@ -19,7 +19,6 @@ public class PlayerCam : MonoBehaviour
     private void Update()
     {
         CamSetting();
-        ShootRay();
 
         Debug.Log(ishit);
     }
@@ -30,11 +29,6 @@ public class PlayerCam : MonoBehaviour
         rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
         playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
         transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
-    }
-
-    public void ShootRay()
-    {
-        ishit = Physics.Raycast(transform.position, transform.forward, 100, whatIsObject);
     }
 
     private void OnDrawGizmos()
