@@ -12,6 +12,7 @@ public enum PlayerState
 }
 public class Player : MonoBehaviour
 {
+    [field : SerializeField] public PlayerRay _playerRay { get;  set; }
     [field :SerializeField] public InputReader _inputReader { get;  set; }
     [field : SerializeField] public PlayerStat _playerStat { get; set; }
 

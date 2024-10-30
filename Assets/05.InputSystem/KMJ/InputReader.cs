@@ -25,11 +25,6 @@ public class InputReader : ScriptableObject, IPlayerActions
         }
         _controll.Player.Enable();
     }
-    public void OnInteraction(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-            OnInteractionHandle?.Invoke();
-    }
 
     public void OnJump(InputAction.CallbackContext context)
     {
@@ -47,19 +42,13 @@ public class InputReader : ScriptableObject, IPlayerActions
         InputVec = context.ReadValue<Vector3>();
     }
 
-
-
-
-
-
-
-    
-
-
+    public void OnInteraction(InputAction.CallbackContext context)
+    {
+        
+    }
 
     public void OnEsc(InputAction.CallbackContext context)
     {
-        if (context.performed)
-            OnEseHandle?.Invoke();
+       
     }
 }
