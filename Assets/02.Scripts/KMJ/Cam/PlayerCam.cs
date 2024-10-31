@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class PlayerCam : MonoBehaviour
 {
-    [SerializeField] private LayerMask whatIsObject;
     public bool ishit { get; set; }
 
     public GameObject playerCamera;
