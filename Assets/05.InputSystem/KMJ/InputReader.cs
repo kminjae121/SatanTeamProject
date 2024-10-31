@@ -54,6 +54,6 @@ public class InputReader : ScriptableObject, IPlayerActions
 
     public void OnEsc(InputAction.CallbackContext context)
     {
-        throw new NotImplementedException();
+        
     }
 }

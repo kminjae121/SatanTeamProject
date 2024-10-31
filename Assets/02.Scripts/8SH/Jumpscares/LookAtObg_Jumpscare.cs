@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using DG.Tweening;
 using Cinemachine;
+using DG.Tweening;
+using System.Collections;
+using UnityEngine;
 
 public class LookAtObg_Jumpscare : TriggerJumpscare
 {
@@ -10,6 +9,7 @@ public class LookAtObg_Jumpscare : TriggerJumpscare
     public Transform lookingObject;
     public float duration;
     public float waitTime;
+    [SerializeField] private bool isTrap = false;
     [SerializeField] private float delayTime = 0;
     [SerializeField] private bool backToOriginCamPosAfterEnd = false;
     [SerializeField] private new AudioClip audio = null;
@@ -41,11 +41,36 @@ public class LookAtObg_Jumpscare : TriggerJumpscare
         if (enable)
         {
             enable = false;
-            Active();
+            if (isTrap)
+            {
+                TrapActive();
+            }
+            else Active();
         }
     }
 
     public override void Active()
+    {
+
+        if (backToOriginCamPosAfterEnd)
+        {
+            originCamRot = playerCam.rotation;
+        }
+
+        Vector3 direction = (lookingObject.position - playerCam.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(direction);
+
+        if (audio != null)
+            if (audio) audioSource.Play();
+
+        playerCamCompo.enabled = false;
+        playerAnimator.enabled = false;
+        playerCam.DORotateQuaternion(lookRotation, duration).SetDelay(delayTime);
+
+        StartCoroutine(ActivePlayerMovement());
+    }
+
+    public void TrapActive()
     {
         if (backToOriginCamPosAfterEnd)
         {
@@ -55,22 +80,23 @@ public class LookAtObg_Jumpscare : TriggerJumpscare
         Vector3 direction = (lookingObject.position - playerCam.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
 
-        if (audio) audioSource.Play();
-        playerCamCompo.enabled = false;
-        playerAnimator.enabled = false;
-        playerCam.DORotateQuaternion(lookRotation, duration).SetDelay(delayTime);
+        if (audio != null)
+            if (audio) audioSource.Play();
 
-        StartCoroutine(ActivePlayerMovement());
+        playerCamCompo.enabled = false;
+        playerCam.DORotateQuaternion(lookRotation, duration).SetDelay(delayTime);
     }
 
     private IEnumerator ActivePlayerMovement()
     {
         yield return new WaitForSecondsRealtime(duration + waitTime);
-        playerCamCompo.enabled = true;
         playerAnimator.enabled = true;
+
         if (backToOriginCamPosAfterEnd)
         {
             playerCam.DORotateQuaternion(originCamRot, duration * 2.5f);
+            yield return new WaitForSecondsRealtime(duration * 2.5f);
+            playerCamCompo.enabled = true;
         }
     }
 
