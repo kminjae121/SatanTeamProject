@@ -1325,7 +1325,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 982b4d62880b75f4cb35c344d43e00d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactText: {fileID: 484752796}
   _checkRate: 0.05
   _maxDistance: 3
   _layerMask:
@@ -2938,7 +2937,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerCharacter (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6988593101001804119, guid: 2321cd3da561dcb4ebfb2fddac323342, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3759071991817305837, guid: 2321cd3da561dcb4ebfb2fddac323342,
