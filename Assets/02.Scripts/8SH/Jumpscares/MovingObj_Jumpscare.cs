@@ -4,6 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEditor.SceneManagement;
 using UnityEngine.Audio;
+using Cinemachine;
 
 public class MovingObj_Jumpscare : TriggerJumpscare
 {
@@ -17,6 +18,9 @@ public class MovingObj_Jumpscare : TriggerJumpscare
     [Header("Interval Setting")]
     [SerializeField] private bool useInterval = false;
     [SerializeField] private float[] interval;
+
+    [Header("Extra Setting")]
+    [SerializeField] private bool moveToPlayer = false;
 
 
     private bool enable = true;
@@ -74,7 +78,27 @@ public class MovingObj_Jumpscare : TriggerJumpscare
     public override void Active()
     {
         if (audio) audioSource.Play();
-        sequence.Play();
+        if (moveToPlayer == false)
+        {
+            sequence.Play();
+        }else
+        {
+            Transform playerCam = FindObjectWithComponent<CinemachineVirtualCamera>().transform;
+            targetObject.DOMove(playerCam.position, duration[0]);
+        }
+    }
+
+    public T FindObjectWithComponent<T>() where T : Component
+    {
+        T[] allComponents = Resources.FindObjectsOfTypeAll<T>();
+        foreach (T component in allComponents)
+        {
+            if (component.hideFlags == HideFlags.None)
+            {
+                return component.GetComponent<T>();
+            }
+        }
+        return null;
     }
 
     public override void CheckActiveable()
