@@ -33,6 +33,8 @@ public class AudioInput : MonoBehaviour
         {
 
         }
+
+        audioSource.Play();
     }
 
     // Update is called once per frame
