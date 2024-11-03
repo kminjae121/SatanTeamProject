@@ -1367,7 +1367,7 @@ MonoBehaviour:
   audioMixer: {fileID: 0}
   useInterval: 0
   interval: []
-  moveToPlayer: 0
+  moveToPlayer: 1
 --- !u!1 &1950122127
 GameObject:
   m_ObjectHideFlags: 0
