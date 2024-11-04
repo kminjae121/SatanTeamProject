@@ -44,7 +44,7 @@ public class Player : MonoBehaviour
         if (Interaction == null)
             print("¤¸µÊ");
 
-        //_inputReader.OnInteractionHandle += Interaction.OnInteraction;
+        _inputReader.OnUseGift += UseGift;
     }
 
     private void Update()
@@ -68,6 +68,11 @@ public class Player : MonoBehaviour
         _playerStat.moveDir.x = input.x;
         _playerStat.moveDir.z = input.z;
         print("³ª ÀÎÇ²¹ÞÀ½");
+    }
+
+    public void UseGift()
+    {
+
     }
 
     private void OnDisable()

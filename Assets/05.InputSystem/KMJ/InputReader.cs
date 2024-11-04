@@ -10,6 +10,7 @@ public class InputReader : ScriptableObject, IPlayerActions
 {
     public Action OnJumpHandle;
     public Action OnInteractionHandle;
+    public Action OnUseGift;
 
     public Vector3 InputVec { get; private set; }
 
@@ -55,5 +56,11 @@ public class InputReader : ScriptableObject, IPlayerActions
     public void OnEsc(InputAction.CallbackContext context)
     {
         
+    }
+
+    public void OnGift(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+            OnUseGift?.Invoke();
     }
 }
