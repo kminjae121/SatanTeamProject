@@ -1278,6 +1278,33 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8b5036230df3ed48a701d34c6324d62, type: 3}
+--- !u!1 &1411374925 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6115954263675323188, guid: 9adcf0ab91195ef43aa674ab8b36c009,
+    type: 3}
+  m_PrefabInstance: {fileID: 4273325925505061048}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1411374929
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1411374925}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &2062958144
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1540,17 +1567,17 @@ PrefabInstance:
     - target: {fileID: 1216632503385235374, guid: 9adcf0ab91195ef43aa674ab8b36c009,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -8.496
+      value: -7.847698
       objectReference: {fileID: 0}
     - target: {fileID: 1216632503385235374, guid: 9adcf0ab91195ef43aa674ab8b36c009,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -30.904
+      value: -30.849224
       objectReference: {fileID: 0}
     - target: {fileID: 1216632503385235374, guid: 9adcf0ab91195ef43aa674ab8b36c009,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 5.81
+      value: 5.418318
       objectReference: {fileID: 0}
     - target: {fileID: 3474743486087620069, guid: 9adcf0ab91195ef43aa674ab8b36c009,
         type: 3}
@@ -1635,7 +1662,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6115954263675323188, guid: 9adcf0ab91195ef43aa674ab8b36c009,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1411374929}
   m_SourcePrefab: {fileID: 100100000, guid: 9adcf0ab91195ef43aa674ab8b36c009, type: 3}
 --- !u!4 &5969739024161330392 stripped
 Transform:
