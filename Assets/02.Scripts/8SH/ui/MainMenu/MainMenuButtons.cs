@@ -10,9 +10,10 @@ public class MainMenuButtons : MonoBehaviour
     private CanvasGroup canvasGroup;
     private Image fade;
     [SerializeField] private GameObject mainCam;
+    [SerializeField] private GameObject[] disactiveObjects;
     [SerializeField] private GameObject doorLight;
-    [SerializeField] private GameObject starLight;
-    [SerializeField] private GameObject flashLight;
+    [SerializeField] private AudioSource lightAudio;
+    [SerializeField] private AudioSource bgm;
 
     private void Start()
     {
@@ -25,10 +26,14 @@ public class MainMenuButtons : MonoBehaviour
         canvasGroup.interactable = false;
         canvasGroup.DOFade(0, .5f);
 
-        doorLight.SetActive(true);
-        starLight.SetActive(false);
-        flashLight.SetActive(false);
+        lightAudio.Play();
+        bgm.Stop();
+        for (int i = 0; i < disactiveObjects.Length; i++)
+        {
+            disactiveObjects[i].SetActive(false);
+        }
 
+        doorLight.SetActive(true);
         mainCam.SetActive(false);
         fade.DOFade(1, 2).SetDelay(2);
     }
