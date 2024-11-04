@@ -11,7 +11,6 @@ public class IdleState : State<PlayerState>
     public override void Enter()
     {
         _player.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        Debug.Log("가만히 있음");
     }
 
     public override void Update()

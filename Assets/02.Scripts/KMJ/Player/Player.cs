@@ -52,7 +52,6 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        print("나 업데이트");
         SetMove(_inputReader.InputVec);
         stateMachine.currentState.Update();
     }
