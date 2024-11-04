@@ -28,6 +28,9 @@ public class Player : MonoBehaviour
 
     [field:SerializeField] public bool isMoving { get; set; }
 
+    [SerializeField]
+    private Animator giftAnimation;
+
     private void Awake()
     {
         isMoving = false;
@@ -72,7 +75,7 @@ public class Player : MonoBehaviour
 
     public void UseGift()
     {
-
+        giftAnimation.Play("GiftAnimation");
     }
 
     private void OnDisable()

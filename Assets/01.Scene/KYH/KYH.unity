@@ -1537,6 +1537,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1216632503385235374, guid: 9adcf0ab91195ef43aa674ab8b36c009,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -8.496
+      objectReference: {fileID: 0}
+    - target: {fileID: 1216632503385235374, guid: 9adcf0ab91195ef43aa674ab8b36c009,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -30.904
+      objectReference: {fileID: 0}
+    - target: {fileID: 1216632503385235374, guid: 9adcf0ab91195ef43aa674ab8b36c009,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 5.81
+      objectReference: {fileID: 0}
     - target: {fileID: 3474743486087620069, guid: 9adcf0ab91195ef43aa674ab8b36c009,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1597,6 +1612,11 @@ PrefabInstance:
       propertyPath: target.Array.data[0]
       value: 
       objectReference: {fileID: 378738504}
+    - target: {fileID: 8145851776800197102, guid: 9adcf0ab91195ef43aa674ab8b36c009,
+        type: 3}
+      propertyPath: giftAnimation
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8226565860885455677, guid: 9adcf0ab91195ef43aa674ab8b36c009,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -1605,7 +1625,7 @@ PrefabInstance:
     - target: {fileID: 8421670546347606780, guid: 9adcf0ab91195ef43aa674ab8b36c009,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8713784798907928751, guid: 9adcf0ab91195ef43aa674ab8b36c009,
         type: 3}
