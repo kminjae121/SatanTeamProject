@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioInput : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class AudioInput : MonoBehaviour
     public AudioSource audioSource;
     public string _selectedDevice;
     // Start is called before the first frame update
+    public AudioMixerGroup _audioMixerMicroPhone, _audioMixerMaster;
 
     private void Start()
     {
@@ -22,6 +24,7 @@ public class AudioInput : MonoBehaviour
             if(Microphone.devices.Length > 0)
             {
                 _selectedDevice = Microphone.devices[0].ToString();
+                audioSource.outputAudioMixerGroup = _audioMixerMicroPhone;
                 audioSource.clip = Microphone.Start(_selectedDevice, true, 10, AudioSettings.outputSampleRate);
             }
             else
@@ -31,7 +34,7 @@ public class AudioInput : MonoBehaviour
         }
         else
         {
-
+            audioSource.outputAudioMixerGroup = _audioMixerMaster;
         }
 
         audioSource.Play();
