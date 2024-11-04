@@ -15,7 +15,6 @@ public class MoveState : State<PlayerState>, IMove
     { 
         _player.isMoving = true;
         _rigid = _player.GetComponent<Rigidbody>();
-        Debug.Log("¿òÁ÷ÀÓ");
     }
     public override void Update()
     { 

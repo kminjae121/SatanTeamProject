@@ -1,6 +1,5 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class CheckInteraction : MonoBehaviour
 {
@@ -16,6 +15,8 @@ public class CheckInteraction : MonoBehaviour
 
     private GameObject _curGameobject;
     private IInteractable _curInteractable;
+
+    private GameObject OutLineObj = null;
 
     private Camera _camera;
     #endregion
@@ -45,9 +46,18 @@ public class CheckInteraction : MonoBehaviour
                     _curInteractable = hit.collider.GetComponent<IInteractable>();
                     SetPromptText();
                 }
+                OutLineObj = hit.transform.gameObject;
+
+                OutLineObj.transform.TryGetComponent(out ObjectOutLine outLine);
+
+                outLine._isOutLine = true;
             }
             else
             {
+                OutLineObj.transform.TryGetComponent(out ObjectOutLine outLine);
+
+                outLine._isOutLine = false;
+
                 _curGameobject = null;
                 _curInteractable = null;
                 _interactText.gameObject.SetActive(false);
