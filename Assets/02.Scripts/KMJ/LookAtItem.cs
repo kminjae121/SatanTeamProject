@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class LookAtItem : MonoBehaviour
 {
-    private Vector3 _mousePos;
+    [SerializeField] private Transform _playerCam;
     [SerializeField] private LayerMask _whatIsObject;
     private bool _isHit;
+    public GameObject hittor;
 
 
 
@@ -15,7 +16,19 @@ public class LookAtItem : MonoBehaviour
         CollectObject();
     }
 
-    private void CollectObject()
+    public void CollectObject()
     {
+        if (Physics.Raycast(_playerCam.position, _playerCam.forward, out RaycastHit hit, 100, _whatIsObject))
+        {
+            hittor = hit.transform.gameObject;
+            hit.transform.TryGetComponent(out ObjectOutLine outLIne);
+            outLIne._isOutLine = true;
+        }
+        else if(hittor != null)
+        {
+            hittor.transform.TryGetComponent(out ObjectOutLine outLine);
+            outLine._isOutLine = false;
+        }
+
     }
 }
