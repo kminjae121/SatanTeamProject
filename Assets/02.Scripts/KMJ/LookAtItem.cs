@@ -21,13 +21,18 @@ public class LookAtItem : MonoBehaviour
         if (Physics.Raycast(_playerCam.position, _playerCam.forward, out RaycastHit hit, 100, _whatIsObject))
         {
             hittor = hit.transform.gameObject;
-            hit.transform.TryGetComponent(out ObjectOutLine outLIne);
-            outLIne._isOutLine = true;
+            if(hit.transform.TryGetComponent(out ObjectOutLine outLIne))
+            {
+                outLIne._isOutLine = true;
+            }
         }
         else if(hittor != null)
         {
-            hittor.transform.TryGetComponent(out ObjectOutLine outLine);
-            outLine._isOutLine = false;
+            if(hittor.transform.TryGetComponent(out ObjectOutLine outLine))
+            {
+                outLine._isOutLine = false;
+            }    
+            
         }
 
     }
