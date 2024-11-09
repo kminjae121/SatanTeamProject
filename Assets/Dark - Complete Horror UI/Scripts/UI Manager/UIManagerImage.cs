@@ -23,7 +23,8 @@ namespace Michsky.UI.Dark
             PRIMARY_REVERSED,
             NEGATIVE,
             BACKGROUND,
-            BACKGROUND_ALT
+            BACKGROUND_ALT,
+            CUSTOM
         }
 
         void Awake()
@@ -96,6 +97,8 @@ namespace Michsky.UI.Dark
                     imageObject.color = new Color(UIManagerAsset.backgroundColor.r, UIManagerAsset.backgroundColor.g, UIManagerAsset.backgroundColor.b, imageObject.color.a);
                 else if (colorType == ColorType.BACKGROUND_ALT)
                     imageObject.color = new Color(UIManagerAsset.backgroundColorAlt.r, UIManagerAsset.backgroundColorAlt.g, UIManagerAsset.backgroundColorAlt.b, imageObject.color.a);
+                else if (colorType == ColorType.CUSTOM)
+                    imageObject.color = new Color(imageObject.color.r, imageObject.color.g, imageObject.color.b, imageObject.color.a);
             }
         }
     }
