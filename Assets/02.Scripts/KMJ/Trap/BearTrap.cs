@@ -68,6 +68,7 @@ public class BearTrap : MonoBehaviour
             _isTrap = false;
             _animator.SetBool("Close", true);
             _sliderManager.SetActive(true);
+            print("æ∆¿’");
         }
     }
 

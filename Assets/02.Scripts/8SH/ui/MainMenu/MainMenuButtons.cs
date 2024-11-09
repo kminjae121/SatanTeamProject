@@ -36,6 +36,7 @@ public class MainMenuButtons : MonoBehaviour
         doorLight.SetActive(true);
         mainCam.SetActive(false);
         fade.DOFade(1, 2).SetDelay(2);
+        StartCoroutine(SceneMove());
     }
 
     public void OnSettingButtonClick()
@@ -46,5 +47,11 @@ public class MainMenuButtons : MonoBehaviour
     public void OnQuitButtonClick()
     {
 
+    }
+
+    private IEnumerator SceneMove()
+    {
+        yield return new WaitForSecondsRealtime(5);
+        SceneManager.LoadScene("MakingEvent");
     }
 }
