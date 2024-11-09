@@ -8,7 +8,7 @@ using DG.Tweening;
 public class MainMenuButtons : MonoBehaviour
 {
     private CanvasGroup canvasGroup;
-    private Image fade;
+    [SerializeField] private Image fade;
     [SerializeField] private GameObject mainCam;
     [SerializeField] private GameObject[] disactiveObjects;
     [SerializeField] private GameObject doorLight;
@@ -18,7 +18,6 @@ public class MainMenuButtons : MonoBehaviour
     private void Start()
     {
         canvasGroup = GetComponent<CanvasGroup>();
-        fade = transform.parent.Find("Fade").GetComponent<Image>();
     }
 
     public void OnPlayButtonClick()
