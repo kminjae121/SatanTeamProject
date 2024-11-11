@@ -18,13 +18,13 @@ public class BearTrap : MonoBehaviour
 
     private void Awake()
     {
-        _sliderManager = GameObject.Find("Slider");
+        _sliderManager = GameObject.Find("TrapSlider");
         _slider = _sliderManager.GetComponentInChildren<Slider>();
         _sliderManager.SetActive(false);
         _isOpen = false;
         _animator = GetComponent<Animator>();
         _isTrap = true;
-        _playerCompo = GameObject.Find("PlayerCharacter").GetComponent<Player>();
+        _playerCompo = GameObject.Find("PlayerCharacter(AudioInput)").GetComponent<Player>();
     }
     private void Update()
     {
