@@ -29,7 +29,12 @@ public class Player : MonoBehaviour
     [field:SerializeField] public bool isMoving { get; set; }
 
     [SerializeField]
-    private Animator giftAnimation;
+    private Animator giftAnimator;
+    public bool isHaveGiftBag;
+    public bool isHandleGift;
+
+    public ItemSO currentItem;
+
 
     private void Awake()
     {
@@ -47,13 +52,19 @@ public class Player : MonoBehaviour
         if (Interaction == null)
             print("¤¸µÊ");
 
-        _inputReader.OnUseGift += UseGift;
+        _inputReader.OnUse += UseItem;
+        _inputReader.OnThrow += ThrowItem;
     }
 
     private void Update()
     {
         SetMove(_inputReader.InputVec);
         stateMachine.currentState.Update();
+
+        if(Input.GetMouseButtonDown(0) && isHandleGift)
+        {
+            giftAnimator.SetBool("Open", true);
+        }
     }
 
     private void FixedUpdate()
@@ -72,14 +83,25 @@ public class Player : MonoBehaviour
         print("³ª ÀÎÇ²¹ÞÀ½");
     }
 
-    public void UseGift()
+    public void UseItem()
     {
-        giftAnimation.Play("GiftAnimation");
+        print("¤·¤·¤·¤·");
+        if (isHandleGift) return;
+        giftAnimator.gameObject.SetActive(true);
+        isHandleGift = true;
+    }
+
+    public void ThrowItem()
+    {
+        if (currentItem == null) return;
+
+
     }
 
     private void OnDisable()
     {
-       
+        _inputReader.OnUse -= UseItem;
+        _inputReader.OnThrow += ThrowItem;
     }
 
 }

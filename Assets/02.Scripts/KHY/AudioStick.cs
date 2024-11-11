@@ -11,7 +11,7 @@ public class AudioStick : MonoBehaviour
     void Update()
     {
         GetComponent<RectTransform>().localScale = new Vector3(transform.localScale.x,Mathf.Clamp((AudioSpectrum._freqBand[_band] * _scaleMultiplier) + _startScale,0,30), transform.localScale.z);
-        if((AudioSpectrum._freqBand[_band] * _scaleMultiplier) + _startScale > 40)
-            Debug.Log($"{gameObject.name}의 크기{(AudioSpectrum._freqBand[_band] * _scaleMultiplier) + _startScale}");
+        //if((AudioSpectrum._freqBand[_band] * _scaleMultiplier) + _startScale > 40)
+        //    Debug.Log($"{gameObject.name}의 크기{(AudioSpectrum._freqBand[_band] * _scaleMultiplier) + _startScale}");
     }
 }
