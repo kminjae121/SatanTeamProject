@@ -64,9 +64,18 @@ public partial class @Controll: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Gift"",
+                    ""name"": ""UseItem"",
                     ""type"": ""Button"",
                     ""id"": ""94934d3e-cb5e-4bad-9816-14995aa856ad"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ThrowItem"",
+                    ""type"": ""Button"",
+                    ""id"": ""75b0d03c-9ea9-49c8-9c84-0c179b11a322"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -169,7 +178,18 @@ public partial class @Controll: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Gift"",
+                    ""action"": ""UseItem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""23385552-388f-4ee3-816b-5d5b9db02479"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ThrowItem"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -184,7 +204,8 @@ public partial class @Controll: IInputActionCollection2, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Interaction = m_Player.FindAction("Interaction", throwIfNotFound: true);
         m_Player_Esc = m_Player.FindAction("Esc", throwIfNotFound: true);
-        m_Player_Gift = m_Player.FindAction("Gift", throwIfNotFound: true);
+        m_Player_UseItem = m_Player.FindAction("UseItem", throwIfNotFound: true);
+        m_Player_ThrowItem = m_Player.FindAction("ThrowItem", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -250,7 +271,8 @@ public partial class @Controll: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Interaction;
     private readonly InputAction m_Player_Esc;
-    private readonly InputAction m_Player_Gift;
+    private readonly InputAction m_Player_UseItem;
+    private readonly InputAction m_Player_ThrowItem;
     public struct PlayerActions
     {
         private @Controll m_Wrapper;
@@ -259,7 +281,8 @@ public partial class @Controll: IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Interaction => m_Wrapper.m_Player_Interaction;
         public InputAction @Esc => m_Wrapper.m_Player_Esc;
-        public InputAction @Gift => m_Wrapper.m_Player_Gift;
+        public InputAction @UseItem => m_Wrapper.m_Player_UseItem;
+        public InputAction @ThrowItem => m_Wrapper.m_Player_ThrowItem;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -281,9 +304,12 @@ public partial class @Controll: IInputActionCollection2, IDisposable
             @Esc.started += instance.OnEsc;
             @Esc.performed += instance.OnEsc;
             @Esc.canceled += instance.OnEsc;
-            @Gift.started += instance.OnGift;
-            @Gift.performed += instance.OnGift;
-            @Gift.canceled += instance.OnGift;
+            @UseItem.started += instance.OnUseItem;
+            @UseItem.performed += instance.OnUseItem;
+            @UseItem.canceled += instance.OnUseItem;
+            @ThrowItem.started += instance.OnThrowItem;
+            @ThrowItem.performed += instance.OnThrowItem;
+            @ThrowItem.canceled += instance.OnThrowItem;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -300,9 +326,12 @@ public partial class @Controll: IInputActionCollection2, IDisposable
             @Esc.started -= instance.OnEsc;
             @Esc.performed -= instance.OnEsc;
             @Esc.canceled -= instance.OnEsc;
-            @Gift.started -= instance.OnGift;
-            @Gift.performed -= instance.OnGift;
-            @Gift.canceled -= instance.OnGift;
+            @UseItem.started -= instance.OnUseItem;
+            @UseItem.performed -= instance.OnUseItem;
+            @UseItem.canceled -= instance.OnUseItem;
+            @ThrowItem.started -= instance.OnThrowItem;
+            @ThrowItem.performed -= instance.OnThrowItem;
+            @ThrowItem.canceled -= instance.OnThrowItem;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -326,6 +355,7 @@ public partial class @Controll: IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnInteraction(InputAction.CallbackContext context);
         void OnEsc(InputAction.CallbackContext context);
-        void OnGift(InputAction.CallbackContext context);
+        void OnUseItem(InputAction.CallbackContext context);
+        void OnThrowItem(InputAction.CallbackContext context);
     }
 }
