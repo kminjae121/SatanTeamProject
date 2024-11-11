@@ -3929,6 +3929,7 @@ MonoBehaviour:
   <_playerStat>k__BackingField: {fileID: 4305874541701670213}
   <_playerCam>k__BackingField: {fileID: 0}
   <isMoving>k__BackingField: 0
+  giftAnimation: {fileID: 0}
 --- !u!114 &4305874541701670213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3950,7 +3951,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8713784798907928751}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16e5159a7ead84f4a89664ab52b3f670, type: 3}
   m_Name: 
@@ -4039,6 +4040,7 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 1024
+  OutLineObj: {fileID: 0}
 --- !u!1 &8743311118633561116
 GameObject:
   m_ObjectHideFlags: 0
