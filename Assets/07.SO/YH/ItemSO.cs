@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "SO/Item")]
 public class ItemSO : ScriptableObject
 {
+    public AudioClip useSound;
     public GameObject itemPrefab;
     public string itemName;
+    public bool isPuzzleItem;
 }

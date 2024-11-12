@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     [field : SerializeField] public PlayerCam _playerCam { get; set; }
 
     public Action OnJump;
+    public Action OnClick;
     public CheckInteraction Interaction { get; private set; }
 
     public PlayerState playerState { get; private set; }
@@ -27,13 +28,6 @@ public class Player : MonoBehaviour
     public StateMachine<PlayerState> stateMachine { get; private set; }
 
     [field:SerializeField] public bool isMoving { get; set; }
-
-    [SerializeField]
-    private Animator giftAnimator;
-    public bool isHaveGiftBag;
-    public bool isHandleGift;
-
-    public ItemSO currentItem;
 
 
     private void Awake()
@@ -51,19 +45,16 @@ public class Player : MonoBehaviour
         Interaction = GetComponent<CheckInteraction>();
         if (Interaction == null)
             print("¤¸µÊ");
-
-        _inputReader.OnUse += UseItem;
-        _inputReader.OnThrow += ThrowItem;
     }
 
     private void Update()
     {
         SetMove(_inputReader.InputVec);
         stateMachine.currentState.Update();
-
-        if(Input.GetMouseButtonDown(0) && isHandleGift)
+        
+        if (Input.GetMouseButtonDown(0))
         {
-            giftAnimator.SetBool("Open", true);
+            OnClick?.Invoke();
         }
     }
 
@@ -82,26 +73,4 @@ public class Player : MonoBehaviour
         _playerStat.moveDir.z = input.z;
         print("³ª ÀÎÇ²¹ÞÀ½");
     }
-
-    public void UseItem()
-    {
-        print("¤·¤·¤·¤·");
-        if (isHandleGift) return;
-        giftAnimator.gameObject.SetActive(true);
-        isHandleGift = true;
-    }
-
-    public void ThrowItem()
-    {
-        if (currentItem == null) return;
-
-
-    }
-
-    private void OnDisable()
-    {
-        _inputReader.OnUse -= UseItem;
-        _inputReader.OnThrow += ThrowItem;
-    }
-
 }

@@ -28,15 +28,15 @@ public class Door : MonoBehaviour, IInteractable
         closeRotation = new Vector3(0, 0, 0);
     }
 
-    public string GetInteractText()
-    {
-        if (_isLocked)
-            return "문이 잠겨있습니다. 열쇠가 있어야합니다.";  // 열려고 시도하지도 않았는데 잠겨있다고 함
-        else if (_isOpened)
-            return "[G] 문 닫기";
-        else
-            return "[G] 문 열기";
-    }
+    //public string GetInteractText()
+    //{
+    //    if (_isLocked)
+    //        return "문이 잠겨있습니다. 열쇠가 있어야합니다.";  // 열려고 시도하지도 않았는데 잠겨있다고 함
+    //    else if (_isOpened)
+    //        return "[G] 문 닫기";
+    //    else
+    //        return "[G] 문 열기";
+    //}
 
     // 상호 작용 인터페이스의 메서드 구현
     public void Interact()
