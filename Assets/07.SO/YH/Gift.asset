@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6faa295d8ee2964e97bce3cf0418d06, type: 3}
+  m_Name: Gift
+  m_EditorClassIdentifier: 
+  useSound: {fileID: 0}
+  itemPrefab: {fileID: 6727106550600441405, guid: e9d83e6bf2fbe3b41b557a9eb6bedc24,
+    type: 3}
+  itemName: "\uC120\uBB3C"
+  isPuzzleItem: 0

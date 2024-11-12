@@ -1,6 +1,13 @@
 using TMPro;
 using UnityEngine;
 
+
+public interface IInteractable
+{
+    void Interact();
+}
+
+
 public class CheckInteraction : MonoBehaviour
 {
     #region SerializeField
@@ -37,7 +44,6 @@ public class CheckInteraction : MonoBehaviour
 
             if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, _maxDistance, _layerMask))
             {
-                print("쉽지않음");
                 if (hit.collider.gameObject != _curGameobject)
                 {
                     _curGameobject = hit.collider.gameObject;

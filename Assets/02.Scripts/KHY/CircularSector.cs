@@ -49,12 +49,12 @@ public class CircularSector : MonoBehaviour
                     if (Physics.Raycast(transform.position, interV.normalized, out hit, Mathf.Infinity, _whatIsObstacle))
                     {
                         print("시야 나감");
+                        Dangerous(dot);
                         isCollision = false;
                         target[i]?.GetComponent<IDetectGaze>().OutOfSight();
                     }
                     else
                     {
-                        Dangerous(dot);
                         print("장애물 감지됨");
                         target[i]?.GetComponent<IDetectGaze>().GazeDetection(transform);
                         isCollision = true;
@@ -63,6 +63,7 @@ public class CircularSector : MonoBehaviour
                 else
                 {
                     print("시야 나감");
+                    Dangerous(dot);
                     isCollision = false;
                     target[i]?.GetComponent<IDetectGaze>().OutOfSight();
                 }
@@ -90,8 +91,21 @@ public class CircularSector : MonoBehaviour
         }
     }
 
-    // 유니티 에디터에 부채꼴을 그려줄 메소드
-    private void OnDrawGizmos()
+    private void Safe(float dot)
+    {
+        Vignette vignette;
+        float startVignette = 0f;
+        float endVignette = 0.4f;
+
+        if (volume.profile.TryGet(out vignette))
+        {
+            DOTween.KillAll();
+            DOTween.To(() => endVignette, vloom => vignette.intensity.value = vloom, startVignette, 2);
+        }
+    }
+
+        // 유니티 에디터에 부채꼴을 그려줄 메소드
+        private void OnDrawGizmos()
     {
         if (interV == null) return;
         Debug.DrawRay(transform.position, interV.normalized * 1000f, Color.red);
