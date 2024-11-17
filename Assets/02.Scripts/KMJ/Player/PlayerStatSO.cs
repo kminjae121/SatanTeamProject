@@ -9,4 +9,5 @@ public class PlayerStatSO : ScriptableObject
     public int jumpSpeed;
     public float interactionTime;
     public Vector3 moveDir;
+    public int RunSpeed;
 }
