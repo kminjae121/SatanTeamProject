@@ -11,8 +11,11 @@ public class InputReader : ScriptableObject, IPlayerActions
     public Action OnJumpHandle;
     public Action OnInteractionHandle;
     public Action OnThrow;
+    public Action OnRunHandle;
 
     public Vector3 InputVec { get; private set; }
+
+    public Vector3 RunVec { get; private set; }
 
     public bool _isJump { get; set; }
     private Controll _controll;
@@ -67,5 +70,16 @@ public class InputReader : ScriptableObject, IPlayerActions
     {
         if (context.performed)
             OnThrow?.Invoke();
+    }
+
+    public void OnRun(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+            OnRunHandle?.Invoke();
+    }
+
+    public void OnRunMode2(InputAction.CallbackContext context)
+    {
+        RunVec = context.ReadValue<Vector3>();
     }
 }
