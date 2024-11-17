@@ -12,7 +12,6 @@ public class LookAtItem : MonoBehaviour
     private bool _isHit;
     public GameObject hittor;
 
-
     private void Update()
     {
         CollectDelegate collect = new CollectDelegate(CollectObject);
