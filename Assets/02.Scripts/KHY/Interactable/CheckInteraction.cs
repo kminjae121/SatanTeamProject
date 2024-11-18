@@ -35,39 +35,22 @@ public class CheckInteraction : MonoBehaviour
         _layerMask = LayerMask.GetMask("Interactable");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void InInteract(RaycastHit hit)
     {
-        if (Time.time - _lastCheckTime > _checkRate)
-        {
-            _lastCheckTime = Time.time;
-
-            if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, _maxDistance, _layerMask))
-            {
-                if (hit.collider.gameObject != _curGameobject)
-                {
-                    _curGameobject = hit.collider.gameObject;
-                    _curInteractable = hit.collider.GetComponent<IInteractable>();
-                }
-
-                OutLineObj = hit.transform.gameObject;
-
-                OutLineObj.transform.TryGetComponent(out ObjectOutLine outLine);
-
-                outLine._isOutLine = true;
-            }
-            else
-            {
-                _curGameobject = null;
-                _curInteractable = null;
-            }
-        }
+        _curGameobject = hit.transform.gameObject;
+        _curInteractable = hit.transform.GetComponent<IInteractable>();
     }
+    public void OutInteract()
+    {
+        _curGameobject = null;
+        _curInteractable = null;
+    }
+
     public void OnInteraction()
     {
-        print("Å¬¸¯ µé¾î¿È");
         if (_curInteractable != null)
         {
+            print("Å¬¸¯ µé¾î¿È");
             _curInteractable.Interact();
             //_curGameobject = null;
             //_curInteractable = null;

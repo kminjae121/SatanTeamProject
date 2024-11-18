@@ -15,5 +15,7 @@ MonoBehaviour:
   useSound: {fileID: 0}
   itemPrefab: {fileID: 6727106550600441405, guid: e9d83e6bf2fbe3b41b557a9eb6bedc24,
     type: 3}
+  itemPlacePrefab: {fileID: 1386889745391377704, guid: 0b2d241a10d69fc488f386983472b3dc,
+    type: 3}
   itemName: "\uC120\uBB3C"
   isPuzzleItem: 0

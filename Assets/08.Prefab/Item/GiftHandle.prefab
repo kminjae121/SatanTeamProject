@@ -150,5 +150,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 170ee31869246364dbf8d71e6107d998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 3424964284988159463}
   itemSOList: {fileID: 11400000, guid: 5b6c5a87a5b3a2243b6c46a839f83a33, type: 2}
+  animator: {fileID: 3424964284988159463}

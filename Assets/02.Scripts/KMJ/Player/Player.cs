@@ -50,6 +50,7 @@ public class Player : MonoBehaviour
         Interaction = GetComponent<CheckInteraction>();
         if (Interaction == null)
             print("¤¸µÊ");
+        _inputReader.OnInteractionHandle += Interaction.OnInteraction;
 
         _inputReader.OnRunHandle += PressRun;
     }
@@ -86,5 +87,10 @@ public class Player : MonoBehaviour
         _rigid.velocity = new Vector3(transform.TransformDirection(_playerStat.moveDir).x * _playerStat.RunSpeed,
             _rigid.velocity.y, 
             transform.TransformDirection(_playerStat.moveDir).z * _playerStat.RunSpeed);
+    }
+
+    private void OnDisable()
+    {
+        _inputReader.OnInteractionHandle -= Interaction.OnInteraction;
     }
 }

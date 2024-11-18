@@ -28,6 +28,10 @@ public class Item : MonoBehaviour
 
     private GameObject handleObj;
 
+    [Header("´øÁö´Â Èû")]
+    [SerializeField]
+    private float throwPower;
+
     private void Awake()
     {
         player._inputReader.OnThrow += ThrowItem;
@@ -74,6 +78,13 @@ public class Item : MonoBehaviour
     public void ThrowItem()
     {
         if (currentItem == null) return;
+        print("´øÁü");
+        GameObject gaeObject = Instantiate(currentItem.itemPlacePrefab, transform);
+        gaeObject.transform.SetParent(null);
+        gaeObject.AddComponent<Rigidbody>();
+        gaeObject.GetComponent<Rigidbody>().AddForce(transform.forward * throwPower,ForceMode.Impulse);
+        Destroy(handleObj);
+        currentItem = null;
     }
 
     private void OnDisable()
