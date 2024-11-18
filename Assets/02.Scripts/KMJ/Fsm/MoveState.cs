@@ -20,6 +20,7 @@ public class MoveState : State<PlayerState>, IMove
     { 
         if (_player._playerStat.moveDir.x == 0 && _player._playerStat.moveDir.z == 0)
             _stateMachine.ChangeState(PlayerState.Idle);
+
         if (_player._inputReader._isJump &&_player.GetComponentInChildren<GroundChecker>()._isGround == true)
             _stateMachine.ChangeState(PlayerState.Jump);
     }
