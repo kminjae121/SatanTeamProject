@@ -660,6 +660,11 @@ MonoBehaviour:
   movePoint: {fileID: 378738499}
   player: {fileID: 5969739024161330392}
   isStop: 0
+  deathRadius: 2
+  _whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 256
+  deathObj: {fileID: 424252634}
 --- !u!195 &378738499
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -769,6 +774,12 @@ Transform:
   - {fileID: 4149392524900621826}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &424252634 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5314421331283044521, guid: 9adcf0ab91195ef43aa674ab8b36c009,
+    type: 3}
+  m_PrefabInstance: {fileID: 4273325925505061048}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &455577753
 GameObject:
   m_ObjectHideFlags: 0
@@ -1507,6 +1518,12 @@ PrefabInstance:
       propertyPath: _playercam
       value: 
       objectReference: {fileID: 7793773749360141980}
+    - target: {fileID: 3430575765740272698, guid: 4be4a0d14d0a6f047a1f778db143653a,
+        type: 3}
+      propertyPath: _audioMixer
+      value: 
+      objectReference: {fileID: 24100000, guid: c4382341a39a10b46a6bc574f22f5974,
+        type: 2}
     - target: {fileID: 4313110472355225967, guid: 4be4a0d14d0a6f047a1f778db143653a,
         type: 3}
       propertyPath: m_Value
@@ -2036,19 +2053,6 @@ PrefabInstance:
       propertyPath: text
       value: 
       objectReference: {fileID: 213617052}
-    - target: {fileID: 9450020934400459, guid: 9adcf0ab91195ef43aa674ab8b36c009, type: 3}
-      propertyPath: testItem
-      value: 
-      objectReference: {fileID: 11400000, guid: 90bd9448c60e85347b60b1af4a9bb8c2,
-        type: 2}
-    - target: {fileID: 9450020934400459, guid: 9adcf0ab91195ef43aa674ab8b36c009, type: 3}
-      propertyPath: throwPower
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 9450020934400459, guid: 9adcf0ab91195ef43aa674ab8b36c009, type: 3}
-      propertyPath: currentItem
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3474743486087620069, guid: 9adcf0ab91195ef43aa674ab8b36c009,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2109,38 +2113,16 @@ PrefabInstance:
       propertyPath: target.Array.data[0]
       value: 
       objectReference: {fileID: 378738504}
-    - target: {fileID: 6201516732497355141, guid: 9adcf0ab91195ef43aa674ab8b36c009,
-        type: 3}
-      propertyPath: _whatIsSnowMan.m_Bits
-      value: 2048
-      objectReference: {fileID: 0}
     - target: {fileID: 8713784798907928751, guid: 9adcf0ab91195ef43aa674ab8b36c009,
         type: 3}
       propertyPath: m_Name
       value: PlayerCharacter(AudioInput)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 3901475378533763246, guid: 9adcf0ab91195ef43aa674ab8b36c009, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8713784798907928751, guid: 9adcf0ab91195ef43aa674ab8b36c009,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7793773749360141981}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9adcf0ab91195ef43aa674ab8b36c009, type: 3}
---- !u!4 &4273325925505061049 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1057976886231736108, guid: 9adcf0ab91195ef43aa674ab8b36c009,
-    type: 3}
-  m_PrefabInstance: {fileID: 4273325925505061048}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4273325925505061050 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8713784798907928751, guid: 9adcf0ab91195ef43aa674ab8b36c009,
-    type: 3}
-  m_PrefabInstance: {fileID: 4273325925505061048}
-  m_PrefabAsset: {fileID: 0}
 --- !u!23 &4459508232425756309
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2334,29 +2316,12 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 4273325925505061048}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4273325925505061050}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16e5159a7ead84f4a89664ab52b3f670, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7793773749360141981
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4273325925505061050}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 721c414f55c4c1643a89fd24a0fc2f35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerCam: {fileID: 4273325925505061049}
-  _whatIsObject:
-    serializedVersion: 2
-    m_Bits: 1024
-  hittor: {fileID: 0}
 --- !u!1 &8452830780140483204
 GameObject:
   m_ObjectHideFlags: 0
