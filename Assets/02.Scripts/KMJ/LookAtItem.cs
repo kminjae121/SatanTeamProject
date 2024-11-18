@@ -22,7 +22,7 @@ public class LookAtItem : MonoBehaviour
 
     public void CollectObject()
     {
-        if (Physics.Raycast(_playerCam.position, _playerCam.forward, out RaycastHit hit, 8, _whatIsObject))
+        if (Physics.Raycast(_playerCam.position, _playerCam.forward, out RaycastHit hit, 3, _whatIsObject))
         {
             player.Interaction.InInteract(hit);
             if(hittor == null)

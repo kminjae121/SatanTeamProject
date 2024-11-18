@@ -18,6 +18,10 @@ public class InputReader : ScriptableObject, IPlayerActions
     public Vector3 RunVec { get; private set; }
 
     public bool _isJump { get; set; }
+
+    public bool isRun { get; set; }
+
+    public bool isPressRun { get; set; }
     private Controll _controll;
     
 
@@ -73,7 +77,12 @@ public class InputReader : ScriptableObject, IPlayerActions
     public void OnRun(InputAction.CallbackContext context)
     {
         if (context.performed)
+        {
+            isPressRun = true;
             OnRunHandle?.Invoke();
+        }
+        else
+            isPressRun = false;
     }
 
     public void OnRunMode2(InputAction.CallbackContext context)
