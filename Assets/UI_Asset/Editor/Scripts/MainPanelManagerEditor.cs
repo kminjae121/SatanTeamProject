@@ -62,8 +62,8 @@ namespace Michsky.UI.Dark
                         {
                             if (i == currentPanelIndex.intValue && mpmTarget.panels[currentPanelIndex.intValue].panelObject != null)
                                 mpmTarget.panels[currentPanelIndex.intValue].panelObject.GetComponent<CanvasGroup>().alpha = 1;
-                            else if (mpmTarget.panels[currentPanelIndex.intValue].panelObject != null)
-                                mpmTarget.panels[i].panelObject.GetComponent<CanvasGroup>().alpha = 0;
+                           /* else if (mpmTarget.panels[currentPanelIndex.intValue].panelObject != null)
+                                mpmTarget.panels[i].panelObject.GetComponent<CanvasGroup>().alpha = 0;*/
                         }
 
                         GUILayout.EndVertical();
