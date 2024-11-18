@@ -7,6 +7,7 @@ public class ItemSO : ScriptableObject
 {
     public AudioClip useSound;
     public GameObject itemPrefab;
+    public GameObject itemPlacePrefab;
     public string itemName;
     public bool isPuzzleItem;
 }

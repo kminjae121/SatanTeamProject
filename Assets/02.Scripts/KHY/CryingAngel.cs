@@ -13,6 +13,16 @@ public class CryingAngel : MonoBehaviour, IDetectGaze
 
     public bool isStop;
 
+    [Header("감지범위")]
+    [SerializeField]
+    private float deathRadius;
+
+    [SerializeField]
+    private LayerMask _whatIsPlayer;
+
+    [SerializeField]
+    private GameObject deathObj;
+
     private void Awake()
     {
         movePoint = GetComponent<NavMeshAgent>();
@@ -48,5 +58,22 @@ public class CryingAngel : MonoBehaviour, IDetectGaze
         movePoint.SetDestination(player.position);
         movePoint.isStopped = false;
         isStop = false;
+
+        Collider[] collider = Physics.OverlapSphere(transform.position,deathRadius,_whatIsPlayer);
+
+        foreach(Collider colliders in collider)
+        {
+            if (colliders.tag == "Player")
+            {
+                deathObj.SetActive(true);
+            }
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(transform.position, deathRadius);
+        Gizmos.color = Color.white;
     }
 }

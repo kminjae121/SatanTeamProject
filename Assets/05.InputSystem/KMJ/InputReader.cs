@@ -32,11 +32,9 @@ public class InputReader : ScriptableObject, IPlayerActions
     }
     public void OnInteraction(InputAction.CallbackContext context)
     {
-        Debug.Log("밖");
         if (context.phase == InputActionPhase.Started)
         {
             OnInteractionHandle?.Invoke();
-            Debug.Log("인보크");
         }
     }
 
