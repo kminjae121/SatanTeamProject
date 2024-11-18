@@ -80,6 +80,24 @@ public partial class @Controll: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Run"",
+                    ""type"": ""Button"",
+                    ""id"": ""fe2fbeea-619d-42d5-bc41-5e35b7094a85"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RunMode2"",
+                    ""type"": ""Value"",
+                    ""id"": ""bb58589e-6a43-4058-8765-5417889efbbc"",
+                    ""expectedControlType"": ""Vector3"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -192,6 +210,39 @@ public partial class @Controll: IInputActionCollection2, IDisposable
                     ""action"": ""ThrowItem"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2ec4ae21-a2ca-47cc-967b-f2371342e6bf"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Run"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Move"",
+                    ""id"": ""f8807d09-a28d-4acf-9327-c91b4d191800"",
+                    ""path"": ""3DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RunMode2"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""forward"",
+                    ""id"": ""63099222-2b63-45df-bb1e-f1e8921797a1"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RunMode2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -206,6 +257,8 @@ public partial class @Controll: IInputActionCollection2, IDisposable
         m_Player_Esc = m_Player.FindAction("Esc", throwIfNotFound: true);
         m_Player_UseItem = m_Player.FindAction("UseItem", throwIfNotFound: true);
         m_Player_ThrowItem = m_Player.FindAction("ThrowItem", throwIfNotFound: true);
+        m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
+        m_Player_RunMode2 = m_Player.FindAction("RunMode2", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -273,6 +326,8 @@ public partial class @Controll: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Esc;
     private readonly InputAction m_Player_UseItem;
     private readonly InputAction m_Player_ThrowItem;
+    private readonly InputAction m_Player_Run;
+    private readonly InputAction m_Player_RunMode2;
     public struct PlayerActions
     {
         private @Controll m_Wrapper;
@@ -283,6 +338,8 @@ public partial class @Controll: IInputActionCollection2, IDisposable
         public InputAction @Esc => m_Wrapper.m_Player_Esc;
         public InputAction @UseItem => m_Wrapper.m_Player_UseItem;
         public InputAction @ThrowItem => m_Wrapper.m_Player_ThrowItem;
+        public InputAction @Run => m_Wrapper.m_Player_Run;
+        public InputAction @RunMode2 => m_Wrapper.m_Player_RunMode2;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -310,6 +367,12 @@ public partial class @Controll: IInputActionCollection2, IDisposable
             @ThrowItem.started += instance.OnThrowItem;
             @ThrowItem.performed += instance.OnThrowItem;
             @ThrowItem.canceled += instance.OnThrowItem;
+            @Run.started += instance.OnRun;
+            @Run.performed += instance.OnRun;
+            @Run.canceled += instance.OnRun;
+            @RunMode2.started += instance.OnRunMode2;
+            @RunMode2.performed += instance.OnRunMode2;
+            @RunMode2.canceled += instance.OnRunMode2;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -332,6 +395,12 @@ public partial class @Controll: IInputActionCollection2, IDisposable
             @ThrowItem.started -= instance.OnThrowItem;
             @ThrowItem.performed -= instance.OnThrowItem;
             @ThrowItem.canceled -= instance.OnThrowItem;
+            @Run.started -= instance.OnRun;
+            @Run.performed -= instance.OnRun;
+            @Run.canceled -= instance.OnRun;
+            @RunMode2.started -= instance.OnRunMode2;
+            @RunMode2.performed -= instance.OnRunMode2;
+            @RunMode2.canceled -= instance.OnRunMode2;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -357,5 +426,7 @@ public partial class @Controll: IInputActionCollection2, IDisposable
         void OnEsc(InputAction.CallbackContext context);
         void OnUseItem(InputAction.CallbackContext context);
         void OnThrowItem(InputAction.CallbackContext context);
+        void OnRun(InputAction.CallbackContext context);
+        void OnRunMode2(InputAction.CallbackContext context);
     }
 }

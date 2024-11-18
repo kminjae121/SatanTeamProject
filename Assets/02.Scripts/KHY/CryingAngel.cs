@@ -11,7 +11,7 @@ public class CryingAngel : MonoBehaviour, IDetectGaze
     [SerializeField]
     private Transform player;
 
-    private bool isStop;
+    public bool isStop;
 
     private void Awake()
     {
@@ -27,6 +27,7 @@ public class CryingAngel : MonoBehaviour, IDetectGaze
     public void GazeDetection(Transform player)
     {
         movePoint.isStopped = true;
+        isStop = true;
     }
 
     private void Update()
@@ -46,5 +47,6 @@ public class CryingAngel : MonoBehaviour, IDetectGaze
     {
         movePoint.SetDestination(player.position);
         movePoint.isStopped = false;
+        isStop = false;
     }
 }

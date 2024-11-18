@@ -28,7 +28,7 @@ public class SoundSlider : MonoBehaviour
 
     public void BackGroundSlider(float value)
     {
-        _audioMixer.SetFloat("BackGround", value);
+        _audioMixer.SetFloat("Music", value);
     }
 
     public void XSensitivity(float value)

@@ -8,7 +8,9 @@ public enum PlayerState
     Walk,
     Idle,
     Jump,
-    Interaction
+    Interaction,
+    HoldRun,
+    PressRun,
 }
 public class Player : MonoBehaviour
 {
@@ -23,6 +25,8 @@ public class Player : MonoBehaviour
 
     public PlayerState playerState { get; private set; }
 
+    private Rigidbody _rigid;
+
     public State<PlayerState> currentState { get; private set; }
 
     public StateMachine<PlayerState> stateMachine { get; private set; }
@@ -32,6 +36,7 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        _rigid = GetComponent<Rigidbody>();
         isMoving = false;
         stateMachine = new StateMachine<PlayerState>();
 
@@ -45,6 +50,8 @@ public class Player : MonoBehaviour
         Interaction = GetComponent<CheckInteraction>();
         if (Interaction == null)
             print("¤¸µÊ");
+
+        _inputReader.OnRunHandle += PressRun;
     }
 
     private void Update()
@@ -72,5 +79,12 @@ public class Player : MonoBehaviour
         _playerStat.moveDir.x = input.x;
         _playerStat.moveDir.z = input.z;
         print("³ª ÀÎÇ²¹ÞÀ½");
+    }
+
+    public void PressRun()
+    {
+        _rigid.velocity = new Vector3(transform.TransformDirection(_playerStat.moveDir).x * _playerStat.RunSpeed,
+            _rigid.velocity.y, 
+            transform.TransformDirection(_playerStat.moveDir).z * _playerStat.RunSpeed);
     }
 }
