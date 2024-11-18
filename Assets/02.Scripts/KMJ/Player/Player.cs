@@ -45,6 +45,7 @@ public class Player : MonoBehaviour
         Interaction = GetComponent<CheckInteraction>();
         if (Interaction == null)
             print("¤¸µÊ");
+        _inputReader.OnInteractionHandle += Interaction.OnInteraction;
     }
 
     private void Update()
@@ -72,5 +73,10 @@ public class Player : MonoBehaviour
         _playerStat.moveDir.x = input.x;
         _playerStat.moveDir.z = input.z;
         print("³ª ÀÎÇ²¹ÞÀ½");
+    }
+
+    private void OnDisable()
+    {
+        _inputReader.OnInteractionHandle -= Interaction.OnInteraction;
     }
 }

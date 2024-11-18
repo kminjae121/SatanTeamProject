@@ -3,7 +3,7 @@ using TMPro;
 
 public interface IUseItem
 {
-    public void Use(Animator animator);
+    public void Use();
 }
 
 public interface IPuzzleItem
@@ -14,6 +14,7 @@ public interface IPuzzleItem
 public class Item : MonoBehaviour
 {
     public ItemSO currentItem;
+    public ItemSO testItem;
 
     [SerializeField]
     private Player player;
@@ -55,6 +56,8 @@ public class Item : MonoBehaviour
         //손에 바꾸가
         if(handleObj != null)
             Destroy(handleObj);
+        if (currentItem == null)
+            currentItem = testItem;
         GameObject gameObject = Instantiate(currentItem.itemPrefab, transform);
         gameObject.transform.SetParent(transform);
         handleObj = gameObject;
@@ -62,7 +65,7 @@ public class Item : MonoBehaviour
 
     private void UseItem()
     {
-        handleObj.GetComponent<IUseItem>().Use(handleObj.GetComponent<Animator>());
+        handleObj.GetComponent<IUseItem>().Use();
         //if (currentItem == null) return;
 
         //currentItem.itemPrefab.GetComponent<IUseItem>().Use();

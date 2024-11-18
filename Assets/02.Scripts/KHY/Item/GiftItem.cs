@@ -6,10 +6,12 @@ public class GiftItem : MonoBehaviour, IUseItem
 {
     [SerializeField]
     private ItemSOList itemSOList;
+    [SerializeField]
+    private Animator animator;
 
     private readonly int AnimationHash = Animator.StringToHash("Open");
 
-    public void Use(Animator animator)
+    public void Use()
     {
         animator.SetBool(AnimationHash, true);
     }

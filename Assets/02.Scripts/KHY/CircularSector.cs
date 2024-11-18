@@ -17,10 +17,14 @@ public class CircularSector : MonoBehaviour
 
     [SerializeField]
     private LayerMask _whatIsObstacle;
+    
+    [SerializeField]
+    private LayerMask _whatIsSnowMan;
 
     private Vector3 interV;
 
     public Volume volume;
+    RaycastHit hit;
 
     void Update()
     {
@@ -44,18 +48,17 @@ public class CircularSector : MonoBehaviour
                 {
                     print("시야 들어옴");
 
-                    RaycastHit hit;
 
                     if (Physics.Raycast(transform.position, interV.normalized, out hit, Mathf.Infinity, _whatIsObstacle))
                     {
-                        print("시야 나감");
+
+                        print("장애물 감지됨");
                         Dangerous(dot);
                         isCollision = false;
                         target[i]?.GetComponent<IDetectGaze>().OutOfSight();
                     }
                     else
                     {
-                        print("장애물 감지됨");
                         target[i]?.GetComponent<IDetectGaze>().GazeDetection(transform);
                         isCollision = true;
                     }
