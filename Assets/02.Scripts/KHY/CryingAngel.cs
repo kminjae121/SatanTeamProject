@@ -66,6 +66,7 @@ public class CryingAngel : MonoBehaviour, IDetectGaze
             if (colliders.tag == "Player")
             {
                 deathObj.SetActive(true);
+                Destroy(gameObject);
             }
         }
     }

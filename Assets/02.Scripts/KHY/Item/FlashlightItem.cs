@@ -5,6 +5,8 @@ using UnityEngine;
 public class FlashlightItem : MonoBehaviour, IUseItem
 {
     private bool isOnFlash;
+
+    [SerializeField]
     private Light light;
 
     private void Start()

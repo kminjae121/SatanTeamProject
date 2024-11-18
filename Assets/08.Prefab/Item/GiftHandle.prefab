@@ -152,3 +152,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemSOList: {fileID: 11400000, guid: 5b6c5a87a5b3a2243b6c46a839f83a33, type: 2}
   animator: {fileID: 3424964284988159463}
+  particle: {fileID: 4698594531632454495, guid: 17be445127c77b04681f3f4cf43e1e3b,
+    type: 3}

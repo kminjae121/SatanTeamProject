@@ -8,8 +8,18 @@ public class GiftItem : MonoBehaviour, IUseItem
     private ItemSOList itemSOList;
     [SerializeField]
     private Animator animator;
+    [SerializeField]
+    private ParticleSystem particle;
+    private Transform giftOpenPos;
+
+    private float destroyTime = 2f;
 
     private readonly int AnimationHash = Animator.StringToHash("Open");
+
+    private void Awake()
+    {
+        giftOpenPos = GameObject.Find("ParticlePos").GetComponent<Transform>();
+    }
 
     public void Use()
     {
@@ -18,15 +28,17 @@ public class GiftItem : MonoBehaviour, IUseItem
 
     public void GetRandomItem()
     {
-        GiftParticle();
+        StartCoroutine(GiftParticleRoutine(destroyTime));
         int rand = Random.Range(0,itemSOList.items.Count);
         Item item = FindAnyObjectByType<Item>();
         item.currentItem = itemSOList.items[rand];
         item.ChangeItem();
     }
 
-    private void GiftParticle()
+    private IEnumerator GiftParticleRoutine(float destroyTime)
     {
-
+        GameObject game = Instantiate(particle,giftOpenPos).gameObject;
+        yield return new WaitForSeconds(destroyTime);
+        Destroy(game);
     }
 }
