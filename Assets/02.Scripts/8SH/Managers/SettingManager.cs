@@ -27,7 +27,7 @@ public class SettingManager : MonoBehaviour
     }
 
     [Header("Settings")]
-    private Dictionary<string, bool> boolSettings = new Dictionary<string, bool>
+    public Dictionary<string, bool> boolSettings = new Dictionary<string, bool>
     {
         { "CameraShake", true },
         { "UiVisible", true },
@@ -41,9 +41,12 @@ public class SettingManager : MonoBehaviour
     [SerializeField] private Slider brightnessSlider;
     [SerializeField] private Slider gammaSlider;
 
-    private float _sensitivity = 1.5f;
-    private float brightness = 1f;
-    private float gamma = 1f;
+    public int mouseLRInversion = 1;
+    public int mouseUDInversion = 1;
+    public float _sensitivity = 1.5f;
+    public float brightness = 1f;
+    public float gamma = 1f;
+
     public float Sensitivity
     {
         get => _sensitivity;
@@ -51,27 +54,6 @@ public class SettingManager : MonoBehaviour
     }
 
     public SprintType SprintMode { get; set; } = SprintType.Hold;
-
-    private float _masterVol = 0.5f;
-    public float MasterVolume
-    {
-        get => _masterVol;
-        set => _masterVol = Mathf.Clamp01(value);
-    }
-
-    private float _bgmVol = 0.5f;
-    public float BgmVolume
-    {
-        get => _bgmVol;
-        set => _bgmVol = Mathf.Clamp01(value);
-    }
-
-    private float _sfxVol = 0.5f;
-    public float SfxVolume
-    {
-        get => _sfxVol;
-        set => _sfxVol = Mathf.Clamp01(value);
-    }
 
     private void Awake()
     {
@@ -85,6 +67,21 @@ public class SettingManager : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
+    GameObject FindObjectsWithTag(string tag)
+    {
+        Transform[] allTransforms = Resources.FindObjectsOfTypeAll<Transform>();
+        foreach (Transform t in allTransforms)
+        {
+            if (t.hideFlags == HideFlags.None && t.CompareTag(tag))
+            {
+                return t.gameObject;
+            }
+        }
+        return null;
+    }
+
+    #region
     public bool GetSetting(string settingName)
     {
         return boolSettings.ContainsKey(settingName) && boolSettings[settingName];
@@ -108,6 +105,24 @@ public class SettingManager : MonoBehaviour
         }
     }
 
+    public void ToggleMouseLRInversion(bool bol)
+    {
+        if (bol)
+        {
+            mouseLRInversion = -1;
+        }
+        else mouseLRInversion = 1;
+    }
+
+    public void ToggleMouseUDInversion(bool bol)
+    {
+        if (bol)
+        {
+            mouseUDInversion = -1;
+        }
+        else mouseUDInversion = 1;
+    }
+
     public void ToggleSprintMode(bool isHold)
     {
         if (isHold)
@@ -121,11 +136,9 @@ public class SettingManager : MonoBehaviour
 
     public void SettingFloatValue(int type)
     {
-        /*
-        1 : MouseSensitivity
-        2 : Brightness
-        3 : Gamma
-         */
+        /*  1 : MouseSensitivity
+            2 : Brightness
+            3 : Gamma   */
         if (type == 1)
         {
             Sensitivity = sensitivitySlider.value;
@@ -137,4 +150,5 @@ public class SettingManager : MonoBehaviour
             gamma = gammaSlider.value;
         }
     }
+    #endregion  세팅 함수
 }
