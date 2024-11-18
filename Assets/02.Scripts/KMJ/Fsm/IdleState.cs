@@ -20,5 +20,7 @@ public class IdleState : State<PlayerState>
         
         if (_player._inputReader._isJump && _player.GetComponentInChildren<GroundChecker>()._isGround == true)
             _stateMachine.ChangeState(PlayerState.Jump);
+
+        
     }
 }

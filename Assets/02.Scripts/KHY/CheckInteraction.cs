@@ -49,12 +49,6 @@ public class CheckInteraction : MonoBehaviour
                     _curGameobject = hit.collider.gameObject;
                     _curInteractable = hit.collider.GetComponent<IInteractable>();
                 }
-
-                OutLineObj = hit.transform.gameObject;
-
-                OutLineObj.transform.TryGetComponent(out ObjectOutLine outLine);
-
-                outLine._isOutLine = true;
             }
             else
             {
