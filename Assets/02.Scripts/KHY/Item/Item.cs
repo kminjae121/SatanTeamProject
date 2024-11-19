@@ -8,11 +8,14 @@ public interface IUseItem
 
 public interface IPuzzleItem
 {
-    public void TakeItem();
+    public void Use(RaycastHit hit);
 }
 
 public class Item : MonoBehaviour
 {
+    [SerializeField]
+    private LayerMask _whatIsInteractObj;
+
     public ItemSO currentItem;
     public ItemSO testItem;
 
@@ -31,6 +34,7 @@ public class Item : MonoBehaviour
     [Header("´øÁö´Â Èû")]
     [SerializeField]
     private float throwPower;
+    private LayerMask _whatIsInteractionObj;
 
     private void Awake()
     {
@@ -69,7 +73,11 @@ public class Item : MonoBehaviour
 
     private void UseItem()
     {
-        handleObj.GetComponent<IUseItem>().Use();
+        if(currentItem.isPuzzleItem && Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 8, _whatIsInteractObj))
+            handleObj.GetComponent<IPuzzleItem>().Use(hit);
+        else
+            handleObj.GetComponent<IUseItem>().Use();
+
         //if (currentItem == null) return;
 
         //currentItem.itemPrefab.GetComponent<IUseItem>().Use();
