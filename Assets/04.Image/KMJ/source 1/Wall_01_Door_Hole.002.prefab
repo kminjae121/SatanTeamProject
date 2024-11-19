@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1957449061461094652}
   - component: {fileID: 2332304679860562025}
   - component: {fileID: 504110853992984213}
+  - component: {fileID: 2231725945846314301}
   m_Layer: 0
   m_Name: Wall_01_Door_Hole.002
   m_TagString: Untagged
@@ -83,3 +84,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2231725945846314301
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394604828705998339}
+  m_Material: {fileID: 13400000, guid: 5e944d3b6fad58a4eab9baf56da5b55d, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5143195095276198678, guid: 5afea4050333de44eb066223f1da6663, type: 3}
