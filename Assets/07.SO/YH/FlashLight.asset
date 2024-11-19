@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: FlashLight
   m_EditorClassIdentifier: 
   useSound: {fileID: 0}
-  itemPrefab: {fileID: 0}
-  itemName: 
+  itemPrefab: {fileID: 2312348045585649193, guid: 0542f59c3f4789d42a4081143fc8fe71,
+    type: 3}
+  itemPlacePrefab: {fileID: 3639299517820725519, guid: ae3ef8b19470bd445968fc656491ea9f,
+    type: 3}
+  itemName: "\uC190\uC804\uB4F1"
   isPuzzleItem: 0

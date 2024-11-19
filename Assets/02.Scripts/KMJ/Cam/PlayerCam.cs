@@ -6,6 +6,7 @@ public class PlayerCam : MonoBehaviour
 
     public GameObject playerCamera;
 
+    public int mouseReversal = 1;
     public float lookSpeed = 2f;
     public float lookXLimit = 45f;
     private float rotationX = 0;
@@ -18,17 +19,15 @@ public class PlayerCam : MonoBehaviour
     private void Update()
     {
         CamSetting();
-
-        Debug.Log(ishit);
     }
 
     private void CamSetting()
     {
+        lookSpeed = SettingManager.Instance.Sensitivity;
         rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
         rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
-        playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
-        transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
-        transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
+        playerCamera.transform.localRotation = Quaternion.Euler(rotationX * SettingManager.Instance.mouseUDInversion, 0, 0);
+        transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed * SettingManager.Instance.mouseLRInversion, 0);
     }
 
     private void OnDrawGizmos()

@@ -90,7 +90,10 @@ public class LookAtObg_Jumpscare : TriggerJumpscare
     private IEnumerator ActivePlayerMovement()
     {
         yield return new WaitForSecondsRealtime(duration + waitTime);
-        playerAnimator.enabled = true;
+        if (SettingManager.Instance.boolSettings["CameraShake"])
+        {
+            playerAnimator.enabled = true;
+        }else playerAnimator.enabled = false;
 
         if (backToOriginCamPosAfterEnd)
         {

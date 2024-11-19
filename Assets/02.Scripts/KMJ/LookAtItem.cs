@@ -9,6 +9,7 @@ public class LookAtItem : MonoBehaviour
 
     [SerializeField] private Transform _playerCam;
     [SerializeField] private LayerMask _whatIsObject;
+    [SerializeField] private Player player;
     private bool _isHit;
     public GameObject hittor;
 
@@ -23,6 +24,7 @@ public class LookAtItem : MonoBehaviour
     {
         if (Physics.Raycast(_playerCam.position, _playerCam.forward, out RaycastHit hit, 3, _whatIsObject))
         {
+            player.Interaction.InInteract(hit);
             if(hittor == null)
             {
                 hittor = hit.transform.gameObject;
@@ -37,8 +39,8 @@ public class LookAtItem : MonoBehaviour
         {
             if (hittor == null)
                 return;
-
-            if(hittor.transform.TryGetComponent(out ObjectOutLine outLine))
+            player.Interaction.OutInteract();
+            if (hittor.transform.TryGetComponent(out ObjectOutLine outLine))
             {
                 outLine._isOutLine = false;
                 hittor = null;
