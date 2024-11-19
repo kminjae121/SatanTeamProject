@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - LockKey1
+  - LockKey2
+  - LockKey3
+  - LockKey4
+  - LockKey5
   layers:
   - Default
   - TransparentFX
