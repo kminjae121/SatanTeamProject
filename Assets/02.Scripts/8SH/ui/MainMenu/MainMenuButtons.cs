@@ -23,6 +23,7 @@ public class MainMenuButtons : MonoBehaviour
     public void OnPlayButtonClick()
     {
         canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
         canvasGroup.DOFade(0, .5f);
 
         lightAudio.Play();

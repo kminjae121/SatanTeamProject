@@ -56,7 +56,7 @@ namespace Michsky.UI.Dark
                     for (int i = 0; i < resolutions.Length; i++)
                     {
 #if UNITY_2022_2_OR_NEWER
-                        string option = resolutions[i].width + "x" + resolutions[i].height + " " + resolutions[i].refreshRateRatio + "hz";
+                        string option = resolutions[i].width + "x" + resolutions[i].height;
 #else
                         string option = resolutions[i].width + "x" + resolutions[i].height + " " + resolutions[i].refreshRate + "hz";
 #endif

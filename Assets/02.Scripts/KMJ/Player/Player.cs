@@ -19,6 +19,8 @@ public class Player : MonoBehaviour
 
     public Action OnJump;
     public Action OnClick;
+
+    [field:SerializeField]public bool isStop { get; set; }
     public CheckInteraction Interaction { get; private set; }
 
     public PlayerState playerState { get; private set; }
@@ -43,8 +45,6 @@ public class Player : MonoBehaviour
         stateMachine.InitIntialize(PlayerState.Idle, this);
 
         Interaction = GetComponent<CheckInteraction>();
-        if (Interaction == null)
-            print("¤¸µÊ");
     }
 
     private void Update()
@@ -71,6 +71,5 @@ public class Player : MonoBehaviour
     {
         _playerStat.moveDir.x = input.x;
         _playerStat.moveDir.z = input.z;
-        print("³ª ÀÎÇ²¹ÞÀ½");
     }
 }
