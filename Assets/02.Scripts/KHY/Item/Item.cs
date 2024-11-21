@@ -69,8 +69,8 @@ public class Item : MonoBehaviour
 
     private void UseItem()
     {
+        if (currentItem == null) return;
         handleObj.GetComponent<IUseItem>().Use();
-        //if (currentItem == null) return;
 
         //currentItem.itemPrefab.GetComponent<IUseItem>().Use();
     }

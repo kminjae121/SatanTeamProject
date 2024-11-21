@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerStat
   m_EditorClassIdentifier: 
   moveSpeed: 3
-  jumpSpeed: 3
+  jumpSpeed: 5
   interactionTime: 0
   moveDir: {x: 0, y: 0, z: 0}
   RunSpeed: 0
