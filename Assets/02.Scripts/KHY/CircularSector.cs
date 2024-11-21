@@ -49,7 +49,7 @@ public class CircularSector : MonoBehaviour
                     print("시야 들어옴");
 
 
-                    if (Physics.Raycast(transform.position, interV.normalized, out hit, Mathf.Infinity, _whatIsObstacle))
+                    if (Physics.Raycast(transform.position, interV.normalized, out hit, Vector3.Distance(transform.position, target[i].position), _whatIsObstacle))
                     {
 
                         print("장애물 감지됨");
