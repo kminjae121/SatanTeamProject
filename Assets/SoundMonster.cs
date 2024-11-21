@@ -35,7 +35,7 @@ public class SoundMonster : MonoBehaviour
 
     private void Start()
     {
-        movePoint.SetDestination(soundHere["PlayerCharacter(AudioInput)"].position);
+        //movePoint.SetDestination(soundHere["PlayerCharacter(AudioInput)"].position);
     }
 
     public void TargetChange(string change)
@@ -47,6 +47,7 @@ public class SoundMonster : MonoBehaviour
 
     private void MovingTarget()
     {
+        print(targetPoint.name);
         Collider[] collider = Physics.OverlapSphere(transform.position, deathRadius);
 
         foreach (Collider colliders in collider)
@@ -59,10 +60,16 @@ public class SoundMonster : MonoBehaviour
         }
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(transform.position, deathRadius);
+        Gizmos.color = Color.white;
+    }
+
     private void Update()
     {
         if (isPoint)
             MovingTarget();
-        
     }
 }

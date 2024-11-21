@@ -30,7 +30,6 @@ public class CCTV : MonoBehaviour
 
     private void Update()
     {
-        print(Mathf.Abs(transform.rotation.y));
         if (Mathf.Abs(transform.rotation.y) < 0.8f)
         {
             rotateSpeed *= -1;

@@ -898,8 +898,8 @@ MonoBehaviour:
   soundObj:
   - {fileID: 825605154973201757}
   movePoint: {fileID: 951635498}
-  audioInput: {fileID: 0}
-  deathRadius: 0
+  audioInput: {fileID: 3210374176524453750}
+  deathRadius: 5
 --- !u!195 &951635498
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1568,6 +1568,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1cd9596cfdee7f9489ef698e926fa9e9, type: 3}
+--- !u!114 &3210374176524453750 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8701594954243772340, guid: 1cd9596cfdee7f9489ef698e926fa9e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 3210374176524453749}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0a3b3edd09e1fe4cb1a85b1ad12cc8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3619961062002456030
 PrefabInstance:
   m_ObjectHideFlags: 0
