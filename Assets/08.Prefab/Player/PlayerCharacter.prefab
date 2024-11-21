@@ -1125,7 +1125,7 @@ GameObject:
   - component: {fileID: 8389301690365783181}
   - component: {fileID: 6219430162218241489}
   m_Layer: 8
-  m_Name: Plane
+  m_Name: CameraEffectPlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1980,6 +1980,7 @@ GameObject:
   - component: {fileID: 9083413933777942277}
   - component: {fileID: 5969197007662295987}
   - component: {fileID: 7793773751227304881}
+  - component: {fileID: 3185325924318415042}
   - component: {fileID: 1824093880164392850}
   - component: {fileID: 1187706215948821119}
   - component: {fileID: 2391414805251349923}
@@ -2056,6 +2057,24 @@ MonoBehaviour:
   lookSpeed: 1
   lookXLimit: 45
   _player: {fileID: 9083413933777942277}
+--- !u!114 &3185325924318415042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5500619597308346428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 982b4d62880b75f4cb35c344d43e00d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _checkRate: 0.05
+  _maxDistance: 3
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  OutLineObj: {fileID: 0}
 --- !u!114 &1824093880164392850
 MonoBehaviour:
   m_ObjectHideFlags: 0
