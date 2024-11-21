@@ -32,17 +32,12 @@ public class SettingManager : MonoBehaviour
         { "CameraShake", true },
         { "UiVisible", true },
         { "MotionBlur", true },
-        { "PixelRender", true },
-        { "BodyCamEffect", true },
     };
 
     [Header("Objects")]
     [SerializeField] private Slider sensitivitySlider;
     [SerializeField] private Slider brightnessSlider;
     [SerializeField] private Slider gammaSlider;
-
-    [Header("RequireObject")]
-    public RenderTexture pixelatedTexture;
 
     public int mouseLRInversion = 1;
     public int mouseUDInversion = 1;
@@ -105,16 +100,6 @@ public class SettingManager : MonoBehaviour
             }else if (settingName == "MotionBlur" && FindGameObjectByName("MotionBlurVolume"))
             {
                 FindGameObjectByName("MotionBlurVolume").SetActive(true);
-            }else if (settingName == "PixelRender")
-            {
-                pixelatedTexture.Release();
-                pixelatedTexture.width = (int)pixelRenderOnSize.x;
-                pixelatedTexture.height = (int)pixelRenderOnSize.y;
-                pixelatedTexture.Create();
-            }else if (settingName == "BodyCamEffect" && FindGameObjectByName("BodyCamVolume"))
-            {
-                FindGameObjectByName("CameraEffectPlane").SetActive(true);
-                FindGameObjectByName("BodyCamVolume").SetActive(true);
             }
         }
     }
@@ -131,18 +116,6 @@ public class SettingManager : MonoBehaviour
             else if (settingName == "MotionBlur" && GameObject.Find("MotionBlurVolume"))
             {
                 GameObject.Find("MotionBlurVolume").SetActive(false);
-            }
-            else if (settingName == "PixelRender")
-            {
-                pixelatedTexture.Release();
-                pixelatedTexture.width = (int)pixelRenderOffSize.x;
-                pixelatedTexture.height = (int)pixelRenderOffSize.y;
-                pixelatedTexture.Create();
-            }
-            else if (settingName == "BodyCamEffect" && GameObject.Find("BodyCamVolume"))
-            {
-                FindGameObjectByName("CameraEffectPlane").SetActive(false);
-                GameObject.Find("BodyCamVolume").SetActive(false);
             }
             print($"{settingName} : {boolSettings[settingName]}");
         }
