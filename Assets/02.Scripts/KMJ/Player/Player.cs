@@ -49,6 +49,7 @@ public class Player : MonoBehaviour
         stateMachine.InitIntialize(PlayerState.Idle, this);
 
         Interaction = GetComponent<CheckInteraction>();
+
         if (Interaction == null)
         _inputReader.OnInteractionHandle += Interaction.OnInteraction;
 
