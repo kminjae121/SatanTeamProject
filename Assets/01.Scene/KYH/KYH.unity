@@ -1195,37 +1195,6 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
---- !u!1 &946868666
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 946868667}
-  m_Layer: 0
-  m_Name: ParticlePos
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &946868667
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 946868666}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: -0.112, z: 0.887}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1818094410}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &951635491 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1382740567804412, guid: af67ec531803f32419e99a1b4efdb52d,
@@ -1569,12 +1538,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8b5036230df3ed48a701d34c6324d62, type: 3}
---- !u!4 &1818094410 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1057976886231736108, guid: 9adcf0ab91195ef43aa674ab8b36c009,
-    type: 3}
-  m_PrefabInstance: {fileID: 4273325925505061048}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1898838488
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2247,10 +2210,6 @@ PrefabInstance:
       propertyPath: text
       value: 
       objectReference: {fileID: 213617052}
-    - target: {fileID: 9450020934400459, guid: 9adcf0ab91195ef43aa674ab8b36c009, type: 3}
-      propertyPath: _whatIsInteractObj.m_Bits
-      value: 16384
-      objectReference: {fileID: 0}
     - target: {fileID: 3474743486087620069, guid: 9adcf0ab91195ef43aa674ab8b36c009,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2311,12 +2270,6 @@ PrefabInstance:
       propertyPath: target.Array.data[0]
       value: 
       objectReference: {fileID: 378738504}
-    - target: {fileID: 6211882179990642437, guid: 9adcf0ab91195ef43aa674ab8b36c009,
-        type: 3}
-      propertyPath: _audioMixerMaster
-      value: 
-      objectReference: {fileID: 24300002, guid: c4382341a39a10b46a6bc574f22f5974,
-        type: 2}
     - target: {fileID: 8713784798907928751, guid: 9adcf0ab91195ef43aa674ab8b36c009,
         type: 3}
       propertyPath: m_Name
@@ -2324,11 +2277,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 1057976886231736108, guid: 9adcf0ab91195ef43aa674ab8b36c009,
-        type: 3}
-      insertIndex: 3
-      addedObject: {fileID: 946868667}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9adcf0ab91195ef43aa674ab8b36c009, type: 3}
 --- !u!114 &5198156299018738067
