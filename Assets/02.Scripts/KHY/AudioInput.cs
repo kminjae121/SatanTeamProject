@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,8 @@ public class AudioInput : MonoBehaviour
     public string _selectedDevice;
     // Start is called before the first frame update
     public AudioMixerGroup _audioMixerMicroPhone, _audioMixerMaster;
+    public Action<string> _BigSound;
+
 
     private void Start()
     {
