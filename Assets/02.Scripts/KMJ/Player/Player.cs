@@ -32,6 +32,7 @@ public class Player : MonoBehaviour
     public StateMachine<PlayerState> stateMachine { get; private set; }
 
     [field:SerializeField] public bool isMoving { get; set; }
+    public bool isStop { get; set; } = false;
 
 
     private void Awake()
@@ -49,7 +50,6 @@ public class Player : MonoBehaviour
 
         Interaction = GetComponent<CheckInteraction>();
         if (Interaction == null)
-            print("¤¸µÊ");
         _inputReader.OnInteractionHandle += Interaction.OnInteraction;
 
         _inputReader.OnRunHandle += PressRun;
@@ -79,7 +79,6 @@ public class Player : MonoBehaviour
     {
         _playerStat.moveDir.x = input.x;
         _playerStat.moveDir.z = input.z;
-        print("³ª ÀÎÇ²¹ÞÀ½");
     }
 
     public void PressRun()
