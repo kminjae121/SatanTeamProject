@@ -2223,7 +2223,7 @@ MonoBehaviour:
   _selectedDevice: 
   _audioMixerMicroPhone: {fileID: -3474775705008754907, guid: 9b20a0ab8e7e0474ab00621a650b8499,
     type: 2}
-  _audioMixerMaster: {fileID: 24300002, guid: 9b20a0ab8e7e0474ab00621a650b8499, type: 2}
+  _audioMixerMaster: {fileID: 24300002, guid: c4382341a39a10b46a6bc574f22f5974, type: 2}
 --- !u!114 &4773925042991529753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2907,6 +2907,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfeedec720099d54fb367675ff7815cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _whatIsInteractObj:
+    serializedVersion: 2
+    m_Bits: 16384
   currentItem: {fileID: 0}
   testItem: {fileID: 11400000, guid: 90bd9448c60e85347b60b1af4a9bb8c2, type: 2}
   player: {fileID: 8145851776800197102}
@@ -3095,6 +3098,37 @@ Transform:
   m_Children:
   - {fileID: 6202416045916182588}
   m_Father: {fileID: 4381531970007415717}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7622432499624531498
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1967899597607513060}
+  m_Layer: 0
+  m_Name: ParticlePos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1967899597607513060
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7622432499624531498}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: -0.112, z: 0.887}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1057976886231736108}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7648096113519488094
 GameObject:
@@ -4041,6 +4075,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 9038260540174457134}
+  mouseReversal: 1
   lookSpeed: 2
   lookXLimit: 45
 --- !u!54 &1544359533269125557
@@ -4307,6 +4342,7 @@ Transform:
   - {fileID: 4241067537947770310}
   - {fileID: 6235701966274757135}
   - {fileID: 7436726303476634373}
+  - {fileID: 1967899597607513060}
   - {fileID: 5486872649861864109}
   m_Father: {fileID: 6841599120565183413}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
