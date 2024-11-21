@@ -15,6 +15,8 @@ public class MainMenuButtons : MonoBehaviour
     [SerializeField] private AudioSource lightAudio;
     [SerializeField] private AudioSource bgm;
 
+    [SerializeField] private string nameScene;
+
     private void Start()
     {
         canvasGroup = GetComponent<CanvasGroup>();
@@ -52,6 +54,6 @@ public class MainMenuButtons : MonoBehaviour
     private IEnumerator SceneMove()
     {
         yield return new WaitForSecondsRealtime(5);
-        SceneManager.LoadScene("MakingEvent");
+        SceneManager.LoadScene(nameScene);
     }
 }

@@ -89047,6 +89047,7 @@ MonoBehaviour:
   doorLight: {fileID: 424813696}
   lightAudio: {fileID: 1820881023}
   bgm: {fileID: 0}
+  nameScene: 
 --- !u!82 &1820881023
 AudioSource:
   m_ObjectHideFlags: 0
@@ -101178,6 +101179,7 @@ MonoBehaviour:
   doorLight: {fileID: 424813696}
   lightAudio: {fileID: 1298695566}
   bgm: {fileID: 617210255}
+  nameScene: KYH
 --- !u!225 &2028079765
 CanvasGroup:
   m_ObjectHideFlags: 0
