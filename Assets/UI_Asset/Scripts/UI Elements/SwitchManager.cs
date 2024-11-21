@@ -25,6 +25,11 @@ namespace Michsky.UI.Dark
         public Animator switchAnimator;
         public Button switchButton;
 
+        private void Update()
+        {
+            print(saveValue);
+        }
+
         void Start()
         {
             try

@@ -334,8 +334,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC815\uB9D0\uB85C \uAC8C\uC784\uC744 \uC885\uB8CC\uD560\uAE4C\uC694?
-    (\uD50C\uB808\uC774 \uB370\uC774\uD130\uB294 \uC800\uC7A5\uB418\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.)"
+  m_text: "\uC815\uB9D0\uB85C \uAC8C\uC784\uC744 \uC885\uB8CC\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?
+    (\uC9C4\uD589\uB3C4\uB294 \uC800\uC7A5\uB418\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 268775a7d0ec68c489bb5e04602df500, type: 2}
   m_sharedMaterial: {fileID: 569338320090573580, guid: 268775a7d0ec68c489bb5e04602df500,
@@ -493,10 +493,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee814d6473067724eaf0a75a1b2ad037, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: EXIT
-  description: 'ARE YOU SURE
-
-    YOU WANT TO EXIT?'
+  title: "\uD655\uC778"
+  description: "\uC815\uB9D0\uB85C \uAC8C\uC784\uC744 \uC885\uB8CC\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?
+    (\uC9C4\uD589\uB3C4\uB294 \uC800\uC7A5\uB418\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4)"
   windowAnimator: {fileID: 8681360060235012990}
   titleObject: {fileID: 9205344866315721227}
   descriptionObject: {fileID: 4195430622835942823}
@@ -749,7 +748,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.043137256, g: 0.050980393, b: 0.07450981, a: 0.9019608}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.9019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -872,7 +871,7 @@ PrefabInstance:
     - target: {fileID: 327080266165325537, guid: faf72926bc734ef4ebf2e8a85d566758,
         type: 3}
       propertyPath: buttonText
-      value: CONTINUE
+      value: "\uC608"
       objectReference: {fileID: 0}
     - target: {fileID: 327080266165325537, guid: faf72926bc734ef4ebf2e8a85d566758,
         type: 3}
@@ -933,7 +932,7 @@ PrefabInstance:
     - target: {fileID: 4006715118232086706, guid: faf72926bc734ef4ebf2e8a85d566758,
         type: 3}
       propertyPath: m_text
-      value: CONTINUE
+      value: "\uC608"
       objectReference: {fileID: 0}
     - target: {fileID: 4006715118232086706, guid: faf72926bc734ef4ebf2e8a85d566758,
         type: 3}
@@ -965,7 +964,7 @@ PrefabInstance:
     - target: {fileID: 5927651940847589453, guid: faf72926bc734ef4ebf2e8a85d566758,
         type: 3}
       propertyPath: m_text
-      value: CONTINUE
+      value: "\uC608"
       objectReference: {fileID: 0}
     - target: {fileID: 5927651940847589453, guid: faf72926bc734ef4ebf2e8a85d566758,
         type: 3}
@@ -1111,7 +1110,7 @@ PrefabInstance:
     - target: {fileID: 327080266165325537, guid: faf72926bc734ef4ebf2e8a85d566758,
         type: 3}
       propertyPath: buttonText
-      value: CANCEL
+      value: "\uC544\uB2C8\uC694"
       objectReference: {fileID: 0}
     - target: {fileID: 327080266165325537, guid: faf72926bc734ef4ebf2e8a85d566758,
         type: 3}
@@ -1166,7 +1165,7 @@ PrefabInstance:
     - target: {fileID: 4006715118232086706, guid: faf72926bc734ef4ebf2e8a85d566758,
         type: 3}
       propertyPath: m_text
-      value: CANCEL
+      value: "\uC544\uB2C8\uC694"
       objectReference: {fileID: 0}
     - target: {fileID: 4006715118232086706, guid: faf72926bc734ef4ebf2e8a85d566758,
         type: 3}
@@ -1198,7 +1197,7 @@ PrefabInstance:
     - target: {fileID: 5927651940847589453, guid: faf72926bc734ef4ebf2e8a85d566758,
         type: 3}
       propertyPath: m_text
-      value: CANCEL
+      value: "\uC544\uB2C8\uC694"
       objectReference: {fileID: 0}
     - target: {fileID: 5927651940847589453, guid: faf72926bc734ef4ebf2e8a85d566758,
         type: 3}

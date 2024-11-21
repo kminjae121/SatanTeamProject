@@ -2052,8 +2052,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 8373186704056669398}
+  mouseReversal: 1
   lookSpeed: 1
   lookXLimit: 45
+  _player: {fileID: 9083413933777942277}
 --- !u!114 &1824093880164392850
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -31,9 +31,9 @@ public class SettingManager : MonoBehaviour
     {
         { "CameraShake", true },
         { "UiVisible", true },
-        { "MouseInversion", false },
+        { "MotionBlur", true },
         { "PixelRender", true },
-        { "MotionBlur", true }
+        { "BodyCamEffect", true },
     };
 
     [Header("Objects")]
@@ -41,11 +41,15 @@ public class SettingManager : MonoBehaviour
     [SerializeField] private Slider brightnessSlider;
     [SerializeField] private Slider gammaSlider;
 
+    [Header("RequireObject")]
+    public RenderTexture pixelatedTexture;
+
     public int mouseLRInversion = 1;
     public int mouseUDInversion = 1;
     public float _sensitivity = 1.5f;
-    public float brightness = 1f;
-    public float gamma = 1f;
+
+    public Vector2 pixelRenderOnSize = new Vector2(300, 300);
+    public Vector2 pixelRenderOffSize = new Vector2(2000, 2000);
 
     public float Sensitivity
     {
@@ -68,20 +72,23 @@ public class SettingManager : MonoBehaviour
         }
     }
 
-    GameObject FindObjectsWithTag(string tag)
+    public GameObject FindGameObjectByName(string name)
     {
-        Transform[] allTransforms = Resources.FindObjectsOfTypeAll<Transform>();
-        foreach (Transform t in allTransforms)
+        GameObject[] allObjects = Resources.FindObjectsOfTypeAll<GameObject>();
+
+        foreach (GameObject obj in allObjects)
         {
-            if (t.hideFlags == HideFlags.None && t.CompareTag(tag))
+            if (obj.name == name)
             {
-                return t.gameObject;
+                return obj;
             }
         }
+
+        Debug.LogWarning($"GameObject with name '{name}' not found.");
         return null;
     }
 
-    #region
+    #region 세팅함수들
     public bool GetSetting(string settingName)
     {
         return boolSettings.ContainsKey(settingName) && boolSettings[settingName];
@@ -92,7 +99,23 @@ public class SettingManager : MonoBehaviour
         if (boolSettings.ContainsKey(settingName))
         {
             boolSettings[settingName] = true;
-            print($"{settingName} : {boolSettings[settingName]}");
+            if(settingName == "CameraShake" && GameObject.Find("PlayerCharacter"))
+            {
+                GameObject.Find("PlayerCharacter").GetComponent<Animator>().enabled = true;
+            }else if (settingName == "MotionBlur" && FindGameObjectByName("MotionBlurVolume"))
+            {
+                FindGameObjectByName("MotionBlurVolume").SetActive(true);
+            }else if (settingName == "PixelRender")
+            {
+                pixelatedTexture.Release();
+                pixelatedTexture.width = (int)pixelRenderOnSize.x;
+                pixelatedTexture.height = (int)pixelRenderOnSize.y;
+                pixelatedTexture.Create();
+            }else if (settingName == "BodyCamEffect" && FindGameObjectByName("BodyCamVolume"))
+            {
+                FindGameObjectByName("CameraEffectPlane").SetActive(true);
+                FindGameObjectByName("BodyCamVolume").SetActive(true);
+            }
         }
     }
 
@@ -101,6 +124,26 @@ public class SettingManager : MonoBehaviour
         if (boolSettings.ContainsKey(settingName))
         {
             boolSettings[settingName] = false;
+            if (settingName == "CameraShake" && GameObject.Find("PlayerCharacter"))
+            {
+                GameObject.Find("PlayerCharacter").GetComponent<Animator>().enabled = false;
+            }
+            else if (settingName == "MotionBlur" && GameObject.Find("MotionBlurVolume"))
+            {
+                GameObject.Find("MotionBlurVolume").SetActive(false);
+            }
+            else if (settingName == "PixelRender")
+            {
+                pixelatedTexture.Release();
+                pixelatedTexture.width = (int)pixelRenderOffSize.x;
+                pixelatedTexture.height = (int)pixelRenderOffSize.y;
+                pixelatedTexture.Create();
+            }
+            else if (settingName == "BodyCamEffect" && GameObject.Find("BodyCamVolume"))
+            {
+                FindGameObjectByName("CameraEffectPlane").SetActive(false);
+                GameObject.Find("BodyCamVolume").SetActive(false);
+            }
             print($"{settingName} : {boolSettings[settingName]}");
         }
     }
@@ -142,13 +185,8 @@ public class SettingManager : MonoBehaviour
         if (type == 1)
         {
             Sensitivity = sensitivitySlider.value;
-        }else if (type == 2)
-        {
-            brightness = brightnessSlider.value;
-        }else
-        {
-            gamma = gammaSlider.value;
         }
     }
-    #endregion  세팅 함수
+    #endregion
 }
+    
