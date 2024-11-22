@@ -24,13 +24,14 @@ public class LookAtItem : MonoBehaviour
     {
         if (Physics.Raycast(_playerCam.position, _playerCam.forward, out RaycastHit hit, 3, _whatIsObject))
         {
-            player.Interaction.InInteract(hit);
+            
             if(hittor == null)
             {
                 hittor = hit.transform.gameObject;
 
                 if (hit.transform.TryGetComponent(out ObjectOutLine outLIne))
                 {
+                    player.Interaction.InInteract(hit);
                     outLIne._isOutLine = true;
                 }
             }
