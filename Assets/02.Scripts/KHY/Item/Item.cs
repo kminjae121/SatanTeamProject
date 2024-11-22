@@ -1,5 +1,7 @@
 using UnityEngine;
+using System;
 using TMPro;
+using System.Collections;
 
 public interface IUseItem
 {
@@ -28,8 +30,12 @@ public class Item : MonoBehaviour
     [SerializeField]
     private IUseItem itemTest;
 
+    [SerializeField]
+    private SoundMonster soundMonster;
 
     private GameObject handleObj;
+
+    private Coroutine soundCoroutine;
 
     [Header("´øÁö´Â Èû")]
     [SerializeField]
@@ -97,10 +103,22 @@ public class Item : MonoBehaviour
         print("´øÁü");
         GameObject gaeObject = Instantiate(currentItem.itemPlacePrefab, transform);
         gaeObject.transform.SetParent(null);
-        gaeObject.AddComponent<Rigidbody>();
+        if(!soundMonster.isPlayerFollow)
+        {
+            soundMonster.AddTransform(gaeObject.transform);
+            soundCoroutine = StartCoroutine(SoundRoutine(gaeObject));
+        }
+        gaeObject?.AddComponent<Rigidbody>();
         gaeObject.GetComponent<Rigidbody>().AddForce(transform.forward * throwPower,ForceMode.Impulse);
         Destroy(handleObj);
         currentItem = null;
+    }
+
+    private IEnumerator SoundRoutine(GameObject soundPlayObj)
+    {
+        yield return new WaitForSeconds(1f);
+        soundMonster.TargetChange(soundPlayObj.name);
+        soundCoroutine = null;
     }
 
     private void OnDisable()

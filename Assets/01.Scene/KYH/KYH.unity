@@ -774,6 +774,39 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89532168318121947b521ee6fed185f9, type: 3}
+--- !u!1 &816311037 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7512367099520820328, guid: 71cbd23038d01744ca1bf47129a8af47,
+    type: 3}
+  m_PrefabInstance: {fileID: 1312781788224461891}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &816311045
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816311037}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &823539576
 GameObject:
   m_ObjectHideFlags: 0
@@ -1035,10 +1068,8 @@ MonoBehaviour:
   - {fileID: 825605154973201757}
   movePoint: {fileID: 951635498}
   audioInput: {fileID: 3210374176524453750}
+  isPlayerFollow: 0
   deathRadius: 5
-  whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!195 &951635498
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1811,7 +1842,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7512367099520820328, guid: 71cbd23038d01744ca1bf47129a8af47,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 816311045}
   m_SourcePrefab: {fileID: 100100000, guid: 71cbd23038d01744ca1bf47129a8af47, type: 3}
 --- !u!1001 &2557544505377943403
 PrefabInstance:
@@ -1899,6 +1934,11 @@ PrefabInstance:
       propertyPath: text
       value: 
       objectReference: {fileID: 5780711924563069695}
+    - target: {fileID: 1353717003447780834, guid: 1cd9596cfdee7f9489ef698e926fa9e9,
+        type: 3}
+      propertyPath: soundMonster
+      value: 
+      objectReference: {fileID: 951635495}
     - target: {fileID: 5912809639578896465, guid: 1cd9596cfdee7f9489ef698e926fa9e9,
         type: 3}
       propertyPath: m_LocalPosition.x

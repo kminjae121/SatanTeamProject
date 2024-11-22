@@ -20,13 +20,10 @@ public class SoundMonster : MonoBehaviour
 
     private Transform targetPoint;
     private bool isPoint;
-    private bool isPlayerFollow;
+    public bool isPlayerFollow;
 
     [SerializeField]
     private float deathRadius;
-
-    [SerializeField]
-    private LayerMask whatIsPlayer;
 
     private FollowRadius followRadiusCollider;
 
@@ -42,11 +39,19 @@ public class SoundMonster : MonoBehaviour
         followRadiusCollider.OnLessPlayer += LessPlayer;
     }
 
+    public void AddTransform(Transform transform)
+    {
+        soundHere.Add(transform.name, transform);
+    }
+
     private void LessPlayer()
     {
-        movePoint.isStopped = true;
-        isPlayerFollow = false;
-        print("플레이어 놓침");
+        if(isPlayerFollow)
+        {
+            movePoint.isStopped = true;
+            isPlayerFollow = false;
+            print("플레이어 놓침");
+        }
     }
 
     public void TargetChange(string change)
@@ -73,7 +78,6 @@ public class SoundMonster : MonoBehaviour
             }
             else if (colliders.name == targetPoint.name)
             {
-                isPoint = false;
                 print("도착");
             }
         }

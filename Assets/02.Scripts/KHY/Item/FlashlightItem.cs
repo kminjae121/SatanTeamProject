@@ -12,6 +12,7 @@ public class FlashlightItem : MonoBehaviour, IUseItem
     private void Start()
     {
         light = GetComponentInChildren<Light>();
+        light.enabled = false;
     }
 
     public void Use()
