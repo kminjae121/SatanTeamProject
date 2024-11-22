@@ -1081,7 +1081,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1382740567804412, guid: af67ec531803f32419e99a1b4efdb52d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4692982366003326, guid: af67ec531803f32419e99a1b4efdb52d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1093,7 +1093,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4692982366003326, guid: af67ec531803f32419e99a1b4efdb52d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.17
+      value: 8.6
       objectReference: {fileID: 0}
     - target: {fileID: 4692982366003326, guid: af67ec531803f32419e99a1b4efdb52d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1390,7 +1390,7 @@ PrefabInstance:
     - target: {fileID: 1660272058826845144, guid: f8b5036230df3ed48a701d34c6324d62,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.4146237
+      value: -12.164623
       objectReference: {fileID: 0}
     - target: {fileID: 1660272058826845144, guid: f8b5036230df3ed48a701d34c6324d62,
         type: 3}
@@ -1844,7 +1844,7 @@ PrefabInstance:
     - target: {fileID: 5912809639578896465, guid: 1cd9596cfdee7f9489ef698e926fa9e9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.37
+      value: -12.12
       objectReference: {fileID: 0}
     - target: {fileID: 5912809639578896465, guid: 1cd9596cfdee7f9489ef698e926fa9e9,
         type: 3}
@@ -2071,6 +2071,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CCTVObj
+      objectReference: {fileID: 0}
+    - target: {fileID: 4251081311809510211, guid: d16da8348494ae843b55272fabe995b9,
+        type: 3}
+      propertyPath: m_Range
+      value: 9.7
       objectReference: {fileID: 0}
     - target: {fileID: 5633529324344836227, guid: d16da8348494ae843b55272fabe995b9,
         type: 3}
