@@ -245,7 +245,7 @@ GameObject:
   - component: {fileID: 2549354276126578694}
   - component: {fileID: 3211270964058297389}
   m_Layer: 0
-  m_Name: S'KnowMan
+  m_Name: S'KnowMan(prev)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

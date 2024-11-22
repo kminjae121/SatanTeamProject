@@ -17,13 +17,17 @@ public class SoundMonster : MonoBehaviour
     [SerializeField]
     private AudioInput audioInput;
 
+    [SerializeField]
+    private Animator animator;
 
     private Transform targetPoint;
     private bool isPoint;
     public bool isPlayerFollow;
 
     [SerializeField]
-    private float deathRadius;
+    private float foundRadius;
+    [SerializeField]
+    private float deadRadius;
 
     private FollowRadius followRadiusCollider;
 
@@ -48,6 +52,7 @@ public class SoundMonster : MonoBehaviour
     {
         if(isPlayerFollow)
         {
+            animator.SetFloat("Velocity", 0.2f);
             movePoint.isStopped = true;
             isPlayerFollow = false;
             print("플레이어 놓침");
@@ -66,7 +71,9 @@ public class SoundMonster : MonoBehaviour
     private void MovingTarget()
     {
         print(targetPoint.name);
-        Collider[] collider = Physics.OverlapSphere(transform.position, deathRadius);
+        Collider[] collider = Physics.OverlapSphere(transform.position, foundRadius);
+
+        animator.SetFloat("Velocity", 0.5f);
 
         foreach (Collider colliders in collider)
         {
@@ -75,10 +82,7 @@ public class SoundMonster : MonoBehaviour
                 movePoint.SetDestination(soundHere["PlayerCharacter(AudioInput)"].position);
                 isPlayerFollow = true;
                 print("플레이어 찾음");
-            }
-            else if (colliders.name == targetPoint.name)
-            {
-                print("도착");
+                animator.SetFloat("Velocity", 1f);
             }
         }
     }
@@ -86,12 +90,28 @@ public class SoundMonster : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawSphere(transform.position, deathRadius);
+        Gizmos.DrawSphere(transform.position, foundRadius);
         Gizmos.color = Color.white;
     }
 
     private void Update()
     {
+        Collider[] collider = Physics.OverlapSphere(transform.position, deadRadius);
+
+        foreach (Collider colliders in collider)
+        {
+            if (colliders.name == "PlayerCharacter(AudioInput)")
+            {
+                print("뒤@짐");
+            }
+        }
+
+        if (movePoint.velocity.sqrMagnitude >= 0.2f * 0.2f && movePoint.remainingDistance <=0.5f)
+        {
+            isPoint = false;
+            animator.SetFloat("Velocity", 0.2f);
+        }
+
         if (isPoint)
         {
             MovingTarget();
