@@ -62,6 +62,8 @@ public class Item : MonoBehaviour
     public void ChangeItem()
     {
         //손에 바꾸가
+
+        print("와우");
         if(handleObj != null)
             Destroy(handleObj);
         if (currentItem == null)
