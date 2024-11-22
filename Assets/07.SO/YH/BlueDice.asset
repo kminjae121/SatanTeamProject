@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6faa295d8ee2964e97bce3cf0418d06, type: 3}
+  m_Name: BlueDice
+  m_EditorClassIdentifier: 
+  useSound: {fileID: 0}
+  itemPrefab: {fileID: 5887879473456602957, guid: 05130d8a936da624cba0c8a0b30138f4,
+    type: 3}
+  itemPlacePrefab: {fileID: 7512367099520820328, guid: 71cbd23038d01744ca1bf47129a8af47,
+    type: 3}
+  itemName: "\uD30C\uB791 \uC8FC\uC0AC\uC704"
+  isPuzzleItem: 0
