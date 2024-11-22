@@ -20,6 +20,7 @@ public class CheckInteraction : MonoBehaviour
     private float _lastCheckTime;
 
     private GameObject _curGameobject;
+    [SerializeField]
     private IInteractable _curInteractable;
 
     public GameObject OutLineObj = null;

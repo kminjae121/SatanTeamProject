@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class OpenTheDoor : MonoBehaviour
 {
-    private static int _keyNumber = 1;
-
     private bool _isOpen;
 
     private bool _isOpening;
@@ -49,18 +47,13 @@ public class OpenTheDoor : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void Open()
     {
-        if (other.gameObject.CompareTag($"LockKey{_keyNumber}"))
-        {
-            gameObject.transform.parent.TryGetComponent(out Animator animator);
+        gameObject.transform.parent.TryGetComponent(out Animator animator);
+        print(animator);
+        animator.SetBool("Open", true);
 
-            animator.SetBool("Open", true);
-
-            _keyNumber++;
-
-            _isOpening = true;
-        }
+        _isOpening = true;
     }
 
     IEnumerator Wait()

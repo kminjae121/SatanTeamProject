@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
 
         Interaction = GetComponent<CheckInteraction>();
 
-        if (Interaction == null)
+        if (Interaction != null)
         _inputReader.OnInteractionHandle += Interaction.OnInteraction;
 
         _inputReader.OnRunHandle += PressRun;

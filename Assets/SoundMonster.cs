@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,9 +20,15 @@ public class SoundMonster : MonoBehaviour
 
     private Transform targetPoint;
     private bool isPoint;
+    private bool isPlayerFollow;
 
     [SerializeField]
     private float deathRadius;
+
+    [SerializeField]
+    private LayerMask whatIsPlayer;
+
+    private FollowRadius followRadiusCollider;
 
     private void Awake()
     {
@@ -29,17 +36,23 @@ public class SoundMonster : MonoBehaviour
         {
             soundHere.Add(transform.name, transform);
         }
+        followRadiusCollider = GetComponentInChildren<FollowRadius>();
 
         audioInput._BigSound += TargetChange;
+        followRadiusCollider.OnLessPlayer += LessPlayer;
     }
 
-    private void Start()
+    private void LessPlayer()
     {
-        //movePoint.SetDestination(soundHere["PlayerCharacter(AudioInput)"].position);
+        movePoint.isStopped = true;
+        isPlayerFollow = false;
+        print("플레이어 놓침");
     }
 
     public void TargetChange(string change)
     {
+        if (isPlayerFollow) return;
+        movePoint.isStopped = false;
         movePoint.SetDestination(soundHere[change].position);
         targetPoint = soundHere[change];
         isPoint = true;
@@ -52,7 +65,13 @@ public class SoundMonster : MonoBehaviour
 
         foreach (Collider colliders in collider)
         {
-            if (colliders.name == targetPoint.name)
+            if(colliders.name == "PlayerCharacter(AudioInput)")
+            {
+                movePoint.SetDestination(soundHere["PlayerCharacter(AudioInput)"].position);
+                isPlayerFollow = true;
+                print("플레이어 찾음");
+            }
+            else if (colliders.name == targetPoint.name)
             {
                 isPoint = false;
                 print("도착");
@@ -70,6 +89,8 @@ public class SoundMonster : MonoBehaviour
     private void Update()
     {
         if (isPoint)
+        {
             MovingTarget();
+        }
     }
 }

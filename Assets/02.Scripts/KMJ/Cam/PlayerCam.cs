@@ -10,7 +10,13 @@ public class PlayerCam : MonoBehaviour
     public float lookSpeed = 2f;
     public float lookXLimit = 45f;
     private float rotationX = 0;
-    [SerializeField] private Player _player;
+    private Player _player;
+
+    private void Awake()
+    {
+        _player = GetComponent<Player>();
+    }
+
     private void Start()
     {
         //Cursor.lockState = CursorLockMode.Locked;
