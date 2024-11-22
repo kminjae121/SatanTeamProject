@@ -23,10 +23,17 @@ public class CCTV : MonoBehaviour
     [SerializeField]
     private LayerMask _whatIsSnowMan;
 
+    private AudioInput audioInput;
+
     private Vector3 interV;
 
     RaycastHit hit;
 
+
+    private void Awake()
+    {
+        audioInput = FindAnyObjectByType<AudioInput>();
+    }
 
     private void Update()
     {
@@ -69,7 +76,7 @@ public class CCTV : MonoBehaviour
 
     private void Dangerous()
     {
-        print("cctv에 감지됨");
+        audioInput._BigSound?.Invoke("PlayerCharacter(AudioInput)");
     }
 
     // 유니티 에디터에 부채꼴을 그려줄 메소드

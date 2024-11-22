@@ -27,6 +27,7 @@ public class CryingAngel : MonoBehaviour, IDetectGaze
     {
         movePoint = GetComponent<NavMeshAgent>();
         //movePoint.SetDestination(player.position);
+        player.GetComponentInChildren<CircularSector>().enabled = true;
     }
 
     public void Start()

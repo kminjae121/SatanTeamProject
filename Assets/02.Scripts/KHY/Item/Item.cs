@@ -73,11 +73,17 @@ public class Item : MonoBehaviour
 
     private void UseItem()
     {
-        if(currentItem.isPuzzleItem && Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 8, _whatIsInteractObj))
-            handleObj.GetComponent<IPuzzleItem>().Use(hit);
-        else
-            handleObj.GetComponent<IUseItem>().Use();
+        if(currentItem != null)
+        {
+            if (currentItem.isPuzzleItem)
+            {
+                if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 5, _whatIsInteractObj))
+                    handleObj.GetComponent<IPuzzleItem>().Use(hit);
+            }
+            else
+                handleObj.GetComponent<IUseItem>().Use();
 
+        }
         //if (currentItem == null) return;
 
         //currentItem.itemPrefab.GetComponent<IUseItem>().Use();
