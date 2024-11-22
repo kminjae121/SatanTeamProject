@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/01.Scene/KYH/KYH.unity
     guid: d06390d9d071efd4f9958a424645f0fa
+  - enabled: 1
+    path: Assets/01.Scene/8SH/DeathScene.unity
+    guid: 22fcfa26ed938ea4ca2a0cbcc291cd26
   m_configObjects: {}
