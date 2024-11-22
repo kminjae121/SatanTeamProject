@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine.UI;
 public class PassWorldDoor : MonoBehaviour,IUseItem
 {
-    [SerializeField] private TMP_InputField _passWorld;
+    private Player _player;
 
     [SerializeField] private GameObject _passWorldParent;
 
@@ -22,8 +22,11 @@ public class PassWorldDoor : MonoBehaviour,IUseItem
 
     private bool _isOpening;
 
+    public float LookSpeed;
+
     private void Awake()
     {
+        _player = GameObject.Find("PlayerCharacter(AudioInput)").GetComponent<Player>();
         _isOpening = false;
         _isOpen = true;
         _outLine = GetComponent<ObjectOutLine>();
@@ -46,6 +49,7 @@ public class PassWorldDoor : MonoBehaviour,IUseItem
                     _isOpen = false;
                     Cursor.lockState = CursorLockMode.None;
                     Cursor.visible = true;
+                    _player.isStop = true;
                 }
                 else if (Input.GetKeyDown(KeyCode.E) && !_isOpen)
                 {
@@ -53,6 +57,7 @@ public class PassWorldDoor : MonoBehaviour,IUseItem
                     Cursor.visible = false;
                     _passWorldParent.SetActive(false);
                     _isOpen = true;
+                    _player.isStop = false;
                 }
             }
         }
@@ -79,7 +84,7 @@ public class PassWorldDoor : MonoBehaviour,IUseItem
 
     public void WhatIsRightPassWorld()
     {
-        if(_passWorld.text == passworldList[_currentPassWorldAnswer])
+        if(_reciveText.text == passworldList[_currentPassWorldAnswer])
         {
             _passWorldParent.SetActive(false);
 
@@ -91,10 +96,11 @@ public class PassWorldDoor : MonoBehaviour,IUseItem
             Cursor.visible = false;
 
             _isOpening = true;
+            _player.isStop = false;
         }
         else
         {
-            _reciveText.text = "틀렸습니다. 다시 입력하세요";
+            _reciveText.text = "비밀번호가 틀렸습니다 ";
         }
     }
 
