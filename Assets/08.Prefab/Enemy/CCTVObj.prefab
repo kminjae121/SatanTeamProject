@@ -82,7 +82,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8616937478438035449}
   - component: {fileID: 6264147818806243438}
-  - component: {fileID: 4873523445966276378}
   - component: {fileID: 7700033621186541181}
   m_Layer: 0
   m_Name: CCTVCamera
@@ -157,14 +156,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &4873523445966276378
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2995519415326888059}
-  m_Enabled: 1
 --- !u!114 &7700033621186541181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -671,7 +662,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_Intensity: 150
-  m_Range: 150
+  m_Range: 9.7
   m_SpotAngle: 64.209755
   m_InnerSpotAngle: 64.209755
   m_CookieSize: 10

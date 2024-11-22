@@ -103,7 +103,7 @@ public class Item : MonoBehaviour
         print("´øÁü");
         GameObject gaeObject = Instantiate(currentItem.itemPlacePrefab, transform);
         gaeObject.transform.SetParent(null);
-        if(!soundMonster.isPlayerFollow)
+        if(soundMonster != null && !soundMonster.isPlayerFollow)
         {
             soundMonster.AddTransform(gaeObject.transform);
             soundCoroutine = StartCoroutine(SoundRoutine(gaeObject));

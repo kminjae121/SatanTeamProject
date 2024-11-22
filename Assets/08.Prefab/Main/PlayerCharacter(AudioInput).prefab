@@ -1335,6 +1335,7 @@ MonoBehaviour:
   testItem: {fileID: 11400000, guid: 90bd9448c60e85347b60b1af4a9bb8c2, type: 2}
   player: {fileID: 3798066537943544583}
   text: {fileID: 0}
+  soundMonster: {fileID: 0}
   throwPower: 10
 --- !u!1 &2379347956167776867
 GameObject:
@@ -2299,7 +2300,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4694442710408713348}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a3924845bb166aa49a90fc163e87b727, type: 3}
   m_Name: 
@@ -2880,7 +2881,7 @@ MonoBehaviour:
   audioClip: {fileID: 0}
   audioSource: {fileID: 9088139110364012315}
   _selectedDevice: 
-  _audioMixerMicroPhone: {fileID: -3474775705008754907, guid: 9b20a0ab8e7e0474ab00621a650b8499,
+  _audioMixerMicroPhone: {fileID: -4262025547272773035, guid: c4382341a39a10b46a6bc574f22f5974,
     type: 2}
   _audioMixerMaster: {fileID: 24300002, guid: c4382341a39a10b46a6bc574f22f5974, type: 2}
 --- !u!114 &137110154557745109
@@ -3476,7 +3477,6 @@ MonoBehaviour:
   mouseReversal: 1
   lookSpeed: 2
   lookXLimit: 45
-  _player: {fileID: 0}
 --- !u!54 &4969624571347322549
 Rigidbody:
   m_ObjectHideFlags: 0
