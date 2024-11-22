@@ -12,6 +12,8 @@ public class DeathScreen : MonoBehaviour
     [SerializeField] private AudioSource deathBGM;
     private Image background;
 
+    WaitForSecondsRealtime waitFor1Second = new WaitForSecondsRealtime(1);
+
     private Color originColor;
 
     private void Start()
@@ -32,11 +34,10 @@ public class DeathScreen : MonoBehaviour
     {
         background.color = originColor;
         background.DOColor(Color.black, 2);
-        yield return new WaitForSecondsRealtime(1);
+        yield return waitFor1Second;
         deathBGM.Play();
-        yield return new WaitForSeconds(2);
         deathText.DOFade(1, 2);
-        yield return new WaitForSeconds(1);
+        yield return waitFor1Second;
         buttonCanvas.DOFade(1, 2);
     }
 }

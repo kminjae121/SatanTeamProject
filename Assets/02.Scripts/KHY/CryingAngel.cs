@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class CryingAngel : MonoBehaviour, IDetectGaze
 {
@@ -23,6 +24,8 @@ public class CryingAngel : MonoBehaviour, IDetectGaze
     [SerializeField]
     private GameObject deathObj;
 
+    private AsyncOperation asyncOperation;
+
     private void Awake()
     {
         movePoint = GetComponent<NavMeshAgent>();
@@ -32,6 +35,8 @@ public class CryingAngel : MonoBehaviour, IDetectGaze
     public void Start()
     {
         movePoint.SetDestination(player.position);
+        asyncOperation = SceneManager.LoadSceneAsync("DeathScene");
+        asyncOperation.allowSceneActivation = false;
     }
 
     public void GazeDetection(Transform player)
@@ -66,9 +71,16 @@ public class CryingAngel : MonoBehaviour, IDetectGaze
             if (colliders.tag == "Player")
             {
                 deathObj.SetActive(true);
-                Destroy(gameObject);
+                StartCoroutine(DeathScene());
+                //Destroy(gameObject);
             }
         }
+    }
+
+    private IEnumerator DeathScene()
+    {
+        yield return new WaitForSecondsRealtime(1.4f);
+        asyncOperation.allowSceneActivation = true;
     }
 
     private void OnDrawGizmos()
