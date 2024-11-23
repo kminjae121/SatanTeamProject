@@ -30,7 +30,6 @@ public class OpenTheDoor : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.E) && _isOpen)
                 {
                     gameObject.transform.parent.TryGetComponent(out Animator animator);
-
                     animator.SetBool("Close", true);
 
                     StartCoroutine(Wait2());
@@ -38,7 +37,6 @@ public class OpenTheDoor : MonoBehaviour
                 else if (Input.GetKeyDown(KeyCode.E) && !_isOpen)
                 {
                     gameObject.transform.parent.TryGetComponent(out Animator animator);
-
                     animator.SetBool("Close", false);
 
                     StartCoroutine(Wait());
@@ -51,6 +49,7 @@ public class OpenTheDoor : MonoBehaviour
     {
         gameObject.transform.parent.TryGetComponent(out Animator animator);
         print(animator);
+        AudioManager.Instance.PlaySound2D("OpenDoor", 0, false, SoundType.VfX);
         animator.SetBool("Open", true);
 
         _isOpening = true;

@@ -69,6 +69,8 @@ public class PassWorldDoor : MonoBehaviour,IUseItem
 
                 animator.SetBool("Close", true);
 
+                
+
                 StartCoroutine(Wait2());
             }
             else if (Input.GetKeyDown(KeyCode.E) && !_isOpen)
@@ -76,6 +78,8 @@ public class PassWorldDoor : MonoBehaviour,IUseItem
                 gameObject.transform.parent.TryGetComponent(out Animator animator);
 
                 animator.SetBool("Close", false);
+
+               
 
                 StartCoroutine(Wait());
             }
@@ -86,10 +90,11 @@ public class PassWorldDoor : MonoBehaviour,IUseItem
     {
         if(_reciveText.text == passworldList[_currentPassWorldAnswer])
         {
+            AudioManager.Instance.PlaySound3D("OpenDoor", _player.transform, 0, false, SoundType.VfX, true, 2, 2);
             _passWorldParent.SetActive(false);
 
             gameObject.transform.parent.TryGetComponent(out Animator animator);
-
+          
             animator.SetBool("Open", true);
 
             Cursor.lockState = CursorLockMode.Locked;
@@ -106,6 +111,7 @@ public class PassWorldDoor : MonoBehaviour,IUseItem
 
     IEnumerator Wait()
     {
+        
         yield return new WaitForSecondsRealtime(1.3f);
 
         _isOpen = true;
@@ -113,8 +119,9 @@ public class PassWorldDoor : MonoBehaviour,IUseItem
 
     IEnumerator Wait2()
     {
+        yield return new WaitForSeconds(0.3f);
+     
         yield return new WaitForSecondsRealtime(1.3f);
-
         _isOpen = false;
     }
 }

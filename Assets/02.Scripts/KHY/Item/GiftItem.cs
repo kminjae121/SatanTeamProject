@@ -37,6 +37,7 @@ public class GiftItem : MonoBehaviour, IUseItem
 
     private IEnumerator GiftParticleRoutine(float destroyTime)
     {
+        AudioManager.Instance.PlaySound2D("OpenItem", 0, false, SoundType.VfX);
         GameObject game = Instantiate(particle,giftOpenPos).gameObject;
         yield return new WaitForSeconds(destroyTime);
         Destroy(game);

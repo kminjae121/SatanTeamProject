@@ -44,6 +44,7 @@ public class CryingAngel : MonoBehaviour, IDetectGaze
     {
         movePoint.isStopped = true;
         isStop = true;
+        AudioManager.Instance.StopLoopSound("ComeOn");
     }
 
     private void Update()
@@ -61,6 +62,7 @@ public class CryingAngel : MonoBehaviour, IDetectGaze
 
     public void OutOfSight()
     {
+        AudioManager.Instance.PlaySound2D("ComeOn", 0, true, SoundType.VfX);
         movePoint.SetDestination(player.position);
         movePoint.isStopped = false;
         isStop = false;
@@ -72,6 +74,7 @@ public class CryingAngel : MonoBehaviour, IDetectGaze
             if (colliders.tag == "Player")
             {
                 deathObj.SetActive(true);
+                AudioManager.Instance.PlaySound2D("Scary", 0, false, SoundType.VfX);
                 StartCoroutine(DeathScene());
                 //Destroy(gameObject);
             }
