@@ -101,6 +101,7 @@ public class Item : MonoBehaviour
     {
         if (currentItem == null) return;
         print("´øÁü");
+        AudioManager.Instance.PlaySound2D("GetItem",0,false,SoundType.VfX);
         GameObject gaeObject = Instantiate(currentItem.itemPlacePrefab, transform);
         gaeObject.transform.SetParent(null);
         if(soundMonster != null && !soundMonster.isPlayerFollow)
