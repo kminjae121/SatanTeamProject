@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6123851612144023413}
   - component: {fileID: 1351181554133906595}
   - component: {fileID: 5127357621896030360}
-  m_Layer: 12
+  m_Layer: 14
   m_Name: PassWorldPage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 5435232302815109769}
   - component: {fileID: 5602565732872557495}
   - component: {fileID: 1691934070931283166}
-  m_Layer: 12
+  m_Layer: 14
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -190,11 +190,10 @@ GameObject:
   - component: {fileID: 5850490186427113255}
   - component: {fileID: 828522598404353956}
   - component: {fileID: 522468387188348242}
-  - component: {fileID: 8508060404119323526}
   - component: {fileID: 5186382187717118497}
   - component: {fileID: 1090534176545111073}
   - component: {fileID: -8621343040644020012}
-  m_Layer: 12
+  m_Layer: 14
   m_Name: NormalDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -211,7 +210,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: 6.99381, y: 1.6214613, z: -1.0179791}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalScale: {x: 102, y: 100.000046, z: 100.220055}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8550166510279198489}
@@ -238,7 +237,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
+  m_LightProbeUsage: 2
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
@@ -268,27 +267,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!95 &8508060404119323526
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2971580730888225312}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 15284f690468c7148806fc8c8c07eb3b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &5186382187717118497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,7 +279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd9c25340d1f0934292847e2106205fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <_isOutLine>k__BackingField: 0
+  <_isOutLine>k__BackingField: 1
 --- !u!64 &1090534176545111073
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -346,7 +324,7 @@ GameObject:
   m_Component:
   - component: {fileID: 160147192135993164}
   - component: {fileID: 8790009162584534157}
-  m_Layer: 12
+  m_Layer: 14
   m_Name: Text Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -400,7 +378,7 @@ GameObject:
   - component: {fileID: 4111516561069511804}
   - component: {fileID: 2857759019458069034}
   - component: {fileID: 2985313233320483636}
-  m_Layer: 12
+  m_Layer: 14
   m_Name: Placeholder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -555,7 +533,7 @@ GameObject:
   - component: {fileID: 1047798850869246753}
   - component: {fileID: 5224518530676903}
   - component: {fileID: 6433543546811049855}
-  m_Layer: 12
+  m_Layer: 14
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -631,7 +609,7 @@ GameObject:
   - component: {fileID: 2144008516370992874}
   - component: {fileID: 6749174888098994227}
   - component: {fileID: 4690266781828065759}
-  m_Layer: 12
+  m_Layer: 14
   m_Name: PassWorld
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -817,7 +795,7 @@ GameObject:
   - component: {fileID: 7806541717502378065}
   - component: {fileID: 7975863610131201231}
   - component: {fileID: 6169475232509877795}
-  m_Layer: 12
+  m_Layer: 14
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}

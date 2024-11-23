@@ -102,12 +102,13 @@ public class Item : MonoBehaviour
         if (currentItem == null) return;
         print("´øÁü");
         GameObject gaeObject = Instantiate(currentItem.itemPlacePrefab, transform);
+        AudioManager.Instance.PlaySound2D("GetItem", 0, false, SoundType.VfX);
         gaeObject.transform.SetParent(null);
-        if(!soundMonster.isPlayerFollow)
+       /* if(!soundMonster.isPlayerFollow)
         {
             soundMonster.AddTransform(gaeObject.transform);
             soundCoroutine = StartCoroutine(SoundRoutine(gaeObject));
-        }
+        }*/
         gaeObject?.AddComponent<Rigidbody>();
         gaeObject.GetComponent<Rigidbody>().AddForce(transform.forward * throwPower,ForceMode.Impulse);
         Destroy(handleObj);

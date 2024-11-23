@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class BrokenGlass : MonoBehaviour
 {
@@ -14,6 +15,12 @@ public class BrokenGlass : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(3f);
 
-        gameObject.SetActive(false);
+        gameObject.TryGetComponent(out MeshRenderer mesh);
+
+        mesh.material.DOFade(0, 3f);
+
+        yield return new WaitForSeconds(5f);
+
+        Destroy(gameObject);
     }
 }

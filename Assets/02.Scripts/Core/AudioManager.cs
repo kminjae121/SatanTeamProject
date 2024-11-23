@@ -19,6 +19,7 @@ public class AudioManager : MonoBehaviour
     /// 오디오 믹서, 오디오의 타입별로 사운드를 조절할 수 있도록 한다.
     /// </summary>
     [SerializeField] private AudioMixer mAudioMixer;
+    [SerializeField] private AudioMixerGroup audioGroup;
 
     //옵션에서 설정된 현재 배경음악과 효과 사운드의 불륨이다. 효과는 BGM을 제외한 모든 소리의 불륨을 담당한다.
     private float mCurrentBGMVolume, mCurrentEffectVolume;
@@ -112,7 +113,7 @@ public class AudioManager : MonoBehaviour
         if (isLoop) { AddToList(soundPlayer); }
 
         soundPlayer.InitSound2D(GetClip(clipName));
-        soundPlayer.Play(mAudioMixer.FindMatchingGroups(type.ToString())[0], delay, isLoop);
+        soundPlayer.Play(audioGroup,delay, isLoop);
     }
 
     /// <summary>
@@ -136,7 +137,8 @@ public class AudioManager : MonoBehaviour
         if (isLoop) { AddToList(soundPlayer); }
 
         soundPlayer.InitSound3D(GetClip(clipName), minDistance, maxDistance);
-        soundPlayer.Play(mAudioMixer.FindMatchingGroups(type.ToString())[0], delay, isLoop);
+        
+        soundPlayer.Play(audioGroup, delay, isLoop);
     }
 
     //씬이 로드될 때 옵션 매니저에의해 모든 사운드 불륨을 저장된 옵션의 크기로 초기화시키는 함수.
