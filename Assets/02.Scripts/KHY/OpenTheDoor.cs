@@ -1,12 +1,13 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class OpenTheDoor : MonoBehaviour
 {
     private bool _isOpen;
 
     private bool _isOpening;
-
+    public UnityEvent openEvent;
 
     private ObjectOutLine _outLine;
 
@@ -52,7 +53,7 @@ public class OpenTheDoor : MonoBehaviour
         gameObject.transform.parent.TryGetComponent(out Animator animator);
         print(animator);
         animator.SetBool("Open", true);
-
+        openEvent?.Invoke();
         _isOpening = true;
     }
 
