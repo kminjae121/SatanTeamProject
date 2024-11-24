@@ -25,7 +25,7 @@ public class PassWorldDoor : MonoBehaviour, IUseItem
 
     private bool _isStop;
 
-    private string path;
+    private string path = "Collect.txt";
 
     FileStream fs;
 
@@ -134,6 +134,7 @@ public class PassWorldDoor : MonoBehaviour, IUseItem
 
             _isOpening = true;
             _player.isStop = false;
+            _isOpen = true;
         }
         else
         {
@@ -159,5 +160,10 @@ public class PassWorldDoor : MonoBehaviour, IUseItem
         yield return new WaitForSecondsRealtime(1.3f);
         _isStop = false;
         _isOpen = false;
+    }
+
+    private void OnDisable()
+    {
+        sr = null;
     }
 }
