@@ -49,9 +49,12 @@ public class Player : MonoBehaviour
         stateMachine.InitIntialize(PlayerState.Idle, this);
 
         Interaction = GetComponent<CheckInteraction>();
+    }
 
+    private void OnEnable()
+    {
         if (Interaction != null)
-        _inputReader.OnInteractionHandle += Interaction.OnInteraction;
+            _inputReader.OnInteractionHandle += Interaction.OnInteraction;
 
         _inputReader.OnRunHandle += PressRun;
     }
@@ -78,8 +81,11 @@ public class Player : MonoBehaviour
 
     public void SetMove(Vector3 input)
     {
-        _playerStat.moveDir.x = input.x;
-        _playerStat.moveDir.z = input.z;
+        if(!isStop)
+        {
+            _playerStat.moveDir.x = input.x;
+            _playerStat.moveDir.z = input.z;
+        }
     }
 
     public void PressRun()
@@ -91,6 +97,9 @@ public class Player : MonoBehaviour
 
     private void OnDisable()
     {
-        _inputReader.OnInteractionHandle -= Interaction.OnInteraction;
+        if (Interaction != null)
+            _inputReader.OnInteractionHandle -= Interaction.OnInteraction;
+
+        _inputReader.OnRunHandle -= PressRun;
     }
 }

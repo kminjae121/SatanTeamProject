@@ -54,7 +54,7 @@ public class CheckInteraction : MonoBehaviour
             print("Å¬¸¯ µé¾î¿È");
             _curInteractable.Interact();
             //_curGameobject = null;
-            //_curInteractable = null;
+            _curInteractable = null;
         }
     }
 

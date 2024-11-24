@@ -5,8 +5,8 @@ using UnityEngine;
 
 public enum Tape
 {
-    first,
-    second
+    runaway,
+    news
 }
 
 public class TapeItem : MonoBehaviour, IPuzzleItem

@@ -42,16 +42,12 @@ public class Item : MonoBehaviour
     private float throwPower;
     private LayerMask _whatIsInteractionObj;
 
-    private void Awake()
+    private void OnEnable()
     {
         player._inputReader.OnThrow += ThrowItem;
         player.OnClick += UseItem;
     }
 
-    private void Start()
-    {
-        ChangeItem();
-    }
 
     private void Update()
     {
@@ -81,12 +77,16 @@ public class Item : MonoBehaviour
 
     private void UseItem()
     {
+        print("마우스까진 됨");
         if(currentItem != null)
         {
             if (currentItem.isPuzzleItem)
             {
                 if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 5, _whatIsInteractObj))
+                {
                     handleObj.GetComponent<IPuzzleItem>().Use(hit);
+                    print("아이템 사용");
+                }
             }
             else
                 handleObj.GetComponent<IUseItem>().Use();

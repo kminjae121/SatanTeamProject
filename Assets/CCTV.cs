@@ -29,6 +29,12 @@ public class CCTV : MonoBehaviour
 
     RaycastHit hit;
 
+    public bool isTutorial;
+
+    [SerializeField]
+    private GameObject warningLight;
+
+    private Coroutine coroutine;
 
     private void Awake()
     {
@@ -63,7 +69,8 @@ public class CCTV : MonoBehaviour
             if (degree <= angleRange / 2f)
             {
                 print("시야 들어옴");
-                Dangerous();
+                if(!isTutorial)
+                    Dangerous();
                 isCollision = true;
                 AudioManager.Instance.PlaySound2D("Alarm", 0, true, SoundType.VfX);
             }
@@ -79,6 +86,22 @@ public class CCTV : MonoBehaviour
     private void Dangerous()
     {
         audioInput._BigSound?.Invoke("PlayerCharacter(AudioInput)");
+        Warning();
+    }
+
+    private void Warning()
+    {
+        if(coroutine == null)
+            coroutine = StartCoroutine(WarningRoutine());
+    }
+
+    private IEnumerator WarningRoutine()
+    {
+        warningLight.SetActive(false);
+        yield return new WaitForSeconds(1f);
+        warningLight.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        coroutine = null;
     }
 
     // 유니티 에디터에 부채꼴을 그려줄 메소드

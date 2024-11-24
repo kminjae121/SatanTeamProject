@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class SoundMonster : MonoBehaviour
 {
@@ -31,8 +32,15 @@ public class SoundMonster : MonoBehaviour
 
     private FollowRadius followRadiusCollider;
 
+    [SerializeField]
+    private GameObject soundMonsterDeathObj;
+
+    private AsyncOperation asyncOperation;
+
+
     private void Awake()
     {
+
         foreach(Transform transform in soundObj)
         {
             soundHere.Add(transform.name, transform);
@@ -41,6 +49,12 @@ public class SoundMonster : MonoBehaviour
 
         audioInput._BigSound += TargetChange;
         followRadiusCollider.OnLessPlayer += LessPlayer;
+    }
+
+    private void Start()
+    {
+        asyncOperation = SceneManager.LoadSceneAsync("DeathScene");
+        asyncOperation.allowSceneActivation = false;
     }
 
     public void AddTransform(Transform transform)
@@ -102,7 +116,8 @@ public class SoundMonster : MonoBehaviour
         {
             if (colliders.name == "PlayerCharacter(AudioInput)")
             {
-                print("µÚ@Áü");
+                soundMonsterDeathObj.SetActive(true);
+                StartCoroutine(DeathScene());
             }
         }
 
@@ -116,5 +131,11 @@ public class SoundMonster : MonoBehaviour
         {
             MovingTarget();
         }
+    }
+
+    private IEnumerator DeathScene()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        asyncOperation.allowSceneActivation = true;
     }
 }
