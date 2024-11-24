@@ -1,3 +1,5 @@
+using System;
+using System.IO;
 using TMPro;
 using UnityEngine;
 
@@ -8,10 +10,27 @@ public class EnterKeyPad : MonoBehaviour
 
     private PassWorldDoor _openDoor;
 
+    private string path = "game.txt";
+
+    private string _firstString;
+    private FileStream fs;
+    private StreamReader sr;
+
     private void Awake()
     {
+        File.WriteAllText(path, "1");
+
+        fs = new FileStream(path, FileMode.Open);
+
+        sr = new StreamReader(fs);
+
+        _firstString = sr.ReadLine();
+
+        sr.Close();
+
         _openDoor = GetComponent<PassWorldDoor>();
     }
+ 
     public void EnterKey1()
     {
         if (_isEnter)
@@ -123,5 +142,6 @@ public class EnterKeyPad : MonoBehaviour
         }
         else
             _isEnter = true;
+        
     }
 }

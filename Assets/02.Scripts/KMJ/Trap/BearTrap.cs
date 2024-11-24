@@ -25,13 +25,26 @@ public class BearTrap : MonoBehaviour
         _animator = GetComponent<Animator>();
         _isTrap = true;
         _playerCompo = GameObject.Find("PlayerCharacter(AudioInput)").GetComponent<Player>();
+
+        try
+        {
+            _isTrap = true;
+        }
+
+        catch
+        {
+            Debug.Log("¥›«Ù¿÷¿Ω");
+        }
     }
     private void Update()
     {
         OpenTrap();
 
+        
+
         if (_isOpen)
         {
+            AudioManager.Instance.PlaySound3D("ReTrap", _playerCompo.transform, 0, false, SoundType.VfX, true, 0, 3);
             _playerCompo._playerCam.enabled = true;
             _playerCompo._playerStat.moveSpeed = 3;
             _playerCompo._playerStat.jumpSpeed = 3;
@@ -63,6 +76,7 @@ public class BearTrap : MonoBehaviour
     {
         if (_isTrap && other.gameObject.CompareTag("Player"))
         {
+            AudioManager.Instance.PlaySound3D("TrapOn", _playerCompo.transform, 0, false, SoundType.VfX, true, 0, 3);
             _playerCompo._playerStat.moveSpeed = 0;
             _playerCompo._playerStat.jumpSpeed = 0;
             _isTrap = false;
