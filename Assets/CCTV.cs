@@ -72,9 +72,11 @@ public class CCTV : MonoBehaviour
                 if(!isTutorial)
                     Dangerous();
                 isCollision = true;
+                AudioManager.Instance.PlaySound2D("Alarm", 0, true, SoundType.VfX);
             }
             else
             {
+                AudioManager.Instance.StopLoopSound("Alarm");
                 print("시야 나감");
                 isCollision = false;
             }

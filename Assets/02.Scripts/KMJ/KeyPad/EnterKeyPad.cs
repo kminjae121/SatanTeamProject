@@ -1,3 +1,5 @@
+using System;
+using System.IO;
 using TMPro;
 using UnityEngine;
 
@@ -8,77 +10,127 @@ public class EnterKeyPad : MonoBehaviour
 
     private PassWorldDoor _openDoor;
 
+    private string path = "game.txt";
+
+    private string _firstString;
+    private FileStream fs;
+    private StreamReader sr;
+
     private void Awake()
     {
+        File.WriteAllText(path, "1");
+
+        fs = new FileStream(path, FileMode.Open);
+
+        sr = new StreamReader(fs);
+
+        _firstString = sr.ReadLine();
+
+        sr.Close();
+
         _openDoor = GetComponent<PassWorldDoor>();
     }
+ 
     public void EnterKey1()
     {
         if (_isEnter)
+        {
+            AudioManager.Instance.PlaySound2D("PressButton", 0, false, SoundType.VfX);
             _text.text = _text.text + "1";
+        }
+
     }
 
     public void EnterKey2()
     {
         if (_isEnter)
+        {
+            AudioManager.Instance.PlaySound2D("PressButton", 0, false, SoundType.VfX);
             _text.text = _text.text + "2";
+        }
     }
 
     public void EnterKey3()
     {
         if (_isEnter)
+        {
+            AudioManager.Instance.PlaySound2D("PressButton", 0, false, SoundType.VfX);
             _text.text = _text.text + "3";
+        }
     }
 
     public void EnterKey4()
     {
         if (_isEnter)
+        {
+            AudioManager.Instance.PlaySound2D("PressButton", 0, false, SoundType.VfX);
             _text.text = _text.text + "4";
+        }
     }
 
     public void EnterKey5()
     {
         if (_isEnter)
+        {
+            AudioManager.Instance.PlaySound2D("PressButton", 0, false, SoundType.VfX);
             _text.text = _text.text + "5";
+        }
     }
 
     public void EnterKey6()
     {
         if (_isEnter)
+        {
+            AudioManager.Instance.PlaySound2D("PressButton", 0, false, SoundType.VfX);
             _text.text = _text.text + "6";
+        }
     }
 
     public void EnterKey7()
     {
         if (_isEnter)
+        {
+            AudioManager.Instance.PlaySound2D("PressButton", 0, false, SoundType.VfX);
             _text.text = _text.text + "7";
+        }
     }
 
     public void EnterKey8()
     {
         if (_isEnter)
+        {
+            AudioManager.Instance.PlaySound2D("PressButton", 0, false, SoundType.VfX);
             _text.text = _text.text + "8";
+        }
     }
 
     public void EnterKey9()
     {
         if (_isEnter)
+        {
+            AudioManager.Instance.PlaySound2D("PressButton", 0, false, SoundType.VfX);
             _text.text = _text.text + "9";
+        }
     }
 
     public void EnterKey0()
     {
         if (_isEnter)
+        {
+            AudioManager.Instance.PlaySound2D("PressButton", 0, false, SoundType.VfX);
             _text.text = _text.text + "0";
+        }
     }
 
     public void EnterKeyE()
     {
+        AudioManager.Instance.PlaySound2D("PressButton", 0, false, SoundType.VfX);
         _openDoor.WhatIsRightPassWorld();
     }
 
     public void EnterKeyCancel()
     {
+        AudioManager.Instance.PlaySound2D("PressButton", 0, false, SoundType.VfX);
         _text.text = "";
     }
 
@@ -90,5 +142,6 @@ public class EnterKeyPad : MonoBehaviour
         }
         else
             _isEnter = true;
+        
     }
 }

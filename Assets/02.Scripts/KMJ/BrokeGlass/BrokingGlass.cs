@@ -7,10 +7,18 @@ public class BrokingGalss : MonoBehaviour
     [SerializeField] private Transform _brokeObject;
     public float magnitudeCol, radius, power, upward;
 
+    private GameObject Player;
+
+    private void Awake()
+    {
+        Player = GameObject.Find("PlayerCharacter(AudioInput)");
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.relativeVelocity.magnitude >= magnitudeCol)
         {
+            AudioManager.Instance.PlaySound3D("BrokeGlass", Player.transform, 0, false, SoundType.VfX, true, 0, 5);
             gameObject.SetActive(false);
             Instantiate(_brokeObject, transform.position,transform.rotation);
             _brokeObject.localScale = transform.localScale;

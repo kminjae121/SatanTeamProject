@@ -9,7 +9,6 @@ TagManager:
   - LockKey3
   - LockKey4
   - LockKey5
-  - Slot
   layers:
   - Default
   - TransparentFX
@@ -26,7 +25,7 @@ TagManager:
   - Object
   - Obstruction
   - InteractionObj
-  - BugFixCollider
+  - Glass
   - 
   - 
   - 

@@ -1,10 +1,9 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using System.IO;
 using TMPro;
-using UnityEngine.UI;
-public class PassWorldDoor : MonoBehaviour,IUseItem
+using UnityEngine;
+public class PassWorldDoor : MonoBehaviour, IUseItem
 {
     private Player _player;
 
@@ -24,6 +23,16 @@ public class PassWorldDoor : MonoBehaviour,IUseItem
 
     public float LookSpeed;
 
+    private bool _isStop;
+
+    private string path;
+
+    FileStream fs;
+
+    StreamReader sr;
+
+    private string _collectString;
+
     private void Awake()
     {
         _player = GameObject.Find("PlayerCharacter(AudioInput)").GetComponent<Player>();
@@ -31,11 +40,33 @@ public class PassWorldDoor : MonoBehaviour,IUseItem
         _isOpen = true;
         _outLine = GetComponent<ObjectOutLine>();
         _passWorldParent.SetActive(false);
-    }        
+
+        File.WriteAllText(path, passworldList[0]);
+
+        fs = new FileStream(path, FileMode.Open);
+
+        sr = new StreamReader(fs);
+
+        _collectString = sr.ReadLine();
+
+        sr.Close();
+
+        try
+        {
+            _isOpen = true;
+        }
+        catch
+        {
+            Debug.Log("잠겨있음");
+        }
+    }
+
+
 
     private void Update()
     {
         Use();
+
     }
     public void Use()
     {
@@ -51,7 +82,8 @@ public class PassWorldDoor : MonoBehaviour,IUseItem
                     Cursor.visible = true;
                     _player.isStop = true;
                 }
-                else if (Input.GetKeyDown(KeyCode.E) && !_isOpen)
+
+               else if (Input.GetKeyDown(KeyCode.E) && !_isOpen)
                 {
                     Cursor.lockState = CursorLockMode.Locked;
                     Cursor.visible = false;
@@ -63,19 +95,23 @@ public class PassWorldDoor : MonoBehaviour,IUseItem
         }
         else if (_outLine._isOutLine)
         {
-            if (Input.GetKeyDown(KeyCode.E) && _isOpen)
+            if (Input.GetKeyDown(KeyCode.E) && _isOpen && !_isStop)
             {
                 gameObject.transform.parent.TryGetComponent(out Animator animator);
 
                 animator.SetBool("Close", true);
 
+                _isStop = true;
+
                 StartCoroutine(Wait2());
             }
-            else if (Input.GetKeyDown(KeyCode.E) && !_isOpen)
+            else if (Input.GetKeyDown(KeyCode.E) && !_isOpen && !_isStop)
             {
                 gameObject.transform.parent.TryGetComponent(out Animator animator);
 
                 animator.SetBool("Close", false);
+
+                _isStop = true;
 
                 StartCoroutine(Wait());
             }
@@ -84,8 +120,9 @@ public class PassWorldDoor : MonoBehaviour,IUseItem
 
     public void WhatIsRightPassWorld()
     {
-        if(_reciveText.text == passworldList[_currentPassWorldAnswer])
+        if (_reciveText.text == _collectString)
         {
+            AudioManager.Instance.PlaySound3D("OpenDoor", _player.transform, 0, false, SoundType.VfX, true, 2, 2);
             _passWorldParent.SetActive(false);
 
             gameObject.transform.parent.TryGetComponent(out Animator animator);
@@ -106,15 +143,21 @@ public class PassWorldDoor : MonoBehaviour,IUseItem
 
     IEnumerator Wait()
     {
-        yield return new WaitForSecondsRealtime(1.3f);
 
+        AudioManager.Instance.PlaySound2D("OpenDoor", 0, false, SoundType.VfX);
+        yield return new WaitForSecondsRealtime(1.3f);
+        _isStop = false;
         _isOpen = true;
     }
 
     IEnumerator Wait2()
     {
-        yield return new WaitForSecondsRealtime(1.3f);
+        yield return new WaitForSeconds(0.31f);
 
+        AudioManager.Instance.PlaySound2D("CloseDoor", 0, false, SoundType.VfX);
+
+        yield return new WaitForSecondsRealtime(1.3f);
+        _isStop = false;
         _isOpen = false;
     }
 }

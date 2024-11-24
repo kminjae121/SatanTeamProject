@@ -20,9 +20,9 @@ public class TemporarySoundPlayer : MonoBehaviour
         mAudioSource = GetComponent<AudioSource>();
     }
 
-    public void Play(AudioMixerGroup audioMixer, float delay, bool isLoop)
+    public void Play(AudioMixerGroup audiomixer,float delay, bool isLoop)
     {
-        mAudioSource.outputAudioMixerGroup = audioMixer;
+        mAudioSource.outputAudioMixerGroup = audiomixer;
         mAudioSource.loop = isLoop;
         mAudioSource.Play();
 
