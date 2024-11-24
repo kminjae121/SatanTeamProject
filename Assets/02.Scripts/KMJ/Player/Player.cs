@@ -57,6 +57,9 @@ public class Player : MonoBehaviour
             _inputReader.OnInteractionHandle += Interaction.OnInteraction;
 
         _inputReader.OnRunHandle += PressRun;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     private void Update()
