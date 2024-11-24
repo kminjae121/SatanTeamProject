@@ -15,7 +15,7 @@ namespace Michsky.UI.Dark
         public SliderManager musicSlider;
         public SliderManager sfxSlider;
 
-        // Resolution
+        // ResolutionW
         public TMP_Dropdown defaultDropdown;
         public DropdownManager customDropdown;
         public DynamicRes clickEvent;

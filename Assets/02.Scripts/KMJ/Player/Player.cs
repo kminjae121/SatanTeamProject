@@ -50,6 +50,9 @@ public class Player : MonoBehaviour
 
         Interaction = GetComponent<CheckInteraction>();
 
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
         if (Interaction != null)
         _inputReader.OnInteractionHandle += Interaction.OnInteraction;
 
