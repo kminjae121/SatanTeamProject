@@ -32,15 +32,15 @@ public class SoundMonster : MonoBehaviour
 
     private FollowRadius followRadiusCollider;
 
-    [SerializeField]
-    private GameObject soundMonsterDeathObj;
+
 
     private AsyncOperation asyncOperation;
 
 
     private void Awake()
     {
-
+        audioInput = FindAnyObjectByType<AudioInput>();
+        soundObj[0] = FindAnyObjectByType<Player>().transform;
         foreach(Transform transform in soundObj)
         {
             soundHere.Add(transform.name, transform);
@@ -49,6 +49,7 @@ public class SoundMonster : MonoBehaviour
 
         audioInput._BigSound += TargetChange;
         followRadiusCollider.OnLessPlayer += LessPlayer;
+        FindAnyObjectByType<Item>().soundMonster = this;
     }
 
     private void Start()
@@ -59,7 +60,15 @@ public class SoundMonster : MonoBehaviour
 
     public void AddTransform(Transform transform)
     {
+        try
+        {
         soundHere.Add(transform.name, transform);
+        }
+        catch(Exception e)
+        {
+            soundHere.Remove(transform.name);
+            soundHere.Add(transform.name, transform);
+        }
     }
 
     private void LessPlayer()
@@ -84,7 +93,6 @@ public class SoundMonster : MonoBehaviour
 
     private void MovingTarget()
     {
-        print(targetPoint.name);
         Collider[] collider = Physics.OverlapSphere(transform.position, foundRadius);
 
         animator.SetFloat("Velocity", 0.5f);
@@ -116,7 +124,7 @@ public class SoundMonster : MonoBehaviour
         {
             if (colliders.name == "PlayerCharacter(AudioInput)")
             {
-                soundMonsterDeathObj.SetActive(true);
+                audioInput.GetComponentInParent<Player>().soundMonsterDeathObj.SetActive(true);
                 StartCoroutine(DeathScene());
             }
         }

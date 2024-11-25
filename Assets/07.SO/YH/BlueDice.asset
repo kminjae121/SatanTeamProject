@@ -19,3 +19,4 @@ MonoBehaviour:
     type: 3}
   itemName: "\uD30C\uB791 \uC8FC\uC0AC\uC704"
   isPuzzleItem: 0
+  isProp: 1

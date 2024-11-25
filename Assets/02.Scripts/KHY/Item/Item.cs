@@ -30,8 +30,8 @@ public class Item : MonoBehaviour
     [SerializeField]
     private IUseItem itemTest;
 
-    [SerializeField]
-    private SoundMonster soundMonster;
+    [HideInInspector]
+    public SoundMonster soundMonster;
 
     private GameObject handleObj;
 
@@ -88,9 +88,8 @@ public class Item : MonoBehaviour
                     print("아이템 사용");
                 }
             }
-            else
+            else if(!currentItem.isProp)
                 handleObj.GetComponent<IUseItem>().Use();
-
         }
         //if (currentItem == null) return;
 

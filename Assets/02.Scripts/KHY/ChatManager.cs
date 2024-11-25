@@ -54,7 +54,6 @@ public class ChatManager : MonoBehaviour
         }
         finally
         {
-            print(chatList[currentTextIdx]);
         }
         coroutine = StartCoroutine(TextRoutine(frontTime));
     }

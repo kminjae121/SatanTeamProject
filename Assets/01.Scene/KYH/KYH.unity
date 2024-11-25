@@ -1376,6 +1376,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8970029861343798031}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1788232477 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7377992989272210612, guid: 1cd9596cfdee7f9489ef698e926fa9e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 3210374176524453749}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3924845bb166aa49a90fc163e87b727, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1898838488
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1684,6 +1696,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: monster_bear_level1
       objectReference: {fileID: 0}
+    - target: {fileID: 5995396879113138204, guid: f03ed090e6789e44b95140798e9b7304,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6143248516733558188, guid: f03ed090e6789e44b95140798e9b7304,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1820,6 +1837,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1056220584907709689, guid: 1cd9596cfdee7f9489ef698e926fa9e9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1353717003447780834, guid: 1cd9596cfdee7f9489ef698e926fa9e9,
         type: 3}
       propertyPath: text
@@ -1833,7 +1855,7 @@ PrefabInstance:
     - target: {fileID: 2486286258247158405, guid: 1cd9596cfdee7f9489ef698e926fa9e9,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5912809639578896465, guid: 1cd9596cfdee7f9489ef698e926fa9e9,
         type: 3}
@@ -2003,6 +2025,11 @@ PrefabInstance:
       propertyPath: deathObj
       value: 
       objectReference: {fileID: 8254387020488521745}
+    - target: {fileID: 1060426339314550691, guid: 6918c812cfed2a44e8202cbf6445f272,
+        type: 3}
+      propertyPath: circularSector
+      value: 
+      objectReference: {fileID: 1788232477}
     - target: {fileID: 2624463646281252510, guid: 6918c812cfed2a44e8202cbf6445f272,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2061,7 +2088,7 @@ PrefabInstance:
     - target: {fileID: 6242024675727851824, guid: 6918c812cfed2a44e8202cbf6445f272,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

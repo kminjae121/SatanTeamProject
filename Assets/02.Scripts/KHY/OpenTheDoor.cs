@@ -67,6 +67,15 @@ public class OpenTheDoor : MonoBehaviour
         StartCoroutine(Wait3());
     }
 
+    public void Close()
+    {
+        gameObject.transform.parent.TryGetComponent(out Animator animator);
+        animator.SetBool("Close", true);
+        _isOpening = false;
+        _outLine.enabled = false;
+        _isStop = true;
+    }
+
     IEnumerator Wait()
     {
         AudioManager.Instance.PlaySound2D("OpenDoor", 0, false, SoundType.VfX);
