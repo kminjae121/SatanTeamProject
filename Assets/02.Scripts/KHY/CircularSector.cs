@@ -28,55 +28,58 @@ public class CircularSector : MonoBehaviour
 
     void Update()
     {
-        for(int i =0; i <target.Length; i++)
+        if(target.Length > 0)
         {
-            interV = target[i].position - transform.position;
-
-            // target과 나 사이의 거리가 radius 보다 작다면
-            if (interV.magnitude <= radius)
+            for (int i = 0; i < target.Length; i++)
             {
-                // '타겟-나 벡터'와 '내 정면 벡터'를 내적
-                float dot = Vector3.Dot(interV.normalized, transform.forward);
-                // 두 벡터 모두 단위 벡터이므로 내적 결과에 cos의 역을 취해서 theta를 구함
-                float theta = Mathf.Acos(dot);
-                // angleRange와 비교하기 위해 degree로 변환
-                float degree = Mathf.Rad2Deg * theta;
-                
+                interV = target[i].position - transform.position;
 
-                // 시야각 판별
-                if (degree <= angleRange / 2f)
+                // target과 나 사이의 거리가 radius 보다 작다면
+                if (interV.magnitude <= radius)
                 {
-                    print("시야 들어옴");
+                    // '타겟-나 벡터'와 '내 정면 벡터'를 내적
+                    float dot = Vector3.Dot(interV.normalized, transform.forward);
+                    // 두 벡터 모두 단위 벡터이므로 내적 결과에 cos의 역을 취해서 theta를 구함
+                    float theta = Mathf.Acos(dot);
+                    // angleRange와 비교하기 위해 degree로 변환
+                    float degree = Mathf.Rad2Deg * theta;
 
 
-                    if (Physics.Raycast(transform.position, interV.normalized, out hit, Vector3.Distance(transform.position, target[i].position), _whatIsObstacle))
+                    // 시야각 판별
+                    if (degree <= angleRange / 2f)
                     {
+                        print("시야 들어옴");
 
-                        print("장애물 감지됨");
+
+                        if (Physics.Raycast(transform.position, interV.normalized, out hit, Vector3.Distance(transform.position, target[i].position), _whatIsObstacle))
+                        {
+
+                            print("장애물 감지됨");
+                            Dangerous(dot);
+                            isCollision = false;
+                            target[i]?.GetComponent<IDetectGaze>().OutOfSight();
+                        }
+                        else
+                        {
+                            target[i]?.GetComponent<IDetectGaze>().GazeDetection(transform);
+                            isCollision = true;
+                        }
+                    }
+                    else
+                    {
+                        print("시야 나감");
                         Dangerous(dot);
                         isCollision = false;
                         target[i]?.GetComponent<IDetectGaze>().OutOfSight();
                     }
-                    else
-                    {
-                        target[i]?.GetComponent<IDetectGaze>().GazeDetection(transform);
-                        isCollision = true;
-                    }
+
                 }
                 else
                 {
                     print("시야 나감");
-                    Dangerous(dot);
                     isCollision = false;
                     target[i]?.GetComponent<IDetectGaze>().OutOfSight();
                 }
-
-            }
-            else
-            {
-                print("시야 나감");
-                isCollision = false;
-                target[i]?.GetComponent<IDetectGaze>().OutOfSight();
             }
         }
     }

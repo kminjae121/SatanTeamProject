@@ -34,6 +34,9 @@ public class Player : MonoBehaviour
     [field:SerializeField] public bool isMoving { get; set; }
     public bool isStop { get; set; } = false;
 
+    public GameObject soundMonsterDeathObj;
+
+    public GameObject deathObj;
 
     private void Awake()
     {
@@ -49,6 +52,11 @@ public class Player : MonoBehaviour
         stateMachine.InitIntialize(PlayerState.Idle, this);
 
         Interaction = GetComponent<CheckInteraction>();
+
+        soundMonsterDeathObj = GameObject.Find("SoundDeathAnimation");
+        soundMonsterDeathObj.SetActive(false);
+        deathObj = GameObject.Find("DeathAnimation");
+        deathObj.SetActive(false);
     }
 
     private void OnEnable()

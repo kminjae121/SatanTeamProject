@@ -8,7 +8,7 @@ public class ChatTrigger : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            //ChatManager.Instance.Chat(3);
+            ChatManager.Instance.Chat(3);
             Destroy(gameObject);
         }
     }

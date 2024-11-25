@@ -77,7 +77,7 @@ public class CutSceneVloom : MonoBehaviour
 
     public void StartGame()
     {
-        ChatManager.Instance.Chat(2);
+        ChatManager.Instance.Chat(6);
         player.SetActive(true);
         itemText.SetActive(true);
         blackPanel.gameObject.SetActive(false);

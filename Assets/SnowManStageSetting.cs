@@ -15,8 +15,6 @@ public class SnowManStageSetting : MonoBehaviour
     private GameObject fakeSnowMan;
     [SerializeField]
     private GameObject realSnowMan;
-    [SerializeField]
-    private GameObject fakeWall;
 
     public void MissingSnowMan()
     {
@@ -34,7 +32,7 @@ public class SnowManStageSetting : MonoBehaviour
     {
         cutSceneCamera.Priority = 0;
         player.isStop = false;
-        fakeWall.SetActive(true);
         realSnowMan.SetActive(true);
+        realSnowMan.GetComponent<CryingAngel>().player = player.transform;
     }
 }
