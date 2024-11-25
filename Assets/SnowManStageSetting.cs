@@ -13,6 +13,11 @@ public class SnowManStageSetting : MonoBehaviour
 
     [SerializeField]
     private GameObject fakeSnowMan;
+    [SerializeField]
+    private GameObject realSnowMan;
+    [SerializeField]
+    private GameObject fakeWall;
+
     public void MissingSnowMan()
     {
         Destroy(fakeSnowMan);
@@ -29,5 +34,7 @@ public class SnowManStageSetting : MonoBehaviour
     {
         cutSceneCamera.Priority = 0;
         player.isStop = false;
+        fakeWall.SetActive(true);
+        realSnowMan.SetActive(true);
     }
 }

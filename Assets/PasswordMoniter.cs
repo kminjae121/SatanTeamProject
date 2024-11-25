@@ -16,5 +16,11 @@ public class PasswordMoniter : MonoBehaviour, IInteractable
     {
         inMoniterCamera.gameObject.SetActive(true);
         inMoniterCamera.Priority = 15;
+        StartCoroutine(InComputerRoutine());
+    }
+
+    private IEnumerator InComputerRoutine()
+    {
+
     }
 }
