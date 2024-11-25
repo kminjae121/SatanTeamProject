@@ -96,9 +96,9 @@ public class SettingManager : MonoBehaviour
         if (boolSettings.ContainsKey(settingName))
         {
             boolSettings[settingName] = true;
-            if(settingName == "CameraShake" && GameObject.Find("PlayerCharacter"))
+            if(settingName == "CameraShake" && GameObject.Find("PlayerCharacter(AudioInput)"))
             {
-                GameObject.Find("PlayerCharacter").GetComponent<Animator>().enabled = true;
+                GameObject.Find("PlayerCharacter(AudioInput)").GetComponent<Animator>().enabled = true;
             }else if (settingName == "MotionBlur" && FindGameObjectByName("MotionBlurVolume"))
             {
                 FindGameObjectByName("MotionBlurVolume").SetActive(true);
@@ -111,9 +111,9 @@ public class SettingManager : MonoBehaviour
         if (boolSettings.ContainsKey(settingName))
         {
             boolSettings[settingName] = false;
-            if (settingName == "CameraShake" && GameObject.Find("PlayerCharacter"))
+            if (settingName == "CameraShake" && GameObject.Find("PlayerCharacter(AudioInput)"))
             {
-                GameObject.Find("PlayerCharacter").GetComponent<Animator>().enabled = false;
+                GameObject.Find("PlayerCharacter(AudioInput)").GetComponent<Animator>().enabled = false;
             }
             else if (settingName == "MotionBlur" && GameObject.Find("MotionBlurVolume"))
             {
