@@ -39,6 +39,7 @@ public class CCTV : MonoBehaviour
     private void Awake()
     {
         audioInput = FindAnyObjectByType<AudioInput>();
+        target = FindAnyObjectByType<Player>().transform;
     }
 
     private void Update()

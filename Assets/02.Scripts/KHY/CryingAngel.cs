@@ -9,8 +9,7 @@ public class CryingAngel : MonoBehaviour, IDetectGaze
     [SerializeField]
     private NavMeshAgent movePoint;
 
-    [SerializeField]
-    private Transform player;
+    public Transform player;
 
     public bool isStop;
 

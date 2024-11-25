@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class OpenTheDoor : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class OpenTheDoor : MonoBehaviour
 
     private bool _isStop;
 
+    public UnityEvent openEvent;
 
     private ObjectOutLine _outLine;
 
@@ -57,6 +59,7 @@ public class OpenTheDoor : MonoBehaviour
     {
         gameObject.transform.parent.TryGetComponent(out Animator animator);
         print(animator);
+        openEvent?.Invoke();
         AudioManager.Instance.PlaySound2D("OpenDoor", 0, false, SoundType.VfX);
         animator.SetBool("Open", true);
 
