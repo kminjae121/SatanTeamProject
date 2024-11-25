@@ -21,6 +21,6 @@ public class PasswordMoniter : MonoBehaviour, IInteractable
 
     private IEnumerator InComputerRoutine()
     {
-
+        yield return null;
     }
 }
