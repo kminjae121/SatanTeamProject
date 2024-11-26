@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     public Action OnJump;
     public Action OnClick;
     public CheckInteraction Interaction { get; private set; }
+    public Item Item { get; private set; }
 
     public PlayerState playerState { get; private set; }
 
@@ -55,6 +56,7 @@ public class Player : MonoBehaviour
         stateMachine.InitIntialize(PlayerState.Idle, this);
 
         Interaction = GetComponent<CheckInteraction>();
+        Item = GetComponentInChildren<Item>();
 
         soundMonsterDeathObj = GameObject.Find("SoundDeathAnimation");
         soundMonsterDeathObj.SetActive(false);
@@ -68,6 +70,8 @@ public class Player : MonoBehaviour
             _inputReader.OnInteractionHandle += Interaction.OnInteraction;
 
         _inputReader.OnRunHandle += PressRun;
+
+        _inputReader.OnGetPresent+= Item.GetPresent;
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -93,6 +97,7 @@ public class Player : MonoBehaviour
         stateMachine.currentState.LateUpdate(); 
     }
 
+
     public void SetMove(Vector3 input)
     {
         if(!isStop)
@@ -115,5 +120,6 @@ public class Player : MonoBehaviour
             _inputReader.OnInteractionHandle -= Interaction.OnInteraction;
 
         _inputReader.OnRunHandle -= PressRun;
+        _inputReader.OnGetPresent -= Item.GetPresent;
     }
 }

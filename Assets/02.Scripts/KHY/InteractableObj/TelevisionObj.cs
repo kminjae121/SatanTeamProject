@@ -37,6 +37,11 @@ public class TelevisionObj : MonoBehaviour
         StartCoroutine(VideoChangeTime(playTape));
     }
 
+    public void StopVideo()
+    {
+        televisionScreen.Stop();
+    }
+
     private IEnumerator VideoChangeTime(Tape playTape)
     {
         yield return new WaitForSeconds(videoChangeTime);

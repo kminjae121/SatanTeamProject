@@ -42,6 +42,8 @@ public class Item : MonoBehaviour
     private float throwPower;
     private LayerMask _whatIsInteractionObj;
 
+    public bool isGetPresent { get; set; }
+
     private void OnEnable()
     {
         player._inputReader.OnThrow += ThrowItem;
@@ -67,7 +69,17 @@ public class Item : MonoBehaviour
 
         print("와우");
         if(handleObj != null)
+        {
+            GameObject gaeObject = Instantiate(currentItem.itemPlacePrefab, transform);
+            gaeObject.transform.SetParent(null);
+            gaeObject?.AddComponent<Rigidbody>();
             Destroy(handleObj);
+            if (soundMonster != null && !soundMonster.isPlayerFollow)
+            {
+                soundMonster.AddTransform(gaeObject.transform);
+                soundCoroutine = StartCoroutine(SoundRoutine(gaeObject));
+            }
+        }
         if (currentItem == null)
             currentItem = testItem;
         GameObject gameObject = Instantiate(currentItem.itemPrefab, transform);
@@ -94,6 +106,19 @@ public class Item : MonoBehaviour
         //if (currentItem == null) return;
 
         //currentItem.itemPrefab.GetComponent<IUseItem>().Use();
+    }
+
+    public void GetPresent()
+    {
+        if(isGetPresent)
+        {
+            if (currentItem != null)
+            {
+                ChatManager.Instance.Chat(2, "이미 물건이 있어서 선물을 꺼낼 수 없습니다");
+                return;
+            }
+            ChangeItem();
+        }
     }
 
     public void ThrowItem()

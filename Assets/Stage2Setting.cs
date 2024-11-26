@@ -16,7 +16,7 @@ public class Stage2Setting : MonoBehaviour
     public void Setting()
     {
         stageMap.SetActive(true);
-        player.GetComponent<CircularSector>().enabled = false;
+        player.GetComponentInChildren<CircularSector>().enabled = false;
         Destroy(snowman);
     }
 
