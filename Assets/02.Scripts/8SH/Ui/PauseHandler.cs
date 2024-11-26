@@ -15,7 +15,7 @@ public class PauseHandler : MonoBehaviour
             print(player.isStop);
             if (stop)
             {
-                 Cursor.lockState = CursorLockMode.None;
+                Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
                 Time.timeScale = 0;
             }
