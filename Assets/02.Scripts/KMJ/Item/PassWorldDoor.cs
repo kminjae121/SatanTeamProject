@@ -81,6 +81,10 @@ public class PassWorldDoor : MonoBehaviour, IUseItem
                     Cursor.lockState = CursorLockMode.None;
                     Cursor.visible = true;
                     _player.isStop = true;
+
+                    _player.transform.TryGetComponent(out Rigidbody rigid);
+
+                    rigid.velocity = Vector3.zero;
                 }
 
                else if (Input.GetKeyDown(KeyCode.E) && !_isOpen)
@@ -138,7 +142,7 @@ public class PassWorldDoor : MonoBehaviour, IUseItem
         }
         else
         {
-            _reciveText.text = "비밀번호가 틀렸습니다 ";
+            _reciveText.text = "";
         }
     }
 

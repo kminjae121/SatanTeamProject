@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -55,6 +56,15 @@ public class AudioManager : MonoBehaviour
         }
 
         mInstantiatedSounds = new List<TemporarySoundPlayer>();
+
+        try
+        {
+            if (Instance == null) throw new NullReferenceException();
+        }
+        catch(NullReferenceException)
+        {
+            Debug.Log("너 오디오 안넣음");
+        }
     }
 
     /// <summary>
