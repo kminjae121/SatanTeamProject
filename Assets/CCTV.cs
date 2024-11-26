@@ -36,9 +36,12 @@ public class CCTV : MonoBehaviour
 
     private Coroutine coroutine;
 
+    private bool _isStop;
+
     private void Awake()
     {
         audioInput = FindAnyObjectByType<AudioInput>();
+        target = FindAnyObjectByType<Player>().transform;
     }
 
     private void Update()
@@ -70,15 +73,23 @@ public class CCTV : MonoBehaviour
             {
                 print("시야 들어옴");
                 if(!isTutorial)
+                {
                     Dangerous();
+                }
+                
+                if(_isStop == true)
+                {
+                    _isStop = false;
+                    AudioManager.Instance.PlaySound2D("Alarm", 0, true, SoundType.VfX);
+                }
                 isCollision = true;
-                AudioManager.Instance.PlaySound2D("Alarm", 0, true, SoundType.VfX);
             }
             else
             {
                 AudioManager.Instance.StopLoopSound("Alarm");
                 print("시야 나감");
                 isCollision = false;
+                _isStop = true;
             }
         }
     }

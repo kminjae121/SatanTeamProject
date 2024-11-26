@@ -25,7 +25,7 @@ public class ChatManager : MonoBehaviour
             Instance = this;
     }
 
-    public void Chat(int frontTime)
+    public void Chat(int frontTime,string directText = "null")
     {
         if (coroutine != null)
         {
@@ -35,10 +35,17 @@ public class ChatManager : MonoBehaviour
         }
         try
         {
-            print("焼たたたたたたたたたたたたたたたたたたたたたたたたたたたたたたたけぁい反ばったでいお焼でばっぬいせしそ虞ばで っそせしず妃と っぬせぉしそい鋳硲 たっぬけぉしい鋳たっで ぬ");
-            chatText.text = chatList[currentTextIdx];
-            print(chatList[currentTextIdx]);
-            currentTextIdx++;
+            if(directText == "null")
+            {
+                print("焼たたたたたたたたたたたたたたたたたたたたたたたたたたたたたたたけぁい反ばったでいお焼でばっぬいせしそ虞ばで っそせしず妃と っぬせぉしそい鋳硲 たっぬけぉしい鋳たっで ぬ");
+                chatText.text = chatList[currentTextIdx];
+                print(chatList[currentTextIdx]);
+                currentTextIdx++;
+            }
+            else
+            {
+                chatText.text = directText;
+            }
         }
         catch(IndexOutOfRangeException e)
         {
@@ -47,7 +54,6 @@ public class ChatManager : MonoBehaviour
         }
         finally
         {
-            print(chatList[currentTextIdx]);
         }
         coroutine = StartCoroutine(TextRoutine(frontTime));
     }

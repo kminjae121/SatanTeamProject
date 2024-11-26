@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/01.Scene/8SH/ChaseScene.unity.meta
 guid: c85a4b1b75ce3df469e9d421442baa43
 DefaultImporter:
+========
+guid: 2479ee3569d666c43839cb18a4b29f82
+NativeFormatImporter:
+>>>>>>>> Base:Assets/11.Animation/KYH/OutMoniterAnim.anim.meta
   externalObjects: {}
+  mainObjectFileID: 7400000
   userData: 
   assetBundleName: 
   assetBundleVariant: 

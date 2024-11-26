@@ -9,8 +9,9 @@ public class CryingAngel : MonoBehaviour, IDetectGaze
     [SerializeField]
     private NavMeshAgent movePoint;
 
-    [SerializeField]
-    private Transform player;
+    public Transform player;
+
+    public CircularSector circularSector;
 
     public bool isStop;
 
@@ -21,30 +22,27 @@ public class CryingAngel : MonoBehaviour, IDetectGaze
     [SerializeField]
     private LayerMask _whatIsPlayer;
 
-    [SerializeField]
-    private GameObject deathObj;
-
-    private AsyncOperation asyncOperation;
+    private bool isPlay;
 
     private void Awake()
     {
         movePoint = GetComponent<NavMeshAgent>();
         //movePoint.SetDestination(player.position);
-        player.GetComponentInChildren<CircularSector>().enabled = true;
+        circularSector.enabled = true;
     }
 
     public void Start()
     {
         movePoint.SetDestination(player.position);
-        asyncOperation = SceneManager.LoadSceneAsync("DeathScene");
-        asyncOperation.allowSceneActivation = false;
     }
 
     public void GazeDetection(Transform player)
     {
         movePoint.isStopped = true;
         isStop = true;
-        AudioManager.Instance.StopLoopSound("ComeOn");
+        if (!isPlay)
+            AudioManager.Instance.PlaySound2D("ComeOn", 0, true, SoundType.VfX);
+        isPlay = true;
     }
 
     private void Update()
@@ -62,18 +60,19 @@ public class CryingAngel : MonoBehaviour, IDetectGaze
 
     public void OutOfSight()
     {
-        AudioManager.Instance.PlaySound2D("ComeOn", 0, true, SoundType.VfX);
+        AudioManager.Instance.StopLoopSound("ComeOn");
+        isPlay = false;
+        //AudioManager.Instance.StopLoopSound("ComeOn");
         movePoint.SetDestination(player.position);
         movePoint.isStopped = false;
         isStop = false;
-
         Collider[] collider = Physics.OverlapSphere(transform.position,deathRadius,_whatIsPlayer);
 
         foreach(Collider colliders in collider)
         {
             if (colliders.tag == "Player")
             {
-                deathObj.SetActive(true);
+                player.GetComponent<Player>().deathObj.SetActive(true);
                 AudioManager.Instance.PlaySound2D("Scary", 0, false, SoundType.VfX);
                 StartCoroutine(DeathScene());
                 //Destroy(gameObject);
@@ -84,7 +83,7 @@ public class CryingAngel : MonoBehaviour, IDetectGaze
     private IEnumerator DeathScene()
     {
         yield return new WaitForSecondsRealtime(1.4f);
-        asyncOperation.allowSceneActivation = true;
+        SceneChangeManager.Instance.DeathScene();
     }
 
     private void OnDrawGizmos()

@@ -10,4 +10,5 @@ public class ItemSO : ScriptableObject
     public GameObject itemPlacePrefab;
     public string itemName;
     public bool isPuzzleItem;
+    public bool isProp;
 }

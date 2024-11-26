@@ -31,16 +31,24 @@ public class CutSceneVloom : MonoBehaviour
 
     private void Start()
     {
-        player.SetActive(false);
-        MySequence = DOTween.Sequence()
-            .OnStart(() => {
+        if(!SaveManager.Instance.isAlreadyStart)
+        {
+            player.SetActive(false);
+            MySequence = DOTween.Sequence()
+                .OnStart(() => {
 
-            })
-        .Append(blackPanel.DOFade(0.5f, 1))
-        .Append(blackPanel.DOFade(0f, 1))
-        .OnComplete(() => {
-           //종료시 실행
-       });
+                })
+            .Append(blackPanel.DOFade(0.5f, 1))
+            .Append(blackPanel.DOFade(0f, 1))
+            .OnComplete(() => {
+            //종료시 실행
+        });
+        }
+        else
+        {
+            human.SetActive(false);
+            StartGame();
+        }
     }
 
     public void BlackEye()
@@ -77,7 +85,7 @@ public class CutSceneVloom : MonoBehaviour
 
     public void StartGame()
     {
-        ChatManager.Instance.Chat(2);
+        ChatManager.Instance.Chat(6);
         player.SetActive(true);
         itemText.SetActive(true);
         blackPanel.gameObject.SetActive(false);
