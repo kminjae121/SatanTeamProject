@@ -24,7 +24,6 @@ public class CircularSector : MonoBehaviour
     private Vector3 interV;
 
     public Volume volume;
-    RaycastHit hit;
 
     void Update()
     {
@@ -51,7 +50,7 @@ public class CircularSector : MonoBehaviour
                         print("시야 들어옴");
 
 
-                        if (Physics.Raycast(transform.position, interV.normalized, out hit, Vector3.Distance(transform.position, target[i].position), _whatIsObstacle))
+                        if (Physics.Raycast(new Vector3(transform.position.x,transform.position.y + 1,transform.position.z), interV.normalized, out RaycastHit hit, Vector3.Distance(transform.position, target[i].position), _whatIsObstacle))
                         {
 
                             print("장애물 감지됨");
@@ -111,10 +110,14 @@ public class CircularSector : MonoBehaviour
     }
 
         // 유니티 에디터에 부채꼴을 그려줄 메소드
-        private void OnDrawGizmos()
+    private void OnDrawGizmos()
     {
         if (interV == null) return;
-        Debug.DrawRay(transform.position, interV.normalized * 1000f, Color.red);
+
+        for (int i = 0; i < target.Length; i++)
+        {
+            Debug.DrawRay(new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), interV.normalized, Color.red, Vector3.Distance(transform.position, target[i].position));
+        }
 
         Handles.color = isCollision ? _red : _blue;
         // DrawSolidArc(시작점, 노멀벡터(법선벡터), 그려줄 방향 벡터, 각도, 반지름)
