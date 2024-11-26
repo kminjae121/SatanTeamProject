@@ -78,6 +78,7 @@ public class PassWorldDoor : MonoBehaviour, IUseItem
                 {
                     _passWorldParent.SetActive(true);
                     _isOpen = false;
+                    
                     Cursor.lockState = CursorLockMode.None;
                     Cursor.visible = true;
                     _player.isStop = true;
@@ -138,7 +139,7 @@ public class PassWorldDoor : MonoBehaviour, IUseItem
         }
         else
         {
-            _reciveText.text = "비밀번호가 틀렸습니다 ";
+            _reciveText.text = "";
         }
     }
 
