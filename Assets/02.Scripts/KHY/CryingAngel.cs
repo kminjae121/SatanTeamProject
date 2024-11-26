@@ -22,9 +22,6 @@ public class CryingAngel : MonoBehaviour, IDetectGaze
     [SerializeField]
     private LayerMask _whatIsPlayer;
 
-
-
-    private AsyncOperation asyncOperation;
     private bool isPlay;
 
     private void Awake()
@@ -37,8 +34,6 @@ public class CryingAngel : MonoBehaviour, IDetectGaze
     public void Start()
     {
         movePoint.SetDestination(player.position);
-        asyncOperation = SceneManager.LoadSceneAsync("DeathScene");
-        asyncOperation.allowSceneActivation = false;
     }
 
     public void GazeDetection(Transform player)
@@ -88,7 +83,7 @@ public class CryingAngel : MonoBehaviour, IDetectGaze
     private IEnumerator DeathScene()
     {
         yield return new WaitForSecondsRealtime(1.4f);
-        asyncOperation.allowSceneActivation = true;
+        SceneChangeManager.Instance.DeathScene();
     }
 
     private void OnDrawGizmos()

@@ -40,6 +40,9 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        if (SaveManager.Instance.isAlreadyStart)
+            transform.position = SaveManager.Instance.CurrentPlayerTrm.position;
+
         _rigid = GetComponent<Rigidbody>();
         isMoving = false;
         stateMachine = new StateMachine<PlayerState>();

@@ -44,13 +44,14 @@ public class PasswordMoniter : MonoBehaviour, IInteractable
 
     private IEnumerator InComputerRoutine()
     {
+        yield return null;
         yield return new WaitForSeconds(1f);
         blackPanel.DOFade(1, 1);
         yield return new WaitForSeconds(1f);
         window.SetActive(true);
         blackPanel.DOFade(0, 1);
         isMonitor = true;
-        ChatManager.Instance.Chat(3,"S를 눌러 그만보기");
+        ChatManager.Instance.Chat(7,"S를 눌러 그만보기");
     }
 
     private void Update()

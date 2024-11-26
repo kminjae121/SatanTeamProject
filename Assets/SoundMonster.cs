@@ -33,10 +33,6 @@ public class SoundMonster : MonoBehaviour
     private FollowRadius followRadiusCollider;
 
 
-
-    private AsyncOperation asyncOperation;
-
-
     private void Awake()
     {
         audioInput = FindAnyObjectByType<AudioInput>();
@@ -50,12 +46,6 @@ public class SoundMonster : MonoBehaviour
         audioInput._BigSound += TargetChange;
         followRadiusCollider.OnLessPlayer += LessPlayer;
         FindAnyObjectByType<Item>().soundMonster = this;
-    }
-
-    private void Start()
-    {
-        asyncOperation = SceneManager.LoadSceneAsync("DeathScene");
-        asyncOperation.allowSceneActivation = false;
     }
 
     public void AddTransform(Transform transform)
@@ -144,6 +134,6 @@ public class SoundMonster : MonoBehaviour
     private IEnumerator DeathScene()
     {
         yield return new WaitForSecondsRealtime(1f);
-        asyncOperation.allowSceneActivation = true;
+        SceneChangeManager.Instance.DeathScene();
     }
 }
