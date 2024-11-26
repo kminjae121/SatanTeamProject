@@ -78,13 +78,15 @@ public class PassWorldDoor : MonoBehaviour, IUseItem
                 {
                     _passWorldParent.SetActive(true);
                     _isOpen = false;
-                    
+
+                    _player.transform.TryGetComponent(out Rigidbody rigid);
+
+                    rigid.velocity = Vector3.zero;
                     Cursor.lockState = CursorLockMode.None;
                     Cursor.visible = true;
                     _player.isStop = true;
                 }
-
-               else if (Input.GetKeyDown(KeyCode.E) && !_isOpen)
+                else if (Input.GetKeyDown(KeyCode.E) && !_isOpen)
                 {
                     Cursor.lockState = CursorLockMode.Locked;
                     Cursor.visible = false;
@@ -92,6 +94,14 @@ public class PassWorldDoor : MonoBehaviour, IUseItem
                     _isOpen = true;
                     _player.isStop = false;
                 }
+            }
+            else if (Input.GetKeyDown(KeyCode.E) && !_isOpen)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+                _passWorldParent.SetActive(false);
+                _isOpen = true;
+                _player.isStop = false;
             }
         }
         else if (_outLine._isOutLine)
