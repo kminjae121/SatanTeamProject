@@ -113,7 +113,7 @@ public class CircularSector : MonoBehaviour
     private void OnDrawGizmos()
     {
         if (interV == null) return;
-
+        
         for (int i = 0; i < target.Length; i++)
         {
             Debug.DrawRay(new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), interV.normalized, Color.red, Vector3.Distance(transform.position, target[i].position));

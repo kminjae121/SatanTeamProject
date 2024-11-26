@@ -10,6 +10,7 @@ public class SantaPoket : MonoBehaviour, IInteractable
     public void Interact()
     {
         ChatManager.Instance.Chat(2,"애들을 위한 선물가방이지만 어쩔 수 없지");
+        gameObject.GetComponent<ObjectOutLine>().enabled = false;
         StartCoroutine(NextChat());
     }
 

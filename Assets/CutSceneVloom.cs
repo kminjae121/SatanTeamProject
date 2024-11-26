@@ -23,6 +23,8 @@ public class CutSceneVloom : MonoBehaviour
     [SerializeField]
     private GameObject human;
 
+    [SerializeField]
+    private AudioSource audioSource;
 
     private void Awake()
     {
@@ -81,6 +83,11 @@ public class CutSceneVloom : MonoBehaviour
             DOTween.KillAll();
             DOTween.To(() => startVignette, vloom => vignette.intensity.value = vloom, endVignette, 2);
         }
+    }
+
+    public void SoundStop()
+    {
+        audioSource.Stop();
     }
 
     public void StartGame()
