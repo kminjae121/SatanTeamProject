@@ -56,10 +56,17 @@ public class Player : MonoBehaviour
 
         Interaction = GetComponent<CheckInteraction>();
 
-        soundMonsterDeathObj = GameObject.Find("SoundDeathAnimation");
-        soundMonsterDeathObj.SetActive(false);
-        deathObj = GameObject.Find("DeathAnimation");
-        deathObj.SetActive(false);
+        try
+        {
+            soundMonsterDeathObj = GameObject.Find("SoundDeathAnimation");
+            soundMonsterDeathObj.SetActive(false);
+            deathObj = GameObject.Find("DeathAnimation");
+            deathObj.SetActive(false);
+        }
+        catch (Exception ex)
+        {
+            print(ex);
+        }
     }
 
     private void OnEnable()

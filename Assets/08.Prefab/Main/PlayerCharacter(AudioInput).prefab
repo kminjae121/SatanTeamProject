@@ -206,7 +206,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: -1525253381413818895, guid: 0e9c947d38d84664fb44813af779d432, type: 3}
+  m_Mesh: {fileID: -1525253381413818895, guid: b878f036f4405244ea709aa1150b7a69, type: 3}
   m_Bones:
   - {fileID: 1895304399951994748}
   - {fileID: 2835190365965738657}
@@ -4737,6 +4737,8 @@ MonoBehaviour:
   <_playerStat>k__BackingField: {fileID: 967382995394797001}
   <_playerCam>k__BackingField: {fileID: 0}
   <isMoving>k__BackingField: 0
+  soundMonsterDeathObj: {fileID: 0}
+  deathObj: {fileID: 0}
 --- !u!114 &967382995394797001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5348,7 +5350,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 4777371684598551356, guid: 0e9c947d38d84664fb44813af779d432, type: 3}
+  m_Mesh: {fileID: 4777371684598551356, guid: b878f036f4405244ea709aa1150b7a69, type: 3}
   m_Bones:
   - {fileID: 1895304399951994748}
   - {fileID: 2835190365965738657}
