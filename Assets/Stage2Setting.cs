@@ -13,14 +13,14 @@ public class Stage2Setting : MonoBehaviour
     [SerializeField]
     private Player player;
 
+    private CircularSector circularSector;
+
     public void Setting()
     {
         stageMap.SetActive(true);
-        player.GetComponentInChildren<CircularSector>().enabled = false;
-    }
-
-    public void DeleteMonster()
-    {
+        circularSector = player.GetComponentInChildren<CircularSector>();
+        circularSector.target = null;
+        circularSector.enabled = false;
         Destroy(snowman);
     }
 

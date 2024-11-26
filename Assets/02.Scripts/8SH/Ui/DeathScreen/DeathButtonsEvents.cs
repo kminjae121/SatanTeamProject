@@ -12,6 +12,8 @@ public class DeathButtonsEvents : MonoBehaviour
     void Start()
     {
         canvasGroup = GetComponent<CanvasGroup>();
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     public void OnClickContinue()

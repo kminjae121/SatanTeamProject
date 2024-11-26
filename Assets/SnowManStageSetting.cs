@@ -18,9 +18,6 @@ public class SnowManStageSetting : MonoBehaviour
     private GameObject realSnowMan;
 
     [SerializeField]
-    private AudioSource audioSource;
-
-    [SerializeField]
     private VideoPlayer videoPlayer;
 
     public void MissingSnowMan()
@@ -30,11 +27,7 @@ public class SnowManStageSetting : MonoBehaviour
 
     public void Audio()
     {
-        audioSource.Play();
-    }
-    public void AudioStop()
-    {
-        audioSource.Pause();
+        AudioManager.Instance.PlaySound2D("CloseDoor", 0, false, SoundType.VfX);
     }
 
     public void CutSceneStart()

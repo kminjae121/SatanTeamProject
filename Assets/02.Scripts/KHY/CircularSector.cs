@@ -6,7 +6,7 @@ using DG.Tweening;
 
 public class CircularSector : MonoBehaviour
 {
-    public Transform[] target;    // 부채꼴에 포함되는지 판별할 타겟
+    public Transform target;    // 부채꼴에 포함되는지 판별할 타겟
     public float angleRange = 30f;
     public float radius = 3f;
 
@@ -27,60 +27,54 @@ public class CircularSector : MonoBehaviour
 
     void Update()
     {
-        if(target.Length > 0)
-        {
-            for (int i = 0; i < target.Length; i++)
+            interV = target.position - transform.position;
+
+            // target과 나 사이의 거리가 radius 보다 작다면
+            if (interV.magnitude <= radius)
             {
-                interV = target[i].position - transform.position;
+                // '타겟-나 벡터'와 '내 정면 벡터'를 내적
+                float dot = Vector3.Dot(interV.normalized, transform.forward);
+                // 두 벡터 모두 단위 벡터이므로 내적 결과에 cos의 역을 취해서 theta를 구함
+                float theta = Mathf.Acos(dot);
+                // angleRange와 비교하기 위해 degree로 변환
+                float degree = Mathf.Rad2Deg * theta;
 
-                // target과 나 사이의 거리가 radius 보다 작다면
-                if (interV.magnitude <= radius)
+
+                // 시야각 판별
+                if (degree <= angleRange / 2f)
                 {
-                    // '타겟-나 벡터'와 '내 정면 벡터'를 내적
-                    float dot = Vector3.Dot(interV.normalized, transform.forward);
-                    // 두 벡터 모두 단위 벡터이므로 내적 결과에 cos의 역을 취해서 theta를 구함
-                    float theta = Mathf.Acos(dot);
-                    // angleRange와 비교하기 위해 degree로 변환
-                    float degree = Mathf.Rad2Deg * theta;
+                    print("시야 들어옴");
 
 
-                    // 시야각 판별
-                    if (degree <= angleRange / 2f)
+                    if (Physics.Raycast(new Vector3(transform.position.x,transform.position.y + 1,transform.position.z), interV.normalized, out RaycastHit hit, Vector3.Distance(transform.position, target.position), _whatIsObstacle))
                     {
-                        print("시야 들어옴");
 
-
-                        if (Physics.Raycast(new Vector3(transform.position.x,transform.position.y + 1,transform.position.z), interV.normalized, out RaycastHit hit, Vector3.Distance(transform.position, target[i].position), _whatIsObstacle))
-                        {
-
-                            print("장애물 감지됨");
-                            Dangerous(dot);
-                            isCollision = false;
-                            target[i]?.GetComponent<IDetectGaze>().OutOfSight();
-                        }
-                        else
-                        {
-                            target[i]?.GetComponent<IDetectGaze>().GazeDetection(transform);
-                            isCollision = true;
-                        }
+                        print("장애물 감지됨");
+                        Dangerous(dot);
+                        isCollision = false;
+                        target?.GetComponent<IDetectGaze>().OutOfSight();
                     }
                     else
                     {
-                        print("시야 나감");
-                        Dangerous(dot);
-                        isCollision = false;
-                        target[i]?.GetComponent<IDetectGaze>().OutOfSight();
+                        target?.GetComponent<IDetectGaze>().GazeDetection(transform);
+                        isCollision = true;
                     }
-
                 }
                 else
                 {
                     print("시야 나감");
+                    Dangerous(dot);
                     isCollision = false;
-                    target[i]?.GetComponent<IDetectGaze>().OutOfSight();
+                    target?.GetComponent<IDetectGaze>().OutOfSight();
                 }
+
             }
-        }
+            else
+            {
+                print("시야 나감");
+                isCollision = false;
+                target?.GetComponent<IDetectGaze>().OutOfSight();
+            }
     }
 
     private void Dangerous(float dot)
@@ -113,11 +107,7 @@ public class CircularSector : MonoBehaviour
     private void OnDrawGizmos()
     {
         if (interV == null) return;
-        
-        for (int i = 0; i < target.Length; i++)
-        {
-            Debug.DrawRay(new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), interV.normalized, Color.red, Vector3.Distance(transform.position, target[i].position));
-        }
+
 
         Handles.color = isCollision ? _red : _blue;
         // DrawSolidArc(시작점, 노멀벡터(법선벡터), 그려줄 방향 벡터, 각도, 반지름)

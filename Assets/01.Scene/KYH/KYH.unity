@@ -30272,6 +30272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dad59c7a2cce86749b93d3efb7b5e457, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wall: {fileID: 0}
 --- !u!114 &1880036775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31713,6 +31714,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerCharacter(AudioInput)
       objectReference: {fileID: 0}
+    - target: {fileID: 7377992989272210612, guid: 1cd9596cfdee7f9489ef698e926fa9e9,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 378738504}
     - target: {fileID: 7377992989272210612, guid: 1cd9596cfdee7f9489ef698e926fa9e9,
         type: 3}
       propertyPath: volume
