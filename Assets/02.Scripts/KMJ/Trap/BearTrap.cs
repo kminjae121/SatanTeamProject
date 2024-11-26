@@ -55,7 +55,7 @@ public class BearTrap : MonoBehaviour
 
     private void OpenTrap()
     {
-        if (Input.GetKey(KeyCode.K) && _isTrap == false)
+        if (Input.GetKey(KeyCode.E) && _isTrap == false)
         {
             _slider.value = Gage;
             Gage += Time.deltaTime;

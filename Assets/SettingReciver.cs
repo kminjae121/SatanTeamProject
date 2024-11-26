@@ -7,9 +7,9 @@ public class SettingReciver : MonoBehaviour
     private RenderTexture renderTex;
     void Start()
     {
-        if (GameObject.Find("PlayerCharacter"))
+        if (GameObject.Find("PlayerCharacter(AudioInput)"))
         {
-            GameObject.Find("PlayerCharacter").GetComponent<Animator>().enabled =
+            GameObject.Find("PlayerCharacter(AudioInput)").GetComponent<Animator>().enabled =
                 SettingManager.Instance.boolSettings["CameraShake"];
         }
         if (SettingManager.Instance.FindGameObjectByName("MotionBlurVolume"))

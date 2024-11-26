@@ -8,16 +8,23 @@ public class PauseHandler : MonoBehaviour
     public void ConttolPlayer(bool stop)
     {
         print("»Ð");
-        if (GameObject.Find("PlayerCharacter"))
+        if (GameObject.Find("PlayerCharacter(AudioInput)"))
         {
-            Player player = GameObject.Find("PlayerCharacter").GetComponent<Player>();
+            Player player = GameObject.Find("PlayerCharacter(AudioInput)").GetComponent<Player>();
             player.isStop = stop;
             print(player.isStop);
             if (stop)
             {
+                 Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
                 Time.timeScale = 0;
             }
-            else Time.timeScale = 1;
+            else
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+                Time.timeScale = 1;
+            }
         }
     }
 
