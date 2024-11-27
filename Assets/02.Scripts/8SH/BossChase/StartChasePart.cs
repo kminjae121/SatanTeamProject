@@ -17,10 +17,13 @@ public class StartChasePart : MonoBehaviour
     public void ChaseStart()
     {
         player.isStop = false;
+        FindGameObjectByName("Virtual Camera").gameObject.SetActive(true);
         playerObj.GetComponent<PlayerCam>().enabled = true;
         FindGameObjectByName("Timeline").gameObject.SetActive(false);
         FindGameObjectByName("StartTrigger").GetComponent<BossChasePathSetter>().Active();
         FindGameObjectByName("ScreenCanvas").gameObject.SetActive(true);
+        FindGameObjectByName("BossLight").gameObject.SetActive(true);
+        ToggleComponents<BlinkingLight>(true);
     }
 
     public void PlayBGM()
@@ -42,5 +45,16 @@ public class StartChasePart : MonoBehaviour
 
         Debug.LogWarning($"GameObject with name '{name}' not found.");
         return null;
+    }
+
+    public void ToggleComponents<T>(bool enable) where T : Behaviour
+    {
+        T[] components = FindObjectsOfType<T>(true);
+        foreach (T component in components)
+        {
+            component.enabled = enable;
+        }
+
+        Debug.Log($"총 {components.Length}개의 {typeof(T).Name} 컴포넌트를 {(enable ? "활성화" : "비활성화")}했습니다.");
     }
 }

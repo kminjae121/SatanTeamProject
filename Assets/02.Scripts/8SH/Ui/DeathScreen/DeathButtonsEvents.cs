@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class DeathButtonsEvents : MonoBehaviour
 {
-    [SerializeField] private string sceneName;
     private CanvasGroup canvasGroup;
 
     void Start()
@@ -31,6 +30,6 @@ public class DeathButtonsEvents : MonoBehaviour
     private IEnumerator ChangeScene()
     {
         yield return new WaitForSecondsRealtime(3);
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(SceneChangeManager.Instance.deathToGame_SceneName);
     }
 }
