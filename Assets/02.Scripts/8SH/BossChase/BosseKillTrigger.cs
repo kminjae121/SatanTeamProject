@@ -4,23 +4,28 @@ using UnityEngine;
 
 public class BosseKillTrigger : MonoBehaviour
 {
+    private GameObject jumpscareCamera;
+    private GameObject trapGage;
     private void Start()
     {
         SceneChangeManager.Instance.deathToGame_SceneName = "ChaseScene";
+        jumpscareCamera = FindGameObjectByName("JumpscareCamera");
+        trapGage = FindGameObjectByName("TrapSlider");
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
             Jumpscare();
-            Invoke("ChangeScene", 1.5f);
+            Invoke("ChangeScene", 1.25f);
         }
     }
 
     private void Jumpscare()
     {
         GetComponent<AudioSource>().Play();
-        FindGameObjectByName("JumpscareCamera").gameObject.SetActive(true);
+        jumpscareCamera.SetActive(false);
+        trapGage.SetActive(false);
         FindGameObjectByName("ScreenCanvas").gameObject.SetActive(false);
         GetComponent<Animator>().SetTrigger("Jumpscare");
     }

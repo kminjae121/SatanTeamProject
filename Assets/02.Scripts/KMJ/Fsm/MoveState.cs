@@ -37,8 +37,8 @@ public class MoveState : State<PlayerState>, IMove
 
     public void Move()
     {
-        _rigid.velocity = new Vector3(_player.transform.TransformDirection(_player._playerStat.moveDir).x * _player._playerStat.moveSpeed,
+        _rigid.velocity = new Vector3(_player.transform.TransformDirection(_player._playerStat.moveDir.normalized).x * _player._playerStat.moveSpeed,
             _rigid.velocity.y,
-            _player.transform.TransformDirection(_player._playerStat.moveDir).z * _player._playerStat.moveSpeed);
+            _player.transform.TransformDirection(_player._playerStat.moveDir.normalized).z * _player._playerStat.moveSpeed);
     }
 }
