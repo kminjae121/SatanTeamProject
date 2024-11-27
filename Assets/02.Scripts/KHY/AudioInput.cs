@@ -14,6 +14,12 @@ public class AudioInput : MonoBehaviour
     public AudioMixerGroup _audioMixerMicroPhone, _audioMixerMaster;
     public Action<string> _BigSound;
 
+    private void Start()
+    {
+        FindAnyObjectByType<MicAdder>().UpdateMicDevices();
+        InputMike();
+    }
+
     public void InputMike()
     {
         audioSource.outputAudioMixerGroup = _audioMixerMicroPhone;
