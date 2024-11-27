@@ -12,14 +12,21 @@ public class Stage2Setting : MonoBehaviour
     private GameObject soundMonseter;
     [SerializeField]
     private Player player;
+    [SerializeField]
+    private GameObject volume;
 
     private CircularSector circularSector;
 
-    public void Setting()
+    public void ActiveMap()
     {
         stageMap.SetActive(true);
+    }
+
+    public void Setting()
+    {
         circularSector = player.GetComponentInChildren<CircularSector>();
         circularSector.target = null;
+        circularSector.Safe(8282f);
         circularSector.enabled = false;
         Destroy(snowman);
     }

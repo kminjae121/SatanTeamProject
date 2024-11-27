@@ -31,6 +31,7 @@ public class GiftItem : MonoBehaviour, IUseItem
         StartCoroutine(GiftParticleRoutine(destroyTime));
         int rand = Random.Range(0,itemSOList.items.Count);
         Item item = FindAnyObjectByType<Item>();
+        item.isAlreadyGift =false;
         item.currentItem = itemSOList.items[rand];
         item.ChangeItem();
     }

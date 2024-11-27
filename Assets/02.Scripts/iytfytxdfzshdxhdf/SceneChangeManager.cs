@@ -28,6 +28,6 @@ public class SceneChangeManager : MonoBehaviour
 
     public void DeathScene()
     {
-        asyncOperation.allowSceneActivation = true;
+        SceneManager.LoadScene("DeathScene");
     }
 }

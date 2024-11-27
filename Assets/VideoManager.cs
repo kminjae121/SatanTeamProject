@@ -20,6 +20,16 @@ public class VideoManager : MonoBehaviour
     [SerializeField]
     private VideoPlayer introVideo;
 
+    public bool isEndingScene;
+
+    [SerializeField]
+    private Image blackPanel;
+
+    [SerializeField]
+    private Image credit;
+
+    private bool isVideoEnd;
+
     private void Start()
     {
         StartCoroutine(WaitRoutine());
@@ -27,33 +37,59 @@ public class VideoManager : MonoBehaviour
 
     private void Update()
     {
-        skipGageBar.GetComponent<RectTransform>().localScale = new Vector3(skipGage, skipGageBar.transform.localScale.y, 0);
-        if (Input.GetKey(KeyCode.Space))
+        if(!isVideoEnd)
         {
-            if (skipGage > 8)
+            skipGageBar.GetComponent<RectTransform>().localScale = new Vector3(skipGage, skipGageBar.transform.localScale.y, 0);
+            if (Input.GetKey(KeyCode.Space))
             {
-                FirstIntroEnd();
-                skipGageBar.gameObject.SetActive(false);
+                if (skipGage > 8)
+                {
+                    if (!isEndingScene)
+                        FirstIntroEnd();
+                    else
+                        EndingScene();
+                    skipGageBar.gameObject.SetActive(false);
+                }
+                else
+                {
+                    skipGage += Time.deltaTime * 2;
+                    skipGageBar.GetComponent<Image>().DOFade(1, skipGage);
+                }
             }
             else
             {
-                skipGage += Time.deltaTime * 2;
-                skipGageBar.GetComponent<Image>().DOFade(1, skipGage);
+                if (skipGage > 0)
+                {
+                    skipGage -= Time.deltaTime * 3;
+                    skipGageBar.GetComponent<Image>().DOFade(0, skipGage);
+                }
             }
-        }
-        else
-        {
-            if (skipGage > 0)
-            {
-                skipGage -= Time.deltaTime * 3;
-                skipGageBar.GetComponent<Image>().DOFade(0, skipGage);
-            }
-        }
 
-        if (introVideo.time > 29f)
-        {
-            SceneManager.LoadScene("KYHMap");
+            if (introVideo.time > 29f && !isEndingScene)
+            {
+                SceneManager.LoadScene("KYHMap");
+            }
+            if (introVideo.time > 23f && isEndingScene)
+            {
+                blackPanel.DOFade(1, 0);
+            }
         }
+    }
+
+    private void EndingScene()
+    {
+        blackPanel.DOFade(1, 0);
+        introVideo.Stop();
+        isVideoEnd = true;
+        StartCoroutine(CreditRoutine());
+    }
+
+    private IEnumerator CreditRoutine()
+    {
+        yield return new WaitForSeconds(1f);
+        credit.GetComponent<RectTransform>().DOLocalMoveY(5000, 30);
+        yield return new WaitForSeconds(30f);
+        SceneManager.LoadScene("NewMainMenu");
     }
 
     private void FirstIntroEnd()

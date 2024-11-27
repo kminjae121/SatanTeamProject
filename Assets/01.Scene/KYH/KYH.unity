@@ -3677,6 +3677,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c08dd18e1a96bb49825738733e9d76f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1268736508 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6242024675727851824, guid: 6918c812cfed2a44e8202cbf6445f272,
+    type: 3}
+  m_PrefabInstance: {fileID: 3619961062002456030}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1281147471 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2207184502394147921, guid: af8b8f019bf428b48a436df890d47107,
@@ -30272,7 +30278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dad59c7a2cce86749b93d3efb7b5e457, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wall: {fileID: 0}
+  wall: {fileID: 1268736508}
 --- !u!114 &1880036775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31654,6 +31660,11 @@ PrefabInstance:
       propertyPath: soundMonster
       value: 
       objectReference: {fileID: 1240376834}
+    - target: {fileID: 1353717003447780834, guid: 1cd9596cfdee7f9489ef698e926fa9e9,
+        type: 3}
+      propertyPath: <isGetPresent>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2486286258247158405, guid: 1cd9596cfdee7f9489ef698e926fa9e9,
         type: 3}
       propertyPath: m_IsActive
