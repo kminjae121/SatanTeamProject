@@ -15407,7 +15407,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fade: {fileID: 2062526343}
   bgm: {fileID: 720913070}
-  sceneName: Ending
+  sceneName: EndingVideo
 --- !u!1 &1537515892
 GameObject:
   m_ObjectHideFlags: 0
@@ -33570,6 +33570,8 @@ MonoBehaviour:
   text: {fileID: 652261789}
   soundMonster: {fileID: 0}
   throwPower: 0
+  isAlreadyGift: 0
+  <isGetPresent>k__BackingField: 0
 --- !u!1 &8190129843779317105
 GameObject:
   m_ObjectHideFlags: 0
