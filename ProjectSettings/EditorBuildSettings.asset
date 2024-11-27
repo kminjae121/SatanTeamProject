@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/01.Scene/Main/IntroVideo.unity
     guid: 43809d0bdabd3894f8ab1f12b6b24663
   - enabled: 1
+    path: Assets/01.Scene/8SH/ChaseScene.unity
+    guid: bf633a19df2f30a4e9978d19ccb9754e
+  - enabled: 1
     path: Assets/01.Scene/Main/EndingVideo.unity
     guid: 9aa2b5b70196baa4d94b214e04466fd7
   - enabled: 1
