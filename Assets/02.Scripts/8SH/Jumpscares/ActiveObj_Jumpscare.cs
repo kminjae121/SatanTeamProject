@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActiveObj_Jumpscare : TriggerJumpscare
+public class ActiveObj_Jumpscare : TriggerJumpscare, IJumpscareTrigger
 {
     public enum TrueFalse
     {

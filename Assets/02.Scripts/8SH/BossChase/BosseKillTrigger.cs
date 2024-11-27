@@ -8,9 +8,16 @@ public class BosseKillTrigger : MonoBehaviour
     private GameObject trapGage;
     private void Start()
     {
-        SceneChangeManager.Instance.deathToGame_SceneName = "ChaseScene";
-        jumpscareCamera = FindGameObjectByName("JumpscareCamera");
-        trapGage = FindGameObjectByName("TrapSlider");
+        try
+        {
+            SceneChangeManager.Instance.deathToGame_SceneName = "ChaseScene";
+            jumpscareCamera = FindGameObjectByName("JumpscareCamera");
+            trapGage = FindGameObjectByName("TrapSlider");
+        }
+        catch
+        {
+            print("¾ø´Ù");
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
