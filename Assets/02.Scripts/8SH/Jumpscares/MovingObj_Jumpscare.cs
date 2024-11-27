@@ -42,7 +42,7 @@ public class MovingObj_Jumpscare : TriggerJumpscare
 
     public override void OnTriggerEnter(Collider other)
     {
-        if (enable)
+        if (enable && other.gameObject.CompareTag("Player"))
         {
             enable = false;
             Active();
