@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     public Action OnJump;
     public Action OnClick;
     public CheckInteraction Interaction { get; private set; }
+    public Item Item { get; private set; }
 
     public PlayerState playerState { get; private set; }
 
@@ -38,11 +39,10 @@ public class Player : MonoBehaviour
 
     public GameObject deathObj;
 
+    public List<GameObject> spawnPoint = new List<GameObject>();
+
     private void Awake()
     {
-        if (SaveManager.Instance.isAlreadyStart)
-            transform.position = SaveManager.Instance.CurrentPlayerTrm.position;
-
         _rigid = GetComponent<Rigidbody>();
         isMoving = false;
         stateMachine = new StateMachine<PlayerState>();
@@ -55,18 +55,24 @@ public class Player : MonoBehaviour
         stateMachine.InitIntialize(PlayerState.Idle, this);
 
         Interaction = GetComponent<CheckInteraction>();
+        Item = GetComponentInChildren<Item>();
 
-        try
-        {
-            soundMonsterDeathObj = GameObject.Find("SoundDeathAnimation");
-            soundMonsterDeathObj.SetActive(false);
-            deathObj = GameObject.Find("DeathAnimation");
-            deathObj.SetActive(false);
-        }
-        catch (Exception ex)
-        {
-            print(ex);
-        }
+        soundMonsterDeathObj = GameObject.Find("SoundDeathAnimation");
+        soundMonsterDeathObj.SetActive(false);
+        deathObj = GameObject.Find("DeathAnimation");
+        deathObj.SetActive(false);
+
+        
+    }
+
+    private void Start()
+    {
+        if (SaveManager.Instance.isAlreadyStart)
+            transform.position = spawnPoint[0].transform.position;
+        else if (SaveManager.Instance.isFirstSpawn)
+            transform.position = spawnPoint[1].transform.position;
+        else if (SaveManager.Instance.isSecondSpawn)
+            transform.position = spawnPoint[2].transform.position;
     }
 
     private void OnEnable()
@@ -75,6 +81,8 @@ public class Player : MonoBehaviour
             _inputReader.OnInteractionHandle += Interaction.OnInteraction;
 
         _inputReader.OnRunHandle += PressRun;
+
+        _inputReader.OnGetPresent+= Item.GetPresent;
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -100,6 +108,7 @@ public class Player : MonoBehaviour
         stateMachine.currentState.LateUpdate(); 
     }
 
+
     public void SetMove(Vector3 input)
     {
         if(!isStop)
@@ -122,5 +131,6 @@ public class Player : MonoBehaviour
             _inputReader.OnInteractionHandle -= Interaction.OnInteraction;
 
         _inputReader.OnRunHandle -= PressRun;
+        _inputReader.OnGetPresent -= Item.GetPresent;
     }
 }

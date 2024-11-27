@@ -106,6 +106,4 @@ public class OpenTheDoor : MonoBehaviour
         _isStop = false;
         _isOpen = true;
     }
-
-
 }

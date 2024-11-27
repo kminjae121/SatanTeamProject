@@ -23,6 +23,8 @@ public class CutSceneVloom : MonoBehaviour
     [SerializeField]
     private GameObject human;
 
+    [SerializeField]
+    private AudioSource audioSource;
 
     private void Awake()
     {
@@ -31,7 +33,12 @@ public class CutSceneVloom : MonoBehaviour
 
     private void Start()
     {
-        if(!SaveManager.Instance.isAlreadyStart)
+        if(SaveManager.Instance.isAlreadyStart || SaveManager.Instance.isFirstSpawn || SaveManager.Instance.isSecondSpawn || SaveManager.Instance.isThirdSpawn)
+        {
+            human.SetActive(false);
+            StartGame();
+        }
+        else
         {
             player.SetActive(false);
             MySequence = DOTween.Sequence()
@@ -41,13 +48,8 @@ public class CutSceneVloom : MonoBehaviour
             .Append(blackPanel.DOFade(0.5f, 1))
             .Append(blackPanel.DOFade(0f, 1))
             .OnComplete(() => {
-            //종료시 실행
-        });
-        }
-        else
-        {
-            human.SetActive(false);
-            StartGame();
+                //종료시 실행
+            });
         }
     }
 
@@ -83,12 +85,19 @@ public class CutSceneVloom : MonoBehaviour
         }
     }
 
+    public void SoundStop()
+    {
+        audioSource.Stop();
+    }
+
     public void StartGame()
     {
-        ChatManager.Instance.Chat(6);
+        if(!SaveManager.Instance.isAlreadyStart)
+            ChatManager.Instance.Chat(6);
         player.SetActive(true);
         itemText.SetActive(true);
         blackPanel.gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 
     public void FadeBlackImage()

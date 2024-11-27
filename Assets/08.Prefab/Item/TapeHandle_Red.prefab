@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 782249b2d34043844a48fee577746345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playTape: 0
+  playTape: 2
 --- !u!95 &1456013142568632386
 Animator:
   serializedVersion: 5

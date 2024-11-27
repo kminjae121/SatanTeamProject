@@ -14,38 +14,11 @@ public class AudioInput : MonoBehaviour
     public AudioMixerGroup _audioMixerMicroPhone, _audioMixerMaster;
     public Action<string> _BigSound;
 
-
-    private void Start()
-    {
-        InputMike();
-    }
-
     public void InputMike()
     {
-        if(_useMike)
-        {
-            if(Microphone.devices.Length > 0)
-            {
-                _selectedDevice = Microphone.devices[0].ToString();
-                audioSource.outputAudioMixerGroup = _audioMixerMicroPhone;
-                audioSource.clip = Microphone.Start(_selectedDevice, true, 10, AudioSettings.outputSampleRate);
-            }
-            else
-            {
-                _useMike = false;
-            }
-        }
-        else
-        {
-            audioSource.outputAudioMixerGroup = _audioMixerMaster;
-        }
+        audioSource.outputAudioMixerGroup = _audioMixerMicroPhone;
+        audioSource.clip = Microphone.Start(_selectedDevice, true, 10, AudioSettings.outputSampleRate);
 
         audioSource.Play();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

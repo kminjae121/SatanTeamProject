@@ -85,13 +85,10 @@ public class PassWorldDoor : MonoBehaviour, IUseItem
                     Cursor.lockState = CursorLockMode.None;
                     Cursor.visible = true;
                     _player.isStop = true;
-
-                    _player.transform.TryGetComponent(out Rigidbody rigid);
-
-                    rigid.velocity = Vector3.zero;
                 }
                 else if (Input.GetKeyDown(KeyCode.E) && !_isOpen)
                 {
+                    ChatManager.Instance.Chat(3,"취소하려면 E키 누르기");
                     Cursor.lockState = CursorLockMode.Locked;
                     Cursor.visible = false;
                     _passWorldParent.SetActive(false);

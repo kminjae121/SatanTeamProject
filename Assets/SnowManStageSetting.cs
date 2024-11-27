@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.Video;
 
 public class SnowManStageSetting : MonoBehaviour
 {
@@ -16,13 +17,22 @@ public class SnowManStageSetting : MonoBehaviour
     [SerializeField]
     private GameObject realSnowMan;
 
+    [SerializeField]
+    private VideoPlayer videoPlayer;
+
     public void MissingSnowMan()
     {
         Destroy(fakeSnowMan);
     }
 
+    public void Audio()
+    {
+        AudioManager.Instance.PlaySound2D("CloseDoor", 0, false, SoundType.VfX);
+    }
+
     public void CutSceneStart()
     {
+        videoPlayer.Stop();
         cutSceneCamera.Priority = 10;
         cutSceneCamera.GetComponent<Animator>().enabled = true;
         player.isStop = true;
