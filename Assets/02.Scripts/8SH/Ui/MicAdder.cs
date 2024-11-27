@@ -42,7 +42,7 @@ public class MicAdder : MonoBehaviour
         return false;
     }
 
-    private void UpdateMicDevices()
+    public void UpdateMicDevices()
     {
         string[] devices = Microphone.devices;
 
@@ -94,7 +94,6 @@ public class MicAdder : MonoBehaviour
             if (audioInput != null)
             {
                 audioInput._selectedDevice = deviceName;
-                audioInput.InputMike();
                 Debug.Log("현재 선택된 마이크: " + deviceName);
             }
         }

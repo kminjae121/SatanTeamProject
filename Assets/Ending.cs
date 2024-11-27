@@ -8,6 +8,6 @@ public class Ending : MonoBehaviour
 
     public void EndingScene()
     {
-        SceneManager.LoadScene("Ending");
+        SceneManager.LoadScene("ChaseScene");
     }
 }

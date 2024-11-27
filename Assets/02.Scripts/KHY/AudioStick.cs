@@ -23,7 +23,7 @@ public class AudioStick : MonoBehaviour
         GetComponent<RectTransform>().localScale = new Vector3(transform.localScale.x, Mathf.Clamp((AudioSpectrum._freqBand[_band] * _scaleMultiplier) + _startScale,0,30), transform.localScale.z);
         if ((AudioSpectrum._freqBand[_band] * _scaleMultiplier) + _startScale > 10)
         {
-           // audioInput._BigSound?.Invoke("PlayerCharacter(AudioInput)");
+            audioInput._BigSound?.Invoke("PlayerCharacter(AudioInput)");
             gameObject.transform.DOKill();
             GetComponent<Image>().DOColor(Color.red,1);
         }
