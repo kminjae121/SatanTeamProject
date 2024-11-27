@@ -8,3 +8,8 @@ public abstract class TriggerJumpscare : MonoBehaviour
     public abstract void Active();
     public abstract void CheckActiveable();
 }
+
+public interface IJumpscareTrigger
+{
+    public void OnTriggerEnter(Collider other);
+}
