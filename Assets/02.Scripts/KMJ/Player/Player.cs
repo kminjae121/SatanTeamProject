@@ -39,11 +39,10 @@ public class Player : MonoBehaviour
 
     public GameObject deathObj;
 
+    public List<GameObject> spawnPoint = new List<GameObject>();
+
     private void Awake()
     {
-        if (SaveManager.Instance.isAlreadyStart)
-            transform.position = SaveManager.Instance.CurrentPlayerTrm.position;
-
         _rigid = GetComponent<Rigidbody>();
         isMoving = false;
         stateMachine = new StateMachine<PlayerState>();
@@ -62,6 +61,18 @@ public class Player : MonoBehaviour
         soundMonsterDeathObj.SetActive(false);
         deathObj = GameObject.Find("DeathAnimation");
         deathObj.SetActive(false);
+
+        
+    }
+
+    private void Start()
+    {
+        if (SaveManager.Instance.isAlreadyStart)
+            transform.position = spawnPoint[0].transform.position;
+        else if (SaveManager.Instance.isFirstSpawn)
+            transform.position = spawnPoint[1].transform.position;
+        else if (SaveManager.Instance.isSecondSpawn)
+            transform.position = spawnPoint[2].transform.position;
     }
 
     private void OnEnable()

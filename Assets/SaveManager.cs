@@ -2,15 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SaveManager : MonoSingleton<SaveManager>
+public class SaveManager : MonoBehaviour
 {
-    public Transform CurrentPlayerTrm { get; private set; }
     public bool isAlreadyStart;
+
+    public static SaveManager Instance;
+
+    public bool isFirstSpawn;
+    public bool isSecondSpawn;
+    public bool isThirdSpawn;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+            Destroy(gameObject);
+    }
 
     public void PlayerSpawnPoint()
     {
-        Transform currentTrm = FindAnyObjectByType<Player>().GetComponent<Transform>();
-        isAlreadyStart = true;
-        CurrentPlayerTrm = currentTrm;
+        if (isSecondSpawn)
+            isThirdSpawn = true;
+        else if (isFirstSpawn)
+            isSecondSpawn = true;
+        else if (isAlreadyStart)
+            isFirstSpawn = true;
+        else
+            isAlreadyStart = true;
     }
 }
