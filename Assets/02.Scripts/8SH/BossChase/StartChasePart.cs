@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class StartChasePart : MonoBehaviour
 {
+    private GameObject playerObj;
     private Player player;
 
     private void Start()
     {
-        player = FindGameObjectByName("PlayerCharacter(AudioInput)").GetComponent<Player>();
+        playerObj = FindGameObjectByName("PlayerCharacter(AudioInput)").gameObject;
+        player = playerObj.GetComponent<Player>();
+        player.isStop = true;
     }
 
     public void ChaseStart()
     {
         player.isStop = false;
-        player.GetComponent<PlayerCam>().enabled = true;
+        playerObj.GetComponent<PlayerCam>().enabled = true;
         FindGameObjectByName("Timeline").gameObject.SetActive(false);
         FindGameObjectByName("StartTrigger").GetComponent<BossChasePathSetter>().Active();
         FindGameObjectByName("ScreenCanvas").gameObject.SetActive(true);
