@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneChangeManager : MonoBehaviour
 {
     private AsyncOperation asyncOperation;
+    public string deathToGame_SceneName = "KYHMap";
 
     public static SceneChangeManager Instance;
     private void Awake()

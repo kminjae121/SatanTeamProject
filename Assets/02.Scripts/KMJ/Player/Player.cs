@@ -58,6 +58,9 @@ public class Player : MonoBehaviour
         Item = GetComponentInChildren<Item>();
 
         soundMonsterDeathObj = GameObject.Find("SoundDeathAnimation");
+        if (soundMonsterDeathObj == null)
+            return;
+        else
         soundMonsterDeathObj.SetActive(false);
         deathObj = GameObject.Find("DeathAnimation");
         deathObj.SetActive(false);
@@ -129,7 +132,6 @@ public class Player : MonoBehaviour
     {
         if (Interaction != null)
             _inputReader.OnInteractionHandle -= Interaction.OnInteraction;
-
         _inputReader.OnRunHandle -= PressRun;
         _inputReader.OnGetPresent -= Item.GetPresent;
     }

@@ -65,8 +65,6 @@ public class SettingManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-
- 
     }
 
     public GameObject FindGameObjectByName(string name)
