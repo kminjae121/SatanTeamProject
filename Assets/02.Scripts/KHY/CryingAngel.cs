@@ -84,6 +84,7 @@ public class CryingAngel : MonoBehaviour, IDetectGaze
     {
         yield return new WaitForSecondsRealtime(1.4f);
         SceneChangeManager.Instance.DeathScene();
+        print("안되면 억까");
     }
 
     private void OnDrawGizmos()

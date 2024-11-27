@@ -67,12 +67,12 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        if (SaveManager.Instance.isAlreadyStart)
-            transform.position = spawnPoint[0].transform.position;
+        if (SaveManager.Instance.isSecondSpawn)
+            transform.position = spawnPoint[2].transform.position;
         else if (SaveManager.Instance.isFirstSpawn)
             transform.position = spawnPoint[1].transform.position;
-        else if (SaveManager.Instance.isSecondSpawn)
-            transform.position = spawnPoint[2].transform.position;
+        else if (SaveManager.Instance.isAlreadyStart)
+            transform.position = spawnPoint[0].transform.position;
     }
 
     private void OnEnable()

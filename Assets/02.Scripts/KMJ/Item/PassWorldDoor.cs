@@ -88,7 +88,7 @@ public class PassWorldDoor : MonoBehaviour, IUseItem
                 }
                 else if (Input.GetKeyDown(KeyCode.E) && !_isOpen)
                 {
-                    ChatManager.Instance.Chat(3,"취소하려면 E키 누르기");
+                    ChatManager.Instance.Chat(3,"E키를 눌러 뒤로");
                     Cursor.lockState = CursorLockMode.Locked;
                     Cursor.visible = false;
                     _passWorldParent.SetActive(false);

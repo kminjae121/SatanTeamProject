@@ -40796,7 +40796,7 @@ GameObject:
   - component: {fileID: 843357557}
   - component: {fileID: 843357558}
   m_Layer: 5
-  m_Name: Exit
+  m_Name: PauseKey
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84439,10 +84439,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -98627,7 +98627,7 @@ MonoBehaviour:
   doorLight: {fileID: 424813696}
   lightAudio: {fileID: 1298695566}
   bgm: {fileID: 617210255}
-  nameScene: IntoroVideo
+  nameScene: IntroVideo
 --- !u!225 &2028079765
 CanvasGroup:
   m_ObjectHideFlags: 0

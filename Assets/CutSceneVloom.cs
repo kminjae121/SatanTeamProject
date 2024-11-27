@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using DG.Tweening;
+using Cinemachine;
 
 
 public class CutSceneVloom : MonoBehaviour
@@ -37,6 +38,7 @@ public class CutSceneVloom : MonoBehaviour
         {
             human.SetActive(false);
             StartGame();
+            FindGameObjectByName("PauseKey").SetActive(true);
         }
         else
         {
@@ -51,6 +53,8 @@ public class CutSceneVloom : MonoBehaviour
                 //종료시 실행
             });
         }
+
+        FindGameObjectByName("PauseKey").SetActive(false);
     }
 
     public void BlackEye()
@@ -94,10 +98,14 @@ public class CutSceneVloom : MonoBehaviour
     {
         if(!SaveManager.Instance.isAlreadyStart)
             ChatManager.Instance.Chat(6);
+        
         player.SetActive(true);
         itemText.SetActive(true);
         blackPanel.gameObject.SetActive(false);
-        gameObject.SetActive(false);
+        gameObject.GetComponent<CinemachineVirtualCamera>().Priority = 0;
+        gameObject.GetComponent<Animator>().enabled = false;
+
+        FindGameObjectByName("PauseKey").SetActive(true);
     }
 
     public void FadeBlackImage()
@@ -113,6 +121,7 @@ public class CutSceneVloom : MonoBehaviour
         DOTween.KillAll();
         print("실행됨");
         blackPanel.DOFade(0, 1);
+        
     }
 
     public void MinusVignette()
@@ -126,6 +135,24 @@ public class CutSceneVloom : MonoBehaviour
             DOTween.KillAll();
             DOTween.To(() => startVignette, vloom => vignette.intensity.value = vloom, endVignette, 1);
         }
+
+        
+    }
+
+    public GameObject FindGameObjectByName(string name)
+    {
+        GameObject[] allObjects = Resources.FindObjectsOfTypeAll<GameObject>();
+
+        foreach (GameObject obj in allObjects)
+        {
+            if (obj.name == name)
+            {
+                return obj;
+            }
+        }
+
+        Debug.LogWarning($"GameObject with name '{name}' not found.");
+        return null;
     }
 
     // Update is called once per frame

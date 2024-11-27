@@ -1040,7 +1040,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 29.55
+  - time: 30.05
     functionName: StartGame
     data: 
     objectReferenceParameter: {fileID: 0}

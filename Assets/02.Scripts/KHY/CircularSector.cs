@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEditor;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using DG.Tweening;
@@ -90,7 +89,7 @@ public class CircularSector : MonoBehaviour
         }
     }
 
-    private void Safe(float dot)
+    public void Safe(float dot)
     {
         Vignette vignette;
         float startVignette = 0f;
@@ -109,9 +108,9 @@ public class CircularSector : MonoBehaviour
         if (interV == null) return;
 
 
-        Handles.color = isCollision ? _red : _blue;
-        // DrawSolidArc(시작점, 노멀벡터(법선벡터), 그려줄 방향 벡터, 각도, 반지름)
-        Handles.DrawSolidArc(transform.position, Vector3.up, transform.forward, angleRange / 2, radius);
-        Handles.DrawSolidArc(transform.position, Vector3.up, transform.forward, -angleRange / 2, radius);
+        //Handles.color = isCollision ? _red : _blue;
+        //// DrawSolidArc(시작점, 노멀벡터(법선벡터), 그려줄 방향 벡터, 각도, 반지름)
+        //Handles.DrawSolidArc(transform.position, Vector3.up, transform.forward, angleRange / 2, radius);
+        //Handles.DrawSolidArc(transform.position, Vector3.up, transform.forward, -angleRange / 2, radius);
     }
 }

@@ -926,7 +926,7 @@ AnimationClip:
   m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 1.2166667
+  - time: 3.1166666
     functionName: Audio
     data: 
     objectReferenceParameter: {fileID: 0}
