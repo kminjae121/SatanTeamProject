@@ -42,7 +42,9 @@ public class CutSceneVloom : MonoBehaviour
         }
         else
         {
+            FindGameObjectByName("PauseKey").SetActive(false);
             player.SetActive(false);
+            audioSource.Play();
             MySequence = DOTween.Sequence()
                 .OnStart(() => {
 
@@ -54,7 +56,6 @@ public class CutSceneVloom : MonoBehaviour
             });
         }
 
-        FindGameObjectByName("PauseKey").SetActive(false);
     }
 
     public void BlackEye()
