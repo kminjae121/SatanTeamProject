@@ -688,8 +688,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "{Space} \uAC74\uB108\uB6F0\uAE30"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d3eaf145387a7c442bdea09b0c9c1ec5, type: 2}
-  m_sharedMaterial: {fileID: -6346252774728422095, guid: d3eaf145387a7c442bdea09b0c9c1ec5,
+  m_fontAsset: {fileID: 11400000, guid: bca6c4fe83c47aa41b8ed599bd7bf1e6, type: 2}
+  m_sharedMaterial: {fileID: 399770192246342407, guid: bca6c4fe83c47aa41b8ed599bd7bf1e6,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -809,7 +809,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 546, y: 491}
+  m_AnchoredPosition: {x: 775, y: 491}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4598928082686499499

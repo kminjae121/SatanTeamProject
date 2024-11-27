@@ -135,5 +135,6 @@ public class SoundMonster : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(1f);
         SceneChangeManager.Instance.DeathScene();
+        print("안되면 억까");
     }
 }

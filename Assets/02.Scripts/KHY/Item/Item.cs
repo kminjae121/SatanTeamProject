@@ -34,6 +34,7 @@ public class Item : MonoBehaviour
     public SoundMonster soundMonster;
 
     private GameObject handleObj;
+    private ItemSO prevItem;
 
     private Coroutine soundCoroutine;
 
@@ -41,8 +42,9 @@ public class Item : MonoBehaviour
     [SerializeField]
     private float throwPower;
     private LayerMask _whatIsInteractionObj;
+    public bool isAlreadyGift;
 
-    public bool isGetPresent { get; set; }
+    [field : SerializeField] public bool isGetPresent { get; set; }
 
     private void OnEnable()
     {
@@ -68,9 +70,9 @@ public class Item : MonoBehaviour
         //손에 바꾸가
 
         print("와우");
-        if(handleObj != null)
+        if(handleObj != null && prevItem.itemPlacePrefab.name == "Present_Box")
         {
-            GameObject gaeObject = Instantiate(currentItem.itemPlacePrefab, transform);
+            GameObject gaeObject = Instantiate(prevItem.itemPlacePrefab, transform);
             gaeObject.transform.SetParent(null);
             gaeObject?.AddComponent<Rigidbody>();
             Destroy(handleObj);
@@ -81,10 +83,22 @@ public class Item : MonoBehaviour
             }
         }
         if (currentItem == null)
-            currentItem = testItem;
+        {
+            if(!isAlreadyGift)
+            {
+                currentItem = testItem;
+                isAlreadyGift = true;
+            }
+            else
+            {
+                ChatManager.Instance.Chat(2, "이미 선물이 있어서 선물을 꺼낼 수 없습니다");
+                return;
+            }
+        }
         GameObject gameObject = Instantiate(currentItem.itemPrefab, transform);
         gameObject.transform.SetParent(transform);
         handleObj = gameObject;
+        prevItem = currentItem;
     }
 
     private void UseItem()
