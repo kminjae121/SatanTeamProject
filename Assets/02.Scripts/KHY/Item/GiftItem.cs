@@ -33,7 +33,7 @@ public class GiftItem : MonoBehaviour, IUseItem
         Item item = FindAnyObjectByType<Item>();
         item.isAlreadyGift =false;
         item.currentItem = itemSOList.items[rand];
-        item.ChangeItem();
+        item.ChangeItem(true);
     }
 
     private IEnumerator GiftParticleRoutine(float destroyTime)

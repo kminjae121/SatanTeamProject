@@ -12,7 +12,7 @@ public class PlaceItem : MonoBehaviour, IInteractable
         print("Å‰µæ");
         Item item = FindAnyObjectByType<Item>();
         item.currentItem = thisItem;
-        item.ChangeItem();
+        item.ChangeItem(false);
         Destroy(gameObject);
     }
 }

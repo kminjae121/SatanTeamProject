@@ -65,40 +65,49 @@ public class Item : MonoBehaviour
         }
     }
 
-    public void ChangeItem()
+    public void ChangeItem(bool isGift)
     {
         //손에 바꾸가
-
-        print("와우");
-        if(handleObj != null && prevItem.itemPlacePrefab.name == "Present_Box")
+        if(!isGift)
         {
-            GameObject gaeObject = Instantiate(prevItem.itemPlacePrefab, transform);
-            gaeObject.transform.SetParent(null);
-            gaeObject?.AddComponent<Rigidbody>();
+            if (handleObj != null)
+            {
+                GameObject gaeObject = Instantiate(prevItem.itemPlacePrefab, transform);
+                gaeObject.transform.SetParent(null);
+                gaeObject?.AddComponent<Rigidbody>();
+                Destroy(handleObj);
+                if (soundMonster != null && !soundMonster.isPlayerFollow)
+                {
+                    soundMonster.AddTransform(gaeObject.transform);
+                    soundCoroutine = StartCoroutine(SoundRoutine(gaeObject));
+                }
+            }
+            if (currentItem == null)
+            {
+                if (!isAlreadyGift)
+                {
+                    currentItem = testItem;
+                    isAlreadyGift = true;
+                }
+                else
+                {
+                    ChatManager.Instance.Chat(2, "이미 선물이 있어서 선물을 꺼낼 수 없습니다");
+                    return;
+                }
+            }
+            GameObject gameObject = Instantiate(currentItem.itemPrefab, transform);
+            gameObject.transform.SetParent(transform);
+            handleObj = gameObject;
+            prevItem = currentItem;
+        }
+        else
+        {
             Destroy(handleObj);
-            if (soundMonster != null && !soundMonster.isPlayerFollow)
-            {
-                soundMonster.AddTransform(gaeObject.transform);
-                soundCoroutine = StartCoroutine(SoundRoutine(gaeObject));
-            }
+            GameObject gameObject = Instantiate(currentItem.itemPrefab, transform);
+            gameObject.transform.SetParent(transform);
+            handleObj = gameObject;
+            prevItem = currentItem;
         }
-        if (currentItem == null)
-        {
-            if(!isAlreadyGift)
-            {
-                currentItem = testItem;
-                isAlreadyGift = true;
-            }
-            else
-            {
-                ChatManager.Instance.Chat(2, "이미 선물이 있어서 선물을 꺼낼 수 없습니다");
-                return;
-            }
-        }
-        GameObject gameObject = Instantiate(currentItem.itemPrefab, transform);
-        gameObject.transform.SetParent(transform);
-        handleObj = gameObject;
-        prevItem = currentItem;
     }
 
     private void UseItem()
@@ -131,7 +140,7 @@ public class Item : MonoBehaviour
                 ChatManager.Instance.Chat(2, "이미 물건이 있어서 선물을 꺼낼 수 없습니다");
                 return;
             }
-            ChangeItem();
+            ChangeItem(false);
         }
     }
 
