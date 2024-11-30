@@ -18,7 +18,7 @@ public class TapeItem : MonoBehaviour, IPuzzleItem
 
     public void Use(RaycastHit hit)
     {
-        AudioManager.Instance.PlaySound2D("TapeS", 0, false, SoundType.VfX);
+        AudioManager.Instance.PlaySound2D("TapeS", 0, false, SoundType.SFX);
         hit.collider.gameObject?.GetComponent<TelevisionObj>().ChangeVideo(playTape);
         Item item = FindAnyObjectByType<Item>();
         item.currentItem = null;

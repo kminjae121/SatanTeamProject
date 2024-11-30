@@ -21,7 +21,7 @@ public class EnterKeyPad : MonoBehaviour
     {
         if (_isEnter)
         {
-            AudioManager.Instance.PlaySound2D("PressButton", 0, false, SoundType.VfX);
+            AudioManager.Instance.PlaySound2D("PressButton", 0, false, SoundType.SFX);
             _text.text = _text.text + "1";
         }
 
@@ -31,7 +31,7 @@ public class EnterKeyPad : MonoBehaviour
     {
         if (_isEnter)
         {
-            AudioManager.Instance.PlaySound2D("PressButton", 0, false, SoundType.VfX);
+            AudioManager.Instance.PlaySound2D("PressButton", 0, false, SoundType.SFX);
             _text.text = _text.text + "2";
         }
     }
@@ -40,7 +40,7 @@ public class EnterKeyPad : MonoBehaviour
     {
         if (_isEnter)
         {
-            AudioManager.Instance.PlaySound2D("PressButton", 0, false, SoundType.VfX);
+            AudioManager.Instance.PlaySound2D("PressButton", 0, false, SoundType.SFX);
             _text.text = _text.text + "3";
         }
     }
@@ -49,7 +49,7 @@ public class EnterKeyPad : MonoBehaviour
     {
         if (_isEnter)
         {
-            AudioManager.Instance.PlaySound2D("PressButton", 0, false, SoundType.VfX);
+            AudioManager.Instance.PlaySound2D("PressButton", 0, false, SoundType.SFX);
             _text.text = _text.text + "4";
         }
     }
@@ -58,7 +58,7 @@ public class EnterKeyPad : MonoBehaviour
     {
         if (_isEnter)
         {
-            AudioManager.Instance.PlaySound2D("PressButton", 0, false, SoundType.VfX);
+            AudioManager.Instance.PlaySound2D("PressButton", 0, false, SoundType.SFX);
             _text.text = _text.text + "5";
         }
     }
@@ -67,7 +67,7 @@ public class EnterKeyPad : MonoBehaviour
     {
         if (_isEnter)
         {
-            AudioManager.Instance.PlaySound2D("PressButton", 0, false, SoundType.VfX);
+            AudioManager.Instance.PlaySound2D("PressButton", 0, false, SoundType.SFX);
             _text.text = _text.text + "6";
         }
     }
@@ -76,7 +76,7 @@ public class EnterKeyPad : MonoBehaviour
     {
         if (_isEnter)
         {
-            AudioManager.Instance.PlaySound2D("PressButton", 0, false, SoundType.VfX);
+            AudioManager.Instance.PlaySound2D("PressButton", 0, false, SoundType.SFX);
             _text.text = _text.text + "7";
         }
     }
@@ -85,7 +85,7 @@ public class EnterKeyPad : MonoBehaviour
     {
         if (_isEnter)
         {
-            AudioManager.Instance.PlaySound2D("PressButton", 0, false, SoundType.VfX);
+            AudioManager.Instance.PlaySound2D("PressButton", 0, false, SoundType.SFX);
             _text.text = _text.text + "8";
         }
     }
@@ -94,7 +94,7 @@ public class EnterKeyPad : MonoBehaviour
     {
         if (_isEnter)
         {
-            AudioManager.Instance.PlaySound2D("PressButton", 0, false, SoundType.VfX);
+            AudioManager.Instance.PlaySound2D("PressButton", 0, false, SoundType.SFX);
             _text.text = _text.text + "9";
         }
     }
@@ -103,20 +103,20 @@ public class EnterKeyPad : MonoBehaviour
     {
         if (_isEnter)
         {
-            AudioManager.Instance.PlaySound2D("PressButton", 0, false, SoundType.VfX);
+            AudioManager.Instance.PlaySound2D("PressButton", 0, false, SoundType.SFX);
             _text.text = _text.text + "0";
         }
     }
 
     public void EnterKeyE()
     {
-        AudioManager.Instance.PlaySound2D("PressButton", 0, false, SoundType.VfX);
+        AudioManager.Instance.PlaySound2D("PressButton", 0, false, SoundType.SFX);
         _openDoor.WhatIsRightPassWorld();
     }
 
     public void EnterKeyCancel()
     {
-        AudioManager.Instance.PlaySound2D("PressButton", 0, false, SoundType.VfX);
+        AudioManager.Instance.PlaySound2D("PressButton", 0, false, SoundType.SFX);
         _text.text = "";
     }
 

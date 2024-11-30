@@ -29,17 +29,17 @@ public class GiftItem : MonoBehaviour, IUseItem
     public void GetRandomItem()
     {
         StartCoroutine(GiftParticleRoutine(destroyTime));
-        int rand = Random.Range(0,itemSOList.items.Count);
+        int rand = Random.Range(0, itemSOList.items.Count);
         Item item = FindAnyObjectByType<Item>();
-        item.isAlreadyGift =false;
+        item.isAlreadyGift = false;
         item.currentItem = itemSOList.items[rand];
-        item.ChangeItem();
+        item.ChangeItem(true);
     }
 
     private IEnumerator GiftParticleRoutine(float destroyTime)
     {
-        AudioManager.Instance.PlaySound2D("OpenItem", 0, false, SoundType.VfX);
-        GameObject game = Instantiate(particle,giftOpenPos).gameObject;
+        AudioManager.Instance.PlaySound2D("OpenItem", 0, false, SoundType.SFX);
+        GameObject game = Instantiate(particle, giftOpenPos).gameObject;
         yield return new WaitForSeconds(destroyTime);
         Destroy(game);
     }

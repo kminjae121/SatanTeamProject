@@ -11,6 +11,7 @@ public class OpenTheDoor : MonoBehaviour
     private bool _isStop;
 
     public UnityEvent openEvent;
+    [SerializeField] private AudioSource doorAudio;
 
     private ObjectOutLine _outLine;
 
@@ -58,11 +59,14 @@ public class OpenTheDoor : MonoBehaviour
     public void Open()
     {
         gameObject.transform.parent.TryGetComponent(out Animator animator);
-        print(animator);
         openEvent?.Invoke();
-        AudioManager.Instance.PlaySound2D("OpenDoor", 0, false, SoundType.VfX);
+        AudioManager.Instance.PlaySound2D("OpenDoor", 0, false, SoundType.SFX);
         animator.SetBool("Open", true);
 
+        if (doorAudio)
+        {
+            doorAudio.Play();
+        }
         _isStop = true;
         StartCoroutine(Wait3());
     }
@@ -78,7 +82,7 @@ public class OpenTheDoor : MonoBehaviour
 
     IEnumerator Wait()
     {
-        AudioManager.Instance.PlaySound2D("OpenDoor", 0, false, SoundType.VfX);
+        AudioManager.Instance.PlaySound2D("OpenDoor", 0, false, SoundType.SFX);
         yield return new WaitForSecondsRealtime(1.3f);
 
         _isStop = false;    
@@ -90,7 +94,7 @@ public class OpenTheDoor : MonoBehaviour
 
         yield return new WaitForSeconds(0.31f);
 
-        AudioManager.Instance.PlaySound2D("CloseDoor", 0, false, SoundType.VfX);
+        AudioManager.Instance.PlaySound2D("CloseDoor", 0, false, SoundType.SFX);
 
         yield return new WaitForSecondsRealtime(1.3f);
 

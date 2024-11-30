@@ -42,13 +42,8 @@ public class CircularSector : MonoBehaviour
                 // 시야각 판별
                 if (degree <= angleRange / 2f)
                 {
-                    print("시야 들어옴");
-
-
                     if (Physics.Raycast(new Vector3(transform.position.x,transform.position.y + 1,transform.position.z), interV.normalized, out RaycastHit hit, Vector3.Distance(transform.position, target.position), _whatIsObstacle))
                     {
-
-                        print("장애물 감지됨");
                         Dangerous(dot);
                         isCollision = false;
                         target?.GetComponent<IDetectGaze>().OutOfSight();
@@ -61,7 +56,6 @@ public class CircularSector : MonoBehaviour
                 }
                 else
                 {
-                    print("시야 나감");
                     Dangerous(dot);
                     isCollision = false;
                     target?.GetComponent<IDetectGaze>().OutOfSight();
@@ -70,7 +64,6 @@ public class CircularSector : MonoBehaviour
             }
             else
             {
-                print("시야 나감");
                 isCollision = false;
                 target?.GetComponent<IDetectGaze>().OutOfSight();
             }
@@ -100,17 +93,5 @@ public class CircularSector : MonoBehaviour
             DOTween.KillAll();
             DOTween.To(() => endVignette, vloom => vignette.intensity.value = vloom, startVignette, 2);
         }
-    }
-
-        // 유니티 에디터에 부채꼴을 그려줄 메소드
-    private void OnDrawGizmos()
-    {
-        if (interV == null) return;
-
-
-        //Handles.color = isCollision ? _red : _blue;
-        //// DrawSolidArc(시작점, 노멀벡터(법선벡터), 그려줄 방향 벡터, 각도, 반지름)
-        //Handles.DrawSolidArc(transform.position, Vector3.up, transform.forward, angleRange / 2, radius);
-        //Handles.DrawSolidArc(transform.position, Vector3.up, transform.forward, -angleRange / 2, radius);
     }
 }

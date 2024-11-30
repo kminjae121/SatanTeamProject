@@ -154,7 +154,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 20
+        value: 40
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -162,8 +162,8 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 5.25
-        value: 20
+        time: 5.3
+        value: 35
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -171,10 +171,10 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 7.5
-        value: 20
-        inSlope: 0
-        outSlope: 0
+        time: 7.6
+        value: 40
+        inSlope: 2.013423
+        outSlope: 2.013423
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
@@ -793,7 +793,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 20
+        value: 40
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -801,8 +801,8 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 5.25
-        value: 20
+        time: 5.3
+        value: 35
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -810,10 +810,10 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 7.5
-        value: 20
-        inSlope: 0
-        outSlope: 0
+        time: 7.6
+        value: 40
+        inSlope: 2.013423
+        outSlope: 2.013423
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
@@ -1005,7 +1005,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 10.5
+  - time: 10.55
     functionName: NextChat
     data: 
     objectReferenceParameter: {fileID: 0}

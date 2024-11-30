@@ -53,7 +53,7 @@ public class MainMenuButtons : MonoBehaviour
 
     private IEnumerator SceneMove()
     {
-        yield return new WaitForSecondsRealtime(5);
+        yield return new WaitForSecondsRealtime(9);
         SceneManager.LoadScene(nameScene);
     }
 }

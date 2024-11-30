@@ -7,12 +7,10 @@ public class PauseHandler : MonoBehaviour
     [SerializeField] private GameObject pauseHotKeyObject;
     public void ConttolPlayer(bool stop)
     {
-        print("»Ð");
         if (GameObject.Find("PlayerCharacter(AudioInput)"))
         {
             Player player = GameObject.Find("PlayerCharacter(AudioInput)").GetComponent<Player>();
             player.isStop = stop;
-            print(player.isStop);
             if (stop)
             {
                 Cursor.lockState = CursorLockMode.None;

@@ -44,7 +44,7 @@ public class Item : MonoBehaviour
     private LayerMask _whatIsInteractionObj;
     public bool isAlreadyGift;
 
-    [field : SerializeField] public bool isGetPresent { get; set; }
+    [field: SerializeField] public bool isGetPresent { get; set; }
 
     private void OnEnable()
     {
@@ -61,50 +61,58 @@ public class Item : MonoBehaviour
         }
         else
         {
-            text.text = "맨손";
+            text.text = "";
         }
     }
 
-    public void ChangeItem()
+    public void ChangeItem(bool isGift)
     {
         //손에 바꾸가
-
-        print("와우");
-        if(handleObj != null && prevItem.itemPlacePrefab.name == "Present_Box")
+        if (!isGift)
         {
-            GameObject gaeObject = Instantiate(prevItem.itemPlacePrefab, transform);
-            gaeObject.transform.SetParent(null);
-            gaeObject?.AddComponent<Rigidbody>();
+            if (handleObj != null)
+            {
+                GameObject gaeObject = Instantiate(prevItem.itemPlacePrefab, transform);
+                gaeObject.transform.SetParent(null);
+                gaeObject?.AddComponent<Rigidbody>();
+                Destroy(handleObj);
+                if (soundMonster != null && !soundMonster.isPlayerFollow)
+                {
+                    soundMonster.AddTransform(gaeObject.transform);
+                    soundCoroutine = StartCoroutine(SoundRoutine(gaeObject));
+                }
+            }
+            if (currentItem == null)
+            {
+                if (!isAlreadyGift)
+                {
+                    currentItem = testItem;
+                    isAlreadyGift = true;
+                }
+                else
+                {
+                    ChatManager.Instance.Chat(2, "이미 선물이 있어서 선물을 꺼낼 수 없습니다");
+                    return;
+                }
+            }
+            GameObject gameObject = Instantiate(currentItem.itemPrefab, transform);
+            gameObject.transform.SetParent(transform);
+            handleObj = gameObject;
+            prevItem = currentItem;
+        }
+        else
+        {
             Destroy(handleObj);
-            if (soundMonster != null && !soundMonster.isPlayerFollow)
-            {
-                soundMonster.AddTransform(gaeObject.transform);
-                soundCoroutine = StartCoroutine(SoundRoutine(gaeObject));
-            }
+            GameObject gameObject = Instantiate(currentItem.itemPrefab, transform);
+            gameObject.transform.SetParent(transform);
+            handleObj = gameObject;
+            prevItem = currentItem;
         }
-        if (currentItem == null)
-        {
-            if(!isAlreadyGift)
-            {
-                currentItem = testItem;
-                isAlreadyGift = true;
-            }
-            else
-            {
-                ChatManager.Instance.Chat(2, "이미 선물이 있어서 선물을 꺼낼 수 없습니다");
-                return;
-            }
-        }
-        GameObject gameObject = Instantiate(currentItem.itemPrefab, transform);
-        gameObject.transform.SetParent(transform);
-        handleObj = gameObject;
-        prevItem = currentItem;
     }
 
     private void UseItem()
     {
-        print("마우스까진 됨");
-        if(currentItem != null)
+        if (currentItem != null)
         {
             if (currentItem.isPuzzleItem)
             {
@@ -114,7 +122,7 @@ public class Item : MonoBehaviour
                     print("아이템 사용");
                 }
             }
-            else if(!currentItem.isProp)
+            else if (!currentItem.isProp)
                 handleObj.GetComponent<IUseItem>().Use();
         }
         //if (currentItem == null) return;
@@ -124,14 +132,14 @@ public class Item : MonoBehaviour
 
     public void GetPresent()
     {
-        if(isGetPresent)
+        if (isGetPresent)
         {
             if (currentItem != null)
             {
                 ChatManager.Instance.Chat(2, "이미 물건이 있어서 선물을 꺼낼 수 없습니다");
                 return;
             }
-            ChangeItem();
+            ChangeItem(false);
         }
     }
 
@@ -139,16 +147,16 @@ public class Item : MonoBehaviour
     {
         if (currentItem == null) return;
         print("던짐");
-        AudioManager.Instance.PlaySound2D("GetItem",0,false,SoundType.VfX);
+        AudioManager.Instance.PlaySound2D("GetItem", 0, false, SoundType.SFX);
         GameObject gaeObject = Instantiate(currentItem.itemPlacePrefab, transform);
         gaeObject.transform.SetParent(null);
-        if(soundMonster != null && !soundMonster.isPlayerFollow)
+        if (soundMonster != null && !soundMonster.isPlayerFollow)
         {
             soundMonster.AddTransform(gaeObject.transform);
             soundCoroutine = StartCoroutine(SoundRoutine(gaeObject));
         }
         gaeObject?.AddComponent<Rigidbody>();
-        gaeObject.GetComponent<Rigidbody>().AddForce(transform.forward * throwPower,ForceMode.Impulse);
+        gaeObject.GetComponent<Rigidbody>().AddForce(transform.forward * throwPower, ForceMode.Impulse);
         Destroy(handleObj);
         currentItem = null;
     }

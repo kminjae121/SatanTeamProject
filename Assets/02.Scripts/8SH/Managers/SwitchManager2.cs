@@ -45,7 +45,6 @@ public class SwitchManager2 : MonoBehaviour
 
     public void Click()
     {
-        print("Å¬¸¯");
         Toggle();
         clickAudio.Play();
     }

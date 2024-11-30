@@ -9,7 +9,6 @@ public class BearTrap : MonoBehaviour
     [SerializeField] private LookAtObg_Jumpscare lookat;
     [SerializeField] private LayerMask _player;
     private Player _playerCompo;
-    private bool _isTrap;
     private bool _isOpen;
     private Animator _animator;
     public float currentGage= 0;
@@ -21,9 +20,8 @@ public class BearTrap : MonoBehaviour
     {
         _sliderManager = FindGameObjectByName("TrapSlider");
         _sliderManager.SetActive(false);
-        _isOpen = false;
+        _isOpen = true;
         _animator = GetComponent<Animator>();
-        _isTrap = true;
         _playerCompo = GameObject.Find("PlayerCharacter(AudioInput)").GetComponent<Player>();
         moveSpeed = _playerCompo._playerStat.moveSpeed;
     }
@@ -47,45 +45,38 @@ public class BearTrap : MonoBehaviour
     private void Update()
     {
         OpenTrap();
+    }
 
-        
-
-        if (_isOpen)
-        {
-            AudioManager.Instance.PlaySound3D("ReTrap", _playerCompo.transform, 0, false, SoundType.VfX, true, 0, 3);
-            _playerCompo._playerCam.enabled = true;
-            _playerCompo._playerStat.moveSpeed = moveSpeed;
-            _animator.SetBool("Open", true);
-            _animator.SetBool("Close", false);
-            _sliderManager.SetActive(false);
-        }
+    private void Open()
+    {
+        AudioManager.Instance.PlaySound3D("ReTrap", _playerCompo.transform, 0, false, SoundType.SFX, true, 0, 3);
+        _playerCompo._playerCam.enabled = true;
+        _playerCompo._playerStat.moveSpeed = moveSpeed;
+        _animator.SetBool("Open", true);
+        _animator.SetBool("Close", false);
+        _sliderManager.SetActive(false);
     }
 
     private void OpenTrap()
     {
-        if (Input.GetKey(KeyCode.E) && _isTrap == false)
+        if (Input.GetKey(KeyCode.E) && _isOpen == false)
         {
             _isOpen = true;
+            Open();
         }
-    }
-
-    private void BearTrapRange()
-    {
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (_isTrap && other.gameObject.CompareTag("Player"))
+        if (_isOpen && other.gameObject.CompareTag("Player"))
         {
-            AudioManager.Instance.PlaySound3D("TrapOn", _playerCompo.transform, 0, false, SoundType.VfX, true, 0, 3);
+            AudioManager.Instance.PlaySound3D("TrapOn", _playerCompo.transform, 0, false, SoundType.SFX, true, 0, 3);
             _playerCompo._playerStat.moveSpeed = 0;
             _playerCompo._playerStat.jumpSpeed = 0;
             _isOpen = false;
-            _isTrap = false;
             _animator.SetBool("Close", true);
             _sliderManager.SetActive(true);
 
-            print("æ∆¿’");
         }
     }
 }

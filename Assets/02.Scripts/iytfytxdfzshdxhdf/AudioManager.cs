@@ -8,7 +8,7 @@ using UnityEngine.Audio;
 public enum SoundType
 {
     BGM,
-    VfX
+    SFX
 }
 
 
@@ -103,7 +103,7 @@ public class AudioManager : MonoBehaviour
     /// </summary>
     /// <param name="clipName">오디오 클립 이름</param>
     /// <param name="type">오디오 유형(BGM, EFFECT 등.)</param>
-    public void PlaySound2D(string clipName, float delay = 0f, bool isLoop = false, SoundType type = SoundType.VfX)
+    public void PlaySound2D(string clipName, float delay = 0f, bool isLoop = false, SoundType type = SoundType.SFX)
     {
         GameObject obj = new GameObject("TemporarySoundPlayer 2D");
         TemporarySoundPlayer soundPlayer = obj.AddComponent<TemporarySoundPlayer>();
@@ -124,7 +124,7 @@ public class AudioManager : MonoBehaviour
     /// <param name="attachToTarget"></param>
     /// <param name="minDistance"></param>
     /// <param name="maxDistance"></param>
-    public void PlaySound3D(string clipName, Transform audioTarget, float delay = 0f, bool isLoop = false, SoundType type = SoundType.VfX, bool attachToTarget = true, float minDistance = 0.0f, float maxDistance = 50.0f)
+    public void PlaySound3D(string clipName, Transform audioTarget, float delay = 0f, bool isLoop = false, SoundType type = SoundType.SFX, bool attachToTarget = true, float minDistance = 0.0f, float maxDistance = 50.0f)
     {
         GameObject obj = new GameObject("TemporarySoundPlayer 3D");
         obj.transform.localPosition = audioTarget.transform.position;
@@ -144,7 +144,7 @@ public class AudioManager : MonoBehaviour
     public void InitVolumes(float bgm, float fbx)
     {
         SetVolume(SoundType.BGM, bgm);
-        SetVolume(SoundType.VfX, fbx);
+        SetVolume(SoundType.SFX, fbx);
     }
 
     //옵션을 변경할 때 소리의 불륨을 조절하는 함수

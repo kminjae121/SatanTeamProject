@@ -37,9 +37,7 @@ public class ChatManager : MonoBehaviour
         {
             if(directText == "null")
             {
-                print("焼たたたたたたたたたたたたたたたたたたたたたたたたたたたたたたたけぁい反ばったでいお焼でばっぬいせしそ虞ばで っそせしず妃と っぬせぉしそい鋳硲 たっぬけぉしい鋳たっで ぬ");
                 chatText.text = chatList[currentTextIdx];
-                print(chatList[currentTextIdx]);
                 currentTextIdx++;
             }
             else
@@ -49,7 +47,6 @@ public class ChatManager : MonoBehaviour
         }
         catch(IndexOutOfRangeException e)
         {
-            Console.WriteLine("希 句随 企紫亜 蒸柔艦陥!");
             Console.WriteLine($"Error: {e.Message}");
         }
         finally

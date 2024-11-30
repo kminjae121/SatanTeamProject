@@ -54,7 +54,5 @@ public class StartChasePart : MonoBehaviour
         {
             component.enabled = enable;
         }
-
-        Debug.Log($"총 {components.Length}개의 {typeof(T).Name} 컴포넌트를 {(enable ? "활성화" : "비활성화")}했습니다.");
     }
 }

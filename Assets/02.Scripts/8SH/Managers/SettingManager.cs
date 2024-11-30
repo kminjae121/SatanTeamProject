@@ -117,7 +117,6 @@ public class SettingManager : MonoBehaviour
             {
                 GameObject.Find("MotionBlurVolume").SetActive(false);
             }
-            print($"{settingName} : {boolSettings[settingName]}");
         }
     }
 

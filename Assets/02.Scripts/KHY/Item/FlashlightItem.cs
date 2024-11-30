@@ -17,7 +17,7 @@ public class FlashlightItem : MonoBehaviour, IUseItem
 
     public void Use()
     {
-        AudioManager.Instance.PlaySound2D("UseF", 0, false,SoundType.VfX);
+        AudioManager.Instance.PlaySound2D("UseF", 0, false,SoundType.SFX);
         isOnFlash = !isOnFlash;
 
         light.enabled = isOnFlash;

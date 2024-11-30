@@ -11,18 +11,13 @@ public class GoToEnd : MonoBehaviour
     [SerializeField] private AudioSource bgm;
     [SerializeField] private string sceneName;
 
-    private void Start()
-    {
-        print(fade);
-    }
-
     public void End()
     {
+        print("¿€µø!!!");
         FindGameObjectByName("Boss").gameObject.SetActive(false);
-        DOTween.KillAll();
-        fade.DOFade(0, 2);
+        fade.DOFade(1, 2);
         bgm.DOFade(0, 2);
-        //Invoke("ChangeScene", 3);
+        Invoke("ChangeScene", 5);
     }
 
     private void ChangeScene()

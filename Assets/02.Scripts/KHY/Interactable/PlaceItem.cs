@@ -8,11 +8,10 @@ public class PlaceItem : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        AudioManager.Instance.PlaySound2D("Pick", 0, false, SoundType.VfX);
-        print("Å‰µæ");
+        AudioManager.Instance.PlaySound2D("Pick", 0, false, SoundType.SFX);
         Item item = FindAnyObjectByType<Item>();
         item.currentItem = thisItem;
-        item.ChangeItem();
+        item.ChangeItem(false);
         Destroy(gameObject);
     }
 }

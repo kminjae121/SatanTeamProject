@@ -349,6 +349,8 @@ MonoBehaviour:
   _whatIsSnowMan:
     serializedVersion: 2
     m_Bits: 256
+  isTutorial: 0
+  warningLight: {fileID: 0}
 --- !u!1 &3220035182220412447
 GameObject:
   m_ObjectHideFlags: 0
@@ -643,7 +645,7 @@ Transform:
   m_GameObject: {fileID: 5667338645481375709}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.009999946, y: -0.1366666, z: -0.94114083}
+  m_LocalPosition: {x: 0, y: 0.092, z: -0.114}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -662,9 +664,9 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_Intensity: 150
-  m_Range: 9.7
-  m_SpotAngle: 64.209755
-  m_InnerSpotAngle: 64.209755
+  m_Range: 15
+  m_SpotAngle: 64.20976
+  m_InnerSpotAngle: 64.20976
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0

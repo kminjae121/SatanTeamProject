@@ -88,7 +88,7 @@ public class PassWorldDoor : MonoBehaviour, IUseItem
                 }
                 else if (Input.GetKeyDown(KeyCode.E) && !_isOpen)
                 {
-                    ChatManager.Instance.Chat(3,"E키를 눌러 뒤로");
+                    ChatManager.Instance.Chat(3,"[E]를 눌러 뒤로");
                     Cursor.lockState = CursorLockMode.Locked;
                     Cursor.visible = false;
                     _passWorldParent.SetActive(false);
@@ -134,7 +134,7 @@ public class PassWorldDoor : MonoBehaviour, IUseItem
     {
         if (_reciveText.text == _collectString)
         {
-            AudioManager.Instance.PlaySound3D("OpenDoor", _player.transform, 0, false, SoundType.VfX, true, 2, 2);
+            AudioManager.Instance.PlaySound3D("OpenDoor", _player.transform, 0, false, SoundType.SFX, true, 2, 2);
             _passWorldParent.SetActive(false);
 
             gameObject.transform.parent.TryGetComponent(out Animator animator);
@@ -157,7 +157,7 @@ public class PassWorldDoor : MonoBehaviour, IUseItem
     IEnumerator Wait()
     {
 
-        AudioManager.Instance.PlaySound2D("OpenDoor", 0, false, SoundType.VfX);
+        AudioManager.Instance.PlaySound2D("OpenDoor", 0, false, SoundType.SFX);
         yield return new WaitForSecondsRealtime(1.3f);
         _isStop = false;
         _isOpen = true;
@@ -167,7 +167,7 @@ public class PassWorldDoor : MonoBehaviour, IUseItem
     {
         yield return new WaitForSeconds(0.31f);
 
-        AudioManager.Instance.PlaySound2D("CloseDoor", 0, false, SoundType.VfX);
+        AudioManager.Instance.PlaySound2D("CloseDoor", 0, false, SoundType.SFX);
 
         yield return new WaitForSecondsRealtime(1.3f);
         _isStop = false;
