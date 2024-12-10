@@ -97,7 +97,12 @@ public class PasswordMoniter : MonoBehaviour, IInteractable
 
         string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\password.txt";
         var writer = new StreamWriter(File.Open(path, FileMode.OpenOrCreate));
-        writer.WriteLine("password is 505");
+        writer.WriteLine("LogToDay:98/12/23_Santa#1_Enter;" +
+            "\nLogToDay:99/12/24_Santa#2_Enter;" +
+            "\nRemain:dll.#150SantaMore" +
+            "LoguginManager: Mounting Engine ugin PixWinPin\r\nLoluginManag:Mountng plgin \r\nLgliMnager Montting Engne plugin GmetryMode\rLogPlutig Engine pluin N" +
+            "\n5\n0\n\n5\nLEFT_all:dll" +
+            "LogInit: OS: Windos 11 (2H2) [1] (),U:1th Gen tel() oreTM 20H, GU: Intel(R) UHD Graphics\r\nLogInt Comie (t): Ot 2 2066\r\nLogIit: Aciure: x4");
         writer.Close();
 
         ProcessStartInfo startInfo = new ProcessStartInfo(path)

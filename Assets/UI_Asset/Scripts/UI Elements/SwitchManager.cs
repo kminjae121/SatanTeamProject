@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
-using UnityEngine.EventSystems;
+using System.IO;
 
 namespace Michsky.UI.Dark
 {
@@ -25,8 +25,13 @@ namespace Michsky.UI.Dark
         public Animator switchAnimator;
         public Button switchButton;
 
+        private string filePath;
+
         void Start()
         {
+            // 설정 파일 경로 설정
+            filePath = Path.Combine(Application.persistentDataPath, $"{switchTag}_SettingSullJung.json");
+
             try
             {
                 if (switchAnimator == null)
@@ -38,63 +43,25 @@ namespace Michsky.UI.Dark
                     switchButton.onClick.AddListener(AnimateSwitch);
                 }
             }
-
             catch
             {
-                Debug.LogError("Switch - Cannot initalize the switch due to missing variables.", this);
+                Debug.LogError("Switch - Cannot initialize the switch due to missing variables.", this);
             }
 
-            if (saveValue == true)
+            if (saveValue)
             {
-                if (PlayerPrefs.GetString(switchTag + "DarkUISwitch") == "")
-                {
-                    if (isOn == true)
-                    {
-                        switchAnimator.Play("Switch On");
-                        isOn = true;
-                        PlayerPrefs.SetString(switchTag + "DarkUISwitch", "true");
-                    }
-
-                    else
-                    {
-                        switchAnimator.Play("Switch Off");
-                        isOn = false;
-                        PlayerPrefs.SetString(switchTag + "DarkUISwitch", "false");
-                    }
-                }
-
-                else if (PlayerPrefs.GetString(switchTag + "DarkUISwitch") == "true")
-                {
-                    switchAnimator.Play("Switch On");
-                    isOn = true;
-                }
-
-                else if (PlayerPrefs.GetString(switchTag + "DarkUISwitch") == "false")
-                {
-                    switchAnimator.Play("Switch Off");
-                    isOn = false;
-                }
+                LoadSwitchState();
             }
-
             else
             {
-                if (isOn == true)
-                {
-                    switchAnimator.Play("Switch On");
-                    isOn = true;
-                }
-
-                else
-                {
-                    switchAnimator.Play("Switch Off");
-                    isOn = false;
-                }
+                UpdateSwitchState();
             }
 
-            if (invokeAtStart == true && isOn == true)
-                onEvents.Invoke();
-            else if (invokeAtStart == true && isOn == false)
-                offEvents.Invoke();
+            if (invokeAtStart)
+            {
+                if (isOn) onEvents.Invoke();
+                else offEvents.Invoke();
+            }
         }
 
         void OnEnable()
@@ -102,75 +69,86 @@ namespace Michsky.UI.Dark
             if (switchAnimator == null)
                 return;
 
-            if (saveValue == true)
+            if (saveValue)
             {
-                if (PlayerPrefs.GetString(switchTag + "DarkUISwitch") == "")
-                {
-                    if (isOn == true)
-                    {
-                        switchAnimator.Play("Switch On");
-                        isOn = true;
-                        PlayerPrefs.SetString(switchTag + "DarkUISwitch", "true");
-                    }
-
-                    else
-                    {
-                        switchAnimator.Play("Switch Off");
-                        isOn = false;
-                        PlayerPrefs.SetString(switchTag + "DarkUISwitch", "false");
-                    }
-                }
-
-                else if (PlayerPrefs.GetString(switchTag + "DarkUISwitch") == "true")
-                {
-                    switchAnimator.Play("Switch On");
-                    isOn = true;
-                }
-
-                else if (PlayerPrefs.GetString(switchTag + "DarkUISwitch") == "false")
-                {
-                    switchAnimator.Play("Switch Off");
-                    isOn = false;
-                }
+                LoadSwitchState();
             }
-
             else
             {
-                if (isOn == true)
-                {
-                    switchAnimator.Play("Switch On");
-                    isOn = true;
-                }
-
-                else
-                {
-                    switchAnimator.Play("Switch Off");
-                    isOn = false;
-                }
+                UpdateSwitchState();
             }
         }
-
+            
         public void AnimateSwitch()
         {
-            if (isOn == true)
+            if (isOn)
             {
                 switchAnimator.Play("Switch Off");
                 isOn = false;
                 offEvents.Invoke();
-
-                if (saveValue == true)
-                    PlayerPrefs.SetString(switchTag + "DarkUISwitch", "false");
             }
-
             else
             {
                 switchAnimator.Play("Switch On");
                 isOn = true;
                 onEvents.Invoke();
+            }
 
-                if (saveValue == true)
-                    PlayerPrefs.SetString(switchTag + "DarkUISwitch", "true");
+            if (saveValue)
+                SaveSwitchState();
+        }
+
+        #region 설정 저장   
+        private void SaveSwitchState()
+        {
+            try
+            {
+                File.WriteAllText(filePath, JsonUtility.ToJson(new SwitchData { IsOn = isOn }));
+            }
+            catch (IOException ex)
+            {
+                Debug.LogError($"Error saving switch state: {ex.Message}");
             }
         }
+
+        private void LoadSwitchState()
+        {
+            if (!File.Exists(filePath))
+            {
+                SaveSwitchState(); // 기본값 저장
+                return;
+            }
+
+            try
+            {
+                string json = File.ReadAllText(filePath);
+                SwitchData data = JsonUtility.FromJson<SwitchData>(json);
+                isOn = data.IsOn;
+                UpdateSwitchState();
+            }
+            catch (IOException ex)
+            {
+                Debug.LogError($"에라이 스위치 상태: {ex.Message}");
+            }
+        }
+
+        private void UpdateSwitchState()
+        {
+            if (isOn)
+            {
+                switchAnimator.Play("Switch On");
+            }
+            else
+            {
+                switchAnimator.Play("Switch Off");
+            }
+        }
+
+        [System.Serializable]
+        private class SwitchData
+        {
+            public bool IsOn;
+        }
     }
+    #endregion
 }
